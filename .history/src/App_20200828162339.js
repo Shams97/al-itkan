@@ -104,7 +104,7 @@ export const FormInput = ({ placeholder, name, value, type, onChange,ref }) => {
       type={type}
       placeholder={placeholder}
       name={name}
-      className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2"
+      className="border-b-2 border-black-400 focus:border-blue-500  outline-none  p-2"
       value={value}
       onChange={onChange}
       ref={ref}

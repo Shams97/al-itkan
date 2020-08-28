@@ -98,15 +98,15 @@ const Dot = ({ value }) => {
 };
 
 // Here when default input goes
-export const FormInput = ({ placeholder, name, value, type, onChange,ref }) => {
+export const FormInput = ({ placeholder, name, type, ref }) => {
   return (
     <input
       type={type}
       placeholder={placeholder}
       name={name}
-      className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2"
-      value={value}
-      onChange={onChange}
+      className="border-b-2 border-black-400 focus:border-blue-500  outline-none  p-2"
+      // value={value}
+      // onChange={onChange}
       ref={ref}
     />
   );

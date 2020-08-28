@@ -353,7 +353,7 @@ export const Refrence = () => {
           <Button value="Previous" />
         </Link>
         <Link to="/submited">
-          <FormInput type="submit" value="submit" />
+          <Button value="submit" />
         </Link>
       </div>
     </div>

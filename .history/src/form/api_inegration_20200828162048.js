@@ -46,7 +46,6 @@ import { FormInput } from "../App";
 
 export default function Api_inegration() {
  const [input_value,setState] = useState({})
-
 const {register , handleSubmit} = useForm();
 
       useEffect((name , value , onChange) => {
@@ -65,7 +64,6 @@ const {register , handleSubmit} = useForm();
           }
       )
       }, [])
-    
       const onSubmit  = data =>{
         setState(data)
         console.log("data === ",data, input_value)
@@ -74,7 +72,6 @@ const {register , handleSubmit} = useForm();
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} action="POST">
-     
       <input placeholder="trying " ref={register} name="trying"/>
       <input placeholder="trying " ref={register} name="password" type="password"/>
       <input  type="file" ref={register} name="file"/>
@@ -82,7 +79,7 @@ const {register , handleSubmit} = useForm();
       <input type="date" ref={register} name="try"/>
       
       <FormInput ref={register} name="for" placeholder="custom" type="text"/>
-      <input type="submit" value="submit"/>
+   <input type="submit" value="submit"/>
      </form>
     </div>
   )

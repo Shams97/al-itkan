@@ -45,13 +45,12 @@ import { useForm} from "react-hook-form";
 import { FormInput } from "../App";
 
 export default function Api_inegration() {
- const [input_value,setState] = useState({})
-
+ const [input_value,setState] = useState()
 const {register , handleSubmit} = useForm();
 
       useEffect((name , value , onChange) => {
           
-        fetch("http://localhost:5000/api", {
+        fetch("http://localhost:5000/api/", {
         method: "POST",
         body: JSON.stringify(),
         headers: {
@@ -65,7 +64,6 @@ const {register , handleSubmit} = useForm();
           }
       )
       }, [])
-    
       const onSubmit  = data =>{
         setState(data)
         console.log("data === ",data, input_value)
@@ -73,16 +71,13 @@ const {register , handleSubmit} = useForm();
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} action="POST">
-     
+      <form onSubmit={handleSubmit(onSubmit)}>
       <input placeholder="trying " ref={register} name="trying"/>
       <input placeholder="trying " ref={register} name="password" type="password"/>
-      <input  type="file" ref={register} name="file"/>
-     
+      {/* <input  type="file" ref={register} name="file"/> */}
       <input type="date" ref={register} name="try"/>
-      
-      <FormInput ref={register} name="for" placeholder="custom" type="text"/>
-      <input type="submit" value="submit"/>
+
+   <input type="submit" value="submit"/>
      </form>
     </div>
   )

@@ -45,44 +45,37 @@ import { useForm} from "react-hook-form";
 import { FormInput } from "../App";
 
 export default function Api_inegration() {
- const [input_value,setState] = useState({})
-
+ const [input_value,setState] = useState([])
 const {register , handleSubmit} = useForm();
-
-      useEffect((name , value , onChange) => {
-          
-        fetch("http://localhost:5000/api", {
-        method: "POST",
-        body: JSON.stringify(),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((response) => {
-          //  setState([{...res.body}]);
-            //  res = onSubmit
-            setState(response.body)
-            console.log("response ==", response, input_value);
-          }
-      )
-      }, [])
+useEffect((name , value , onChange) => {
     
-      const onSubmit  = data =>{
-        setState(data)
-        console.log("data === ",data, input_value)
-      }
+  fetch("http://localhost:3000/api/", {
+   method: "POST",
+   body: JSON.stringify(),
+   headers: {
+     "Content-Type": "application/json",
+   },
+ }).then((res) => {
+       setState([{...res}]);
+      //  res = onSubmit
+       console.log("response ==", res, data);
+     }
+ )
+})
+const onSubmit  =data =>{
+      setState(data)
+  console.log(data)
+}
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} action="POST">
-     
-      <input placeholder="trying " ref={register} name="trying"/>
-      <input placeholder="trying " ref={register} name="password" type="password"/>
-      <input  type="file" ref={register} name="file"/>
-     
-      <input type="date" ref={register} name="try"/>
-      
-      <FormInput ref={register} name="for" placeholder="custom" type="text"/>
-      <input type="submit" value="submit"/>
+      <form onSubmit={handleSubmit(onSubmit)}>
+      <FormInput placeholder="trying " ref={register} name="trying"/>
+      <FormInput placeholder="trying " ref={register} name="password" type="password"/>
+      {/* <input  type="file" ref={register} name="file"/> */}
+      <FormInput type="date" ref={register} name="try"/>
+
+   <input type="submit" value="submit"/>
      </form>
     </div>
   )

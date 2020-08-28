@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import "./App.css";
 import MulitpleStepForm from "./form/main";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -16,7 +16,6 @@ import Employment_history from './form/employment';
 import {Additional_info} from './form/employment';
 import {Refrence} from './form/employment';
 import {Submited} from './form/employment';
-import Api_inegration from "./form/api_inegration";
 const initialList = [
   { "name":"shams", "value":"khalid"}
 ];
@@ -43,25 +42,21 @@ function App() {
 
 
   useEffect((name , value , onChange) => {
-    //  name = <FormInput {...props}/>
-    
-    
     fetch(url+"/api/", {
      method: "POST",
-     body: JSON.stringify(),
+     body: JSON.stringify(data),
      headers: {
        "Content-Type": "application/json",
      },
    }).then((res) => {
-         setValue(res);
-         console.log("response ==", res);
+         setValue(res.data);
+         console.log("response ==", res.data);
        }
    )
 })
 
   return (
     <div className="App">
-      <Api_inegration/>
       {/* Itkan main nav bar goes here  */}
       <form action="POST" onSubmit={handleSubmit}>
         <Router>
@@ -98,16 +93,15 @@ const Dot = ({ value }) => {
 };
 
 // Here when default input goes
-export const FormInput = ({ placeholder, name, value, type, onChange,ref }) => {
+export const FormInput = ({ placeholder, name, value, type, onChange }) => {
   return (
     <input
       type={type}
       placeholder={placeholder}
       name={name}
-      className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2"
+      className="border-b-2 border-black-400 focus:border-blue-500  outline-none  p-2"
       value={value}
-      onChange={onChange}
-      ref={ref}
+      onChange={handleChange}
     />
   );
 };
