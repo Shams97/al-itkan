@@ -1,32 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FormInput } from "./main";
 import { Button } from "./main";
 import Health from "./health";
 import { Link } from "react-router-dom";
 
-import Store from '../store'
+import {Context} from '../store'
 
 export default function FamilyInfo() {
   
-  const [show, setShow] = useState([]);
+  const [show, setShow] = useState([1]);
   const [hide, setHide] = useState(false);
+  const [state, setState] = useContext(Context)
 
   return (
       <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
-        {/* <Store> */}
           <h3 className="my-8 text-2xl" > Family information </h3>
           <div className="flex  flex-col m-2">
             <FormInput placeholder="Father's profession " name="father_profession" />
             <FormInput placeholder="Mother's professtion" name="mother_profession" />
             <p className="text-center my-2">Do you have any sisters or brothers ?</p>
-            <FormInput
+            {/* <FormInput
               placeholder="Brother/sister first name "
               name="first_name"
             />
-            <FormInput placeholder="Profession" name="profession" />
+            <FormInput placeholder="Profession" name="profession" /> */}
           
             {show.map((input, index) => {
-              let n = index;
+              let n = index+1;
               return (
                 <div className="flex flex-col mt-8" key={index}>
                   <FormInput
@@ -46,7 +46,13 @@ export default function FamilyInfo() {
           <Operations  onClick={() => {setShow([...show, {}]); setHide(true) }} operation="+" />
 
             { hide ?
-              <Operations  onClick={() => {setShow(show.slice(0, show.length - 1))}} operation="-" />
+              <Operations  onClick={() => {
+                setShow(show.slice(0, show.length - 1))
+                let last_index = show.length
+                delete state['data']['first_name_' + last_index]
+                delete state['data']['profession_' + last_index]
+                setState(state)
+              }} operation="-" />
               :null}
             </div>
           </div>
@@ -58,7 +64,6 @@ export default function FamilyInfo() {
               <Button value="Next" />
             </Link>
           </div>
-        {/* </Store> */}
       </div>
 
   );

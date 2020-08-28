@@ -1,6 +1,7 @@
 import React from "react";
 import {Button} from '../App';
 import {Link } from 'react-router-dom'
+import Radio from './radio'
 
 export default function Health({ formData, navigation }) {
   // const { phone, email } = formData;
@@ -13,109 +14,28 @@ export default function Health({ formData, navigation }) {
         <div className="flex  flex-col mx-4 mb-4 ">
         <div className="mt-2">
           <label className="p-4" htmlFor="helath_status"> Your health status ? </label>
-          <div className="flex flex-row jusitfy-between mx-auto">
-            <label className="text-gray-600"> excellent </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 text-gray-300"
-              value="excellent"
-              name="excellent"
-            />
-            <label className="text-gray-600"> good </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-              value="good"
-              name="good"
-            />
-            <label className="text-gray-600"> average </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-              value="average"
-              name="average"
-            />
-            <label className="text-gray-600"> below average </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-              value="below average"
-              name="below average"
-            />
-            <label className="text-gray-600"> poor </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-              value=" poor"
-              name=" poor"
-            />
-            <label className="text-gray-600"> very poor  </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-              value=" very poor "
-              name=" very poor "
-            />
-          </div>
+          <Radio name="health_status" ops={['excellent', 'good', 'average',
+          'below average', 'poor', 'very poor']} />
         </div>
 
         <div className="mt-2">
           <label className="p-4" htmlFor="disease">Have you suffered or are you suffering from any terminal illness or chronic disease? </label>
-          <div className="flex flex-row justify-center my-4">
-            <label className="text-gray-600"> yes </label>{" "}
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 text-gray-300"
-              value="yes"
-              name="yes"
-            />
-            <label className="text-gray-600"> no </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-              value="no"
-              name="no"
-            />
+          <div className="flex flex-row  justify-center my-4" >
+            <Radio name="suffered_from" ops={['yes', 'no']} />
           </div>
         </div>
   
         <div className="mt-2">
           <label className="p-4" htmlFor="limitation">Are there any limitations on your ability to perform in your prospective field of work? </label>
           <div className="flex flex-row  justify-center my-4" >
-            <label className="text-gray-600"> yes </label>{" "}
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 text-gray-300"
-              value="yes"
-              name="yes"
-            />
-            <label className="text-gray-600"> no </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-              value="no"
-              name="no"
-            />
+            <Radio name="prospective_limitaion" ops={['yes', 'no']} />
           </div>
         </div>
 
         <div className="mt-2">
           <label className="p-4" htmlFor="travel_limitation"> Are there any limitations on your ability to engage in all types of travel? Inside or outside Iraq </label>
           <div className="flex flex-row  justify-center my-4">
-            <label className="text-gray-600"> yes </label>{" "}
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2 text-gray-300"
-              value="yes"
-              name="yes"
-            />
-            <label className="text-gray-600"> no </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2 "
-              value="no"
-              name="no"
-            />
+            <Radio name="travel_limitaion" ops={['yes', 'no']} />
           </div>
         </div>
 

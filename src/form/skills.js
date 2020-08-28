@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FormInput } from "./main";
 import { Button } from "./main";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
+import { Context } from "../store"
+import Radio from './radio'
 
 export const Technical_skills = () => {
-  const [show, setShow] = useState([]);
+  const [state, setState] = useContext(Context)
+  const [show, setShow] = useState([1,1]);
   const [hide, setHide] = useState(false);
 
   return (
@@ -13,26 +16,20 @@ export const Technical_skills = () => {
       <h3 className="my-8 text-2xl"> Technical Skills</h3>
       <div className="flex  flex-col my-4">
         <p> write down what you good at and how much </p>
-        <FormInput
-          placeholder="your technical skills "
-          name="skill_1_Desc"
-        />
-        <OptionField htmlFor="skill_1_level"/>
-
-        <FormInput placeholder="your technical skills" name="skill_2_Desc" />
-        <OptionField htmlFor="skill_2_level"/>
 
         {show.map((input, index) => {
          let n = index;
           return (
             <div className="flex flex-col mt-8" key={index}>
-              <FormInput placeholder="your technical skills" name={"skill_"+ n++ +"_Desc"}/>
-              <OptionField htmlFor={"skill_"+ n++ +"_level"}/>
+              <FormInput placeholder="your technical skills" name={"tech_skills_name_"+n}/>
+              <div className="flex flex-row jusitfy-between mx-auto my-4">
+                <Radio name={"tech_skills_level_"+n} ops={['Intermediate', 'Advance', 'Expert']}/>
+              </div>
             </div>
           );
         })}
 
-        <div className="flex  justify-around flex-row mt-4 ">
+        <div className="flex justify-around flex-row mt-4 ">
           <Operations
             onClick={() => {
               setShow([...show, {}]);
@@ -44,6 +41,11 @@ export const Technical_skills = () => {
             <Operations
               onClick={() => {
                 setShow(show.slice(0, show.length - 1));
+                setHide(show.length == 3 ? false : true)
+                let last_index = show.length
+                delete state['data']['tech_skills_name_' + last_index]
+                delete state['data']['tech_skills_level_' + last_index]
+                setState(state)
               }}
               operation="-"
             />

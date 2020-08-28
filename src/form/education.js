@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FormInput } from "./main";
 import { Link } from "react-router-dom";
 import { Button } from "./main";
 import { Operations } from "./family info";
+import Radio from './radio'
+import {Context} from '../store'
+
 export default function Education() {
-  const [show, setShow] = useState([]);
+  const [state, setState] = useContext(Context)
+  const [show, setShow] = useState([1]);
   const [hide, setHide] = useState(false);
 
   return (
@@ -36,21 +40,18 @@ export default function Education() {
 
         <div className="flex flex-col my-4">
           <p className="text-center">College or institute</p>
-          <FormInput placeholder="name of school" name="college_name"/>
-          <FormInput placeholder="years" name="college_years"/>
-          <FormInput placeholder="average %" name="college_avg"/>
-        </div>
 
         {show.map((input, index) => {
-          let n = index;
+          let n = index + 1;
           return (
             <div className="flex flex-col my-4">
-              <FormInput placeholder="name of school" name={"other_"+ n++ +"_name"} />
-              <FormInput placeholder="years" name={"other_"+n++ +"years"}/>
-              <FormInput placeholder="average %" name={"other_"+n++ +"avg"}/>
+              <FormInput placeholder="name of school" name={"college_name_"+n} />
+              <FormInput placeholder="years" name={"college_years_"+n}/>
+              <FormInput placeholder="average %" name={"college_avg_"+n}/>
             </div>
           );
         })}
+        </div>
       </div>
 
         <p className="text-sm">Add more education</p>
@@ -67,6 +68,12 @@ export default function Education() {
             <Operations
               onClick={() => {
                 setShow(show.slice(0, show.length - 1));
+                // I put 2 bcause ths show value is before the intitaliting fo setShow()
+                setHide(show.length == 2 ? false : true)
+                delete state['data']['college_name_'+show.length]
+                delete state['data']['college_years_'+show.length]
+                delete state['data']['college_avg_'+show.length]
+                setState(state)
               }}
               operation="-"
             />
@@ -105,28 +112,8 @@ export default function Education() {
         <div className="flex flex-col my-10">
           <p> choose your Prefered field of work  </p>
           <div className="flex flex-row  justify-center mt-2">
-            <label className="text-gray-600" htmlFor="preffered_fow"> Technical</label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2  text-gray-300"
-              value="technical"
-              name="technical"
-            />
-            <label className="text-gray-600"> Sales </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2"
-              value="sales"
-              name="sales"
-            />
-            <label className="text-gray-600"> Administration </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2"
-              value="administration"
-              name="administration"
-            />
-</div>
+              <Radio name="prefered_field" ops={['Technical', 'Sales', 'Administration']}/>
+          </div>
           <FormInput placeholder="other" name="other_referral_source" />
         </div>
 

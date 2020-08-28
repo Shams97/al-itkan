@@ -37,7 +37,7 @@ export default function PersonalDetails() {
             type="text"
           />
           <label className="p-4"> gender </label>
-          <div className="flex flex-row jusitfy-between mx-auto">
+          {/* <div className="flex flex-row jusitfy-between mx-auto"> */}
             <Radio name="person_sex" ops={['male', 'female']}/>
             {/* <label className="text-gray-600"> male </label>{" "}
             <input
@@ -52,8 +52,8 @@ export default function PersonalDetails() {
               className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2 "
               value="female"
               name="female"
-            /> */}
-          </div>
+            />
+          </div> */}
           <FormInput placeholder="height" name="height" type="text" />
           <FormInput placeholder="weight" name="weight" type="text" />
           <FormInput placeholder="citizenship" name="citizenship" type="text" />
