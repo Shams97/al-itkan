@@ -3,13 +3,16 @@ import { FormInput } from "./main";
 import { Button } from "./main";
 import Family from './family info';
 import {  Link } from "react-router-dom";
+import Radio from './radio'
+import Store from "../store";
 
 
 
 export default function PersonalDetails() {
   return (
-    <form action="POST">      
-      <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
+    <form action="POST">
+      {/* <Store> */}
+        <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
         <h3 className="my-8 text-2xl"> Personal Details </h3>
         <div className="flex  flex-col mx-4 mb-4 ">
           <FormInput placeholder="name" name="full_name" type="text" />
@@ -35,7 +38,8 @@ export default function PersonalDetails() {
           />
           <label className="p-4"> gender </label>
           <div className="flex flex-row jusitfy-between mx-auto">
-            <label className="text-gray-600"> male </label>{" "}
+            <Radio name="person_sex" ops={['male', 'female']}/>
+            {/* <label className="text-gray-600"> male </label>{" "}
             <input
               type="radio"
               className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2 text-gray-300"
@@ -48,7 +52,7 @@ export default function PersonalDetails() {
               className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2 "
               value="female"
               name="female"
-            />
+            /> */}
           </div>
           <FormInput placeholder="height" name="height" type="text" />
           <FormInput placeholder="weight" name="weight" type="text" />
@@ -65,9 +69,10 @@ export default function PersonalDetails() {
           </select>
         </div>
         <div className="mt-10">
- <Link to="/family"><Button value="Next"/></Link>     
-</div>
-      </div>
+       <Link to="/family"><Button value="Next"/></Link>     
+        </div>
+        </div>
+      {/* </Store> */}
 
       <div className="mb-4"/>
     </form>

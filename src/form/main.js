@@ -1,11 +1,13 @@
 // Main navigator between form steps
-import React from "react";
+import React, { useContext } from "react";
 import { useForm, useStep } from "react-hooks-helper";
 import PersonalDetails from './personal details';
 import FamilyInfo from './family info';
 import Health from './health';
 import Language from './lang';
 import Education from './education';
+
+import { Context } from "../store"
 
 
 
@@ -88,7 +90,30 @@ export default function Main() {
 
 // Here when default input goes 
 export const FormInput = ({placeholder, name, value, type})=>{
-return <input type={type}  placeholder={placeholder}  name={name}  className="border-b-2 border-black-400 focus:border-blue-500  outline-none  p-2" value={value}/>
+
+  const [state, setState] = useContext(Context)
+
+  const handleChange = (e) => {
+    let type = e.target.type
+    let key = e.target.name
+
+    // saving the current state
+    // let state = stat
+
+    if (type === 'file') {
+      let file = e.target.files[0]
+      state['files'][key] = file
+
+    } else {      
+      let value = e.target.value
+      state['data'][key] = value
+    }
+    console.log(state)
+    setState(state)
+  }
+
+  return <input type={type}  placeholder={placeholder}  name={name} onChange={handleChange}
+  className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2" value={value}/>
 }
 
 // Here when button next and previous goes 

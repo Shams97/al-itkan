@@ -3,6 +3,8 @@ import "./App.css";
 import MulitpleStepForm from "./form/main";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import Store from './store'
+
 import PersonalDetails from "./form/personal details";
 import FamilyInfo from "./form/family info";
 import Health from "./form/health";
@@ -66,6 +68,7 @@ function App() {
       <form action="POST" onSubmit={handleSubmit}>
         <Router>
           <Switch>
+          <Store>
             <Route exact path="/" component={PersonalDetails} />
             <Route path="/family" component={FamilyInfo} />
             <Route path="/health" component={Health} />
@@ -81,9 +84,10 @@ function App() {
             <Route path="/additional" component={Additional_info} />
             <Route path="/refrence" component={Refrence} />
              <Route path="/submited" component={Submited} />
+          </Store>
           </Switch>
         </Router>
-        </form>
+      </form>
     </div>
   );
 }

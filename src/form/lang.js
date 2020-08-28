@@ -1,5 +1,7 @@
 import React,{useState} from "react";
-import { Button,FormInput } from "../App";
+// import { Button,FormInput } from "../App";
+import { Button } from "../App";
+import {FormInput} from './main';
 import Health from "./health";
 import { Link } from "react-router-dom";
 
@@ -24,7 +26,7 @@ export default function Language() {
             let n = index;
             return (
               <div className="flex flex-col mt-8 px-8 justify-center"> 
-              <FormInput placeholder={"add the name of language you know"+n} className="my-8" name={"other_"+n}/>
+              <FormInput placeholder={"add the name of language you know"} className="my-8" name={"lang_"+(n+1)}/>
                
                <label className="mt-4" htmlFor="arabic"> Read</label>
                <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none text-sm text-gray-600 px-8">
