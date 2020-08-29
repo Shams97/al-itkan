@@ -89,24 +89,24 @@ export default function Main() {
 
 
 // Here when default input goes 
-export const FormInput = ({placeholder, name, value, type, textarea})=>{
+export const FormInput = ({placeholder, name, type, textarea})=>{
 
   const [state, setState] = useContext(Context)
+  let value = state.data[name]
 
   const handleChange = (e) => {
     let type = e.target.type
-    let key = e.target.name
 
     // saving the current state
     // let state = stat
 
     if (type === 'file') {
       let file = e.target.files[0]
-      state['files'][key] = file
+      state['files'][name] = file
 
     } else {      
       let value = e.target.value
-      state['data'][key] = value
+      state['data'][name] = value
     }
     console.log(state)
     setState(state)

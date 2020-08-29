@@ -3,6 +3,7 @@ import { Context } from "../store"
 
 export default function Radio ({name, ops, classes}) {
   const [state,setState] = useContext(Context)
+  let value = state.data[name]
 
   useEffect(() => {
     state['data'][name] = ops[0]
@@ -17,7 +18,7 @@ export default function Radio ({name, ops, classes}) {
   }
 
   return (
-    <select onChange={handleChange}
+    <select onChange={handleChange} value={value}
     className={"border-b-2 border-black-400 focus:border-blue-500 outline-none " + (!!classes ? classes: "")}>
       {ops.map((op, index) => {
         let formated_op = op.toLowerCase().split(' ').join('_')
