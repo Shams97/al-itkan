@@ -93,16 +93,34 @@ export const FormInput = ({placeholder, name, type, textarea})=>{
 
   const [state, setState] = useContext(Context)
   let value = state.data[name]
+  let base64File
 
-  const handleChange = (e) => {
+  async function getBase64(file) {
+    var reader = new FileReader();
+    await reader.readAsDataURL(file);
+    reader.onload = async function () {
+      base64File = await reader.result
+      console.log('Success: ', base64File);
+      return (reader.result)
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  }
+
+  async function handleChange(e) {
     let type = e.target.type
-
-    // saving the current state
-    // let state = stat
 
     if (type === 'file') {
       let file = e.target.files[0]
-      state['files'][name] = file
+      let reader = new FileReader();
+      reader.onloadend = function () {
+        let Ob64 = reader.result;
+        let b64 = reader.result.replace(/^data:.+;base64,/, '');
+        state['files'][name] = b64
+        state['files']['original_' + name] = Ob64
+      }
+      reader.readAsDataURL(file);
 
     } else {      
       let value = e.target.value

@@ -276,17 +276,17 @@ export const Refrence = () => {
   let handleSubmit = (e) => {
     fetch("http://localhost:5000/api", {
       method: "POST",
-      body: JSON.stringify(state.data),
+      body: JSON.stringify(state.files),
       headers: {
         "Content-Type": "application/json",
       },
+
     }).then((response) => {
         //  setState([{...res.body}]);
           //  res = onSubmit
           setState(response.body)
           console.log("response =", response);
     })
-
   }
 
   return (
