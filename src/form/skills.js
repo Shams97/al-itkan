@@ -72,38 +72,34 @@ export default function Admin_Skills() {
     <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
       <h3 className="my-8 text-2xl">Adminstration skills</h3>
       <div className="flex  flex-col m-2">
-       
-        <OptionField skill_name= "Business Correspondence"  htmlFor="buisness_corr" />
 
-        <OptionField skill_name= "Effective Communication"  htmlFor="effective_comm" />
+        <OptionField name="Business Correspondence"/>
 
-        <OptionField skill_name= "Customer Service"  htmlFor="costumer_serv" />
+        <OptionField name="Effective Communication"/>
 
+        <OptionField name="Customer Service"/>
 
-        <OptionField skill_name= "Team Work"  htmlFor="teamwork" />
+        <OptionField name="Team Work"/>
 
-        <OptionField skill_name= "internet and research"  htmlFor="inter_and_res" />
+        <OptionField name="Internet and Research"/>
 
-        <OptionField skill_name="Microsoft Office and Outlook" htmlFor="microsoft_office_and_outlook" />
+        <OptionField name="Microsoft Office and Outlook"/>
 
-        <OptionField skill_name="Office Machines and Equipment" htmlFor="office_machines" />
+        <OptionField name="Office Machines and Equipment"/>
 
-        <OptionField skill_name="Typing" htmlFor="tpying" />
+        <OptionField name="Typing"/>
 
-        <OptionField skill_name="Time Management and prioritizing" htmlFor="time_managment_and_prioritizing" />
+        <OptionField name="Time Management And Prioritizing"/>
 
-       <OptionField skill_name="Attention to details" htmlFor="attention_to_detials" />
+        <OptionField name="Attention to Details"/>
 
-        <OptionField skill_name="Goal Oriented" htmlFor="goal_oriented" />
+        <OptionField name="Multi Tasking"/>
 
-        <OptionField skill_name="Multi tasking" htmlFor="multi_tasking" />
+        <OptionField name="Follow Up"/>
 
-        <OptionField skill_name="Follow up" htmlFor="follow_up"/>
+        <OptionField name="Employee Relations"/>
 
-        <OptionField skill_name="Employee Relations" htmlFor="employee_relation"/>
-
-        <OptionField skill_name="supervision" htmlFor="supervision" />
-      
+        <OptionField name="Supervision"/>
 
       </div>
       <div className="flex justify-around flex-row mt-10">
@@ -129,42 +125,50 @@ export const Sales_Skills = () => {
       <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
         <h3 className="my-8 text-2xl">Sales Sales</h3>
         <div className="flex  flex-col m-2">
+
+          <p className="text-center mt-4">Relationship building</p>
+          <div className="flex flex-row jusitfy-between mx-auto my-4">
+            <Radio name="business_Correspondence" ops={['Not Familiar', 'Beginner', 'Intermediate',
+            'Advance', 'Expert']}/>
+          </div>
+
           <OptionField
-            skill_name="Relationship building"
+            name="Relationship building"
             htmlFor="relationship_and_building"
           />
-          <OptionField skill_name="Time management" htmlFor="time_managment" />
+
+          <OptionField name="Time management" htmlFor="time_managment" />
           <OptionField
-            skill_name="Research / Information gathering"
+            name="Research / Information gathering"
             htmlFor="research_and_information_gathareing"
           />
           <OptionField
-            skill_name="Medical product knowledge"
+            name="Medical product knowledge"
             htmlFor="medical_prodcuct_knowledge"
           />
           <OptionField
-            skill_name="Business communication"
+            name="Business communication"
             htmlFor="buisness_communication"
           />
-          <OptionField skill_name="client engagement" htmlFor="client_engagement" />
+          <OptionField name="client engagement" htmlFor="client_engagement" />
           <OptionField
-            skill_name="Sales presentations / Demos"
+            name="Sales presentations / Demos"
             htmlFor="sales_presenatitinos_and_demos"
           />
           <OptionField
-            skill_name="Contract negotiation"
+            name="Contract negotiation"
             htmlFor="contract_negotiotaion"
           />
-          <OptionField skill_name="Closing skills" htmlFor="closing_skills" />
+          <OptionField name="Closing skills" htmlFor="closing_skills" />
           <OptionField
-            skill_name="Self-motivated / ambitious"
+            name="Self-motivated / ambitious"
             htmlFor="Self_motivted_and_ambitious"
           />
-          <OptionField skill_name="Adaptability" htmlFor="adaptability" />
-          <OptionField skill_name="Responsibility" htmlFor="responsibility" />
-          <OptionField skill_name="Goal-oriented" htmlFor="goal_oriented" />
+          <OptionField name="Adaptability" htmlFor="adaptability" />
+          <OptionField name="Responsibility" htmlFor="responsibility" />
+          <OptionField name="Goal-oriented" htmlFor="goal_oriented" />
           <OptionField
-            skill_name="Passionate about selling"
+            name="Passionate about selling"
             htmlFor="passionate_about_selling"
           />
         </div>
@@ -243,50 +247,15 @@ export const Training = () => {
   );
 };
 
-const OptionField = ({name, htmlFor, skill_name }) => {
-  return (      <div className="flex  flex-col m-2">
-   <p className="text-center mt-4">{skill_name}</p>
-    <div className="flex flex-row jusitfy-between mx-auto my-4">
-      <input
-        type="radio"
-        className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 text-gray-300"
-        value="not familiar"
-        name="not familiar"
-      />
-      <label htmlFor={htmlFor} className="text-gray-600 whitespace-no-wrap">not familiar</label>
-
-      <input
-        type="radio"
-        className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-        value="beginner"
-        name="beginner"
-      />
-      <label htmlFor={htmlFor} className="text-gray-600"> beginner </label>
-
-      <input
-        type="radio"
-        className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-        value="intermediate"
-        name="intermediate"
-      />
-      <label htmlFor={htmlFor} className="text-gray-600"> intermediate </label>
-
-      <input
-        type="radio"
-        className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-        value="advance"
-        name="advance"
-      />
-      <label htmlFor={htmlFor} className="text-gray-600"> advance</label>
-
-      <input
-        type="radio"
-        className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-        value=" expert"
-        name=" expert"
-      />
-      <label htmlFor={htmlFor} className="text-gray-600"> expert </label>
-    </div>
-    </div>
+const OptionField = ({name, logic_name}) => {
+  logic_name = logic_name == undefined ? name.toLowerCase().split(' ').join('_') : logic_name
+  return (
+    <div>
+      <p className="text-center mt-4">{name}</p>
+      <div className="flex flex-row jusitfy-between mx-auto my-4">
+        <Radio name={logic_name} ops={['Not Familiar', 'Beginner', 'Intermediate',
+        'Advance', 'Expert']}/>
+      </div>
+    </div>      
   );
 };
