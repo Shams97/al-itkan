@@ -89,7 +89,7 @@ export default function Main() {
 
 
 // Here when default input goes 
-export const FormInput = ({placeholder, name, value, type})=>{
+export const FormInput = ({placeholder, name, value, type, textarea})=>{
 
   const [state, setState] = useContext(Context)
 
@@ -112,8 +112,17 @@ export const FormInput = ({placeholder, name, value, type})=>{
     setState(state)
   }
 
-  return <input type={type}  placeholder={placeholder}  name={name} onChange={handleChange}
-  className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2" value={value}/>
+  if (!!textarea){
+    return (
+      <textarea type={type} placeholder={placeholder} name={name} onChange={handleChange}
+      className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2" value={value}/>
+    )
+  } else {
+    return (
+      <input type={type} placeholder={placeholder} name={name} onChange={handleChange}
+      className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2" value={value}/>
+    )
+  }
 }
 
 // Here when button next and previous goes 

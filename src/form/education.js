@@ -8,7 +8,7 @@ import {Context} from '../store'
 
 export default function Education() {
   const [state, setState] = useContext(Context)
-  const [show, setShow] = useState([1]);
+  const [show, setShow] = useState([]);
   const [hide, setHide] = useState(false);
 
   return (
@@ -40,14 +40,19 @@ export default function Education() {
 
         <div className="flex flex-col my-4">
           <p className="text-center">College or institute</p>
+            <div className="flex flex-col my-4">
+              <FormInput placeholder="name of school" name="college_name" />
+              <FormInput placeholder="years" name="college_years"/>
+              <FormInput placeholder="average %" name="college_avg"/>
+            </div>
 
         {show.map((input, index) => {
-          let n = index + 1;
+          let n = index;
           return (
             <div className="flex flex-col my-4">
-              <FormInput placeholder="name of school" name={"college_name_"+n} />
-              <FormInput placeholder="years" name={"college_years_"+n}/>
-              <FormInput placeholder="average %" name={"college_avg_"+n}/>
+              <FormInput placeholder="name of school" name={"other_"+ n +"_name"} />
+              <FormInput placeholder="years" name={"other_"+ n +"_years"}/>
+              <FormInput placeholder="average %" name={"other_"+ n +"_avg"}/>
             </div>
           );
         })}
@@ -69,10 +74,11 @@ export default function Education() {
               onClick={() => {
                 setShow(show.slice(0, show.length - 1));
                 // I put 2 bcause ths show value is before the intitaliting fo setShow()
-                setHide(show.length == 2 ? false : true)
-                delete state['data']['college_name_'+show.length]
-                delete state['data']['college_years_'+show.length]
-                delete state['data']['college_avg_'+show.length]
+                setHide(show.length == 1 ? false : true)
+                let last_index = show.length - 1
+                delete state['data']["other_"+ last_index +"_name"]
+                delete state['data']["other_"+ last_index +"_years"]
+                delete state['data']["other_"+ last_index +"_avg"]
                 setState(state)
               }}
               operation="-"

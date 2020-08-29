@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FormInput } from "./main";
 import { Button } from "./main";
 import Family from "./family info";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import { SelectField } from "./lang";
+import {Context} from '../store'
+import Radio from './radio'
+
 
 export default function Employment() {
+  const [state, setState] = useContext(Context)
   const [show, setShow] = useState([]);
   const [hide, setHide] = useState(false);
 
@@ -47,12 +51,14 @@ export default function Employment() {
         <FormInput placeholder="supervisor" name="supervisor" />
         <FormInput placeholder="supervisor phone No." name="super_phone" />
 
-        <textarea
-          placeholder="reason of leaving "
+        <FormInput
+          placeholder="Reason of Leaving"
           name="reason_for_leaving"
           type="text"
-          className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2"
+          textarea={true}
         />
+
+
       </div>
 
       <p className="mt-10">Want to provide more than one employer ? </p>
@@ -61,7 +67,7 @@ export default function Employment() {
         return (
           <div className="flex flex-col my-10" key={index}>
             <FormInput
-              placeholder={"employer name" + n}
+              placeholder={"employer name " + (n+2)}
               name={"employer_name_" + n}
             />
             <FormInput placeholder="job title" name={"job_title_" + n} />
@@ -98,18 +104,20 @@ export default function Employment() {
               <FormInput name={"ending_slry_" + n} />
             </div>
 
-            <FormInput placeholder="supervisor" name="supervisor" />
+            <FormInput placeholder="supervisor" name={"supervisor_"+n} />
             <FormInput
               placeholder="supervisor phone No."
               name={"super_phone_" + n}
             />
 
-            <textarea
-              placeholder="reason of leaving "
+
+            <FormInput
+              placeholder="Reason of Leaving"
               name={"reason_for_leaving_" + n}
               type="text"
-              className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2"
+              textarea={true}
             />
+
           </div>
         );
       })}
@@ -126,7 +134,22 @@ export default function Employment() {
           <Operations
             onClick={() => {
               setShow(show.slice(0, show.length - 1));
-            }}
+              setHide(show.length == 1 ? false : true)
+              let last_index = show.length - 1
+              delete state['data']["employer_name_"+last_index]
+              delete state['data']["job_title_"+last_index]
+              delete state['data']["employer_province_"+last_index]
+              delete state['data']["from_date_"+last_index]
+              delete state['data']["to_date_"+last_index]
+              delete state['data']["starting_slry_"+last_index]
+              delete state['data']["ending_slry_"+last_index]
+              delete state['data']["supervisor_"+last_index]
+              delete state['data']["super_phone_"+last_index]
+              delete state['data']["reason_for_leaving_"+last_index]
+              delete state['data']["to_date_"+last_index]
+              delete state['data']["to_date_"+last_index]
+              setState(state)
+          }}
             operation="-"
           />
         ) : null}
@@ -362,26 +385,11 @@ export const Refrence = () => {
 
 const Options = ({ htmlFor, label_value }) => {
   return (
-    <div className="flex flex-row mt-2">
+    <div className="flex flex-row mt-2 items-center">
       <label className="p-4" htmlFor={htmlFor}>
         {label_value}
       </label>
-      <div className="flex flex-row justify-center my-4">
-        <label className="text-gray-600"> yes </label>{" "}
-        <input
-          type="radio"
-          className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 text-gray-300"
-          value="yes"
-          name="yes"
-        />
-        <label className="text-gray-600"> no </label>
-        <input
-          type="radio"
-          className="checked:bg-gray-900 checked:border-transparent mx-2 mt-2 "
-          value="no"
-          name="no"
-        />
-      </div>
+      <Radio name={htmlFor} mx={false} ops={['yes','no']} />
     </div>
   );
 };

@@ -38,7 +38,7 @@ export default function PersonalDetails() {
           />
           <label className="p-4"> gender </label>
           {/* <div className="flex flex-row jusitfy-between mx-auto"> */}
-            <Radio name="person_sex" ops={['male', 'female']}/>
+            <Radio name="gender" ops={['male', 'female']}/>
             {/* <label className="text-gray-600"> male </label>{" "}
             <input
               type="radio"

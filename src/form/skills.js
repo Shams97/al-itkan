@@ -6,9 +6,10 @@ import { Operations } from "./family info";
 import { Context } from "../store"
 import Radio from './radio'
 
+
 export const Technical_skills = () => {
   const [state, setState] = useContext(Context)
-  const [show, setShow] = useState([1,1]);
+  const [show, setShow] = useState([]);
   const [hide, setHide] = useState(false);
 
   return (
@@ -17,13 +18,27 @@ export const Technical_skills = () => {
       <div className="flex  flex-col my-4">
         <p> write down what you good at and how much </p>
 
+        <div className="flex flex-col mt-8">
+          <FormInput placeholder="your technical skills" name="skill_0_Desc"/>
+          <div className="flex flex-row jusitfy-between mx-auto my-4">
+            <Radio name="skill_0_level" ops={['Intermediate', 'Advance', 'Expert']}/>
+          </div>
+        </div>
+
+        <div className="flex flex-col mt-8">
+          <FormInput placeholder="your technical skills" name="skill_1_Desc"/>
+          <div className="flex flex-row jusitfy-between mx-auto my-4">
+            <Radio name="skill_1_level" ops={['Intermediate', 'Advance', 'Expert']}/>
+          </div>
+        </div>
+
         {show.map((input, index) => {
-         let n = index;
+         let n = index + 2;
           return (
             <div className="flex flex-col mt-8" key={index}>
-              <FormInput placeholder="your technical skills" name={"tech_skills_name_"+n}/>
+              <FormInput placeholder="your technical skills" name={"skill_"+ n +"_Desc"}/>
               <div className="flex flex-row jusitfy-between mx-auto my-4">
-                <Radio name={"tech_skills_level_"+n} ops={['Intermediate', 'Advance', 'Expert']}/>
+                <Radio name={"skill_"+ n +"_level"} ops={['Intermediate', 'Advance', 'Expert']}/>
               </div>
             </div>
           );
@@ -81,23 +96,30 @@ export default function Admin_Skills() {
 
         <OptionField name="Team Work"/>
 
-        <OptionField name="Internet and Research"/>
+        <OptionField name="Internet and Research"
+        logic_name="inter_and_res"/>
 
-        <OptionField name="Microsoft Office and Outlook"/>
+        <OptionField name="Microsoft Office and Outlook"
+        logic_name="ms_office_and_outlook"/>
 
-        <OptionField name="Office Machines and Equipment"/>
+        <OptionField name="Office Machines and Equipment"
+        logic_name="office_machine"/>
 
         <OptionField name="Typing"/>
 
-        <OptionField name="Time Management And Prioritizing"/>
+        <OptionField name="Time Management And Prioritizing"
+        logic_name="time_managment"/>
 
-        <OptionField name="Attention to Details"/>
+        <OptionField name="Attention to Details"
+        logic_name="attention_to_detail_level" ignore={true}/>
+
+        <OptionField name="Goal Oriented"/>
 
         <OptionField name="Multi Tasking"/>
 
         <OptionField name="Follow Up"/>
 
-        <OptionField name="Employee Relations"/>
+        <OptionField name="Employee Relation"/>
 
         <OptionField name="Supervision"/>
 
@@ -123,54 +145,44 @@ export const Sales_Skills = () => {
   return (
     <form action="POST">
       <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
-        <h3 className="my-8 text-2xl">Sales Sales</h3>
+        <h3 className="my-8 text-2xl">Sales Skills</h3>
         <div className="flex  flex-col m-2">
 
-          <p className="text-center mt-4">Relationship building</p>
-          <div className="flex flex-row jusitfy-between mx-auto my-4">
-            <Radio name="business_Correspondence" ops={['Not Familiar', 'Beginner', 'Intermediate',
-            'Advance', 'Expert']}/>
-          </div>
+          <OptionField name="Relationship Building"/>
 
-          <OptionField
-            name="Relationship building"
-            htmlFor="relationship_and_building"
-          />
+          <OptionField name="Time Management"/>
 
-          <OptionField name="Time management" htmlFor="time_managment" />
-          <OptionField
-            name="Research / Information gathering"
-            htmlFor="research_and_information_gathareing"
-          />
-          <OptionField
-            name="Medical product knowledge"
-            htmlFor="medical_prodcuct_knowledge"
-          />
-          <OptionField
-            name="Business communication"
-            htmlFor="buisness_communication"
-          />
-          <OptionField name="client engagement" htmlFor="client_engagement" />
+          <OptionField name="Research / Information gathering"
+          logic_name="research_information_gathering"/>
+
+          <OptionField name="Medical product knowledge"/>
+
+          <OptionField name="Medical product knowledge"/>
+
+          <OptionField name="Business communication"/>
+
+          <OptionField name="client engagement"/>
+
           <OptionField
             name="Sales presentations / Demos"
-            htmlFor="sales_presenatitinos_and_demos"
-          />
-          <OptionField
-            name="Contract negotiation"
-            htmlFor="contract_negotiotaion"
-          />
-          <OptionField name="Closing skills" htmlFor="closing_skills" />
+            logic_name="sales_presentations_demos" />
+
+          <OptionField name="Contract negotiation"/>
+
+          <OptionField name="Closing skills"/>
+
           <OptionField
             name="Self-motivated / ambitious"
-            htmlFor="Self_motivted_and_ambitious"
-          />
-          <OptionField name="Adaptability" htmlFor="adaptability" />
-          <OptionField name="Responsibility" htmlFor="responsibility" />
-          <OptionField name="Goal-oriented" htmlFor="goal_oriented" />
-          <OptionField
-            name="Passionate about selling"
-            htmlFor="passionate_about_selling"
-          />
+            logic_name="self_motivated_ambitious"/>
+
+          <OptionField name="Adaptability"/>
+
+          <OptionField name="Responsibility"/>
+
+          <OptionField name="Goal Oriented"/>
+
+          <OptionField name="Passionate about selling"/>
+
         </div>
         <div className="flex justify-around flex-row mt-10">
           <Link to="/admin_skills">
@@ -187,6 +199,7 @@ export const Sales_Skills = () => {
 };
 
 export const Training = () => {
+  const [state, setState] = useContext(Context)
   const [show, setShow] = useState([]);
   const [hide, setHide] = useState(false);
   return (
@@ -194,26 +207,25 @@ export const Training = () => {
         <h3 className="my-8 text-2xl"> Training and Certification </h3>
        
         <div className="flex flex-col my-4">
-          <FormInput placeholder="training name" name="t1"/>
-          <FormInput placeholder="year" name="t1_year"/>
-          <FormInput placeholder="awarded by" name="t1_awarded_by"/>
-          <FormInput placeholder="country/city" name="t1_country_city"/>
+          <FormInput placeholder="training name" name="t0"/>
+          <FormInput placeholder="year" name="t0_year"/>
+          <FormInput placeholder="awarded by" name="t0_awarded_by"/>
+          <FormInput placeholder="country/city" name="t0_country_city"/>
         
         </div>
        
 
 
         {show.map((input, index) => {
-          let n = show.length-1;
+          let n = show.length;
           return (
             <div className="flex flex-col my-8" key={index} >
-          <FormInput placeholder="training name " name={"t"+n} value={input}/>
-          <FormInput placeholder="year" name={"t"+n +"_year"} value={input}/>
-          <FormInput placeholder="awarded by" name={"t"+n +"_awarded_by"} value={input}/>
-          <FormInput placeholder="country/city" name={"t"+ n +"_country_city"} value={input}/>
+              <FormInput placeholder="training name " name={"t"+n}/>
+              <FormInput placeholder="year" name={"t"+n +"_year"}/>
+              <FormInput placeholder="awarded by" name={"t"+n +"_awarded_by"}/>
+              <FormInput placeholder="country/city" name={"t"+ n +"_country_city"}/>
             </div>
-
-);
+          );
         })}
 
         <div className="flex  justify-around flex-row mt-4 ">
@@ -229,6 +241,14 @@ export const Training = () => {
             <Operations
               onClick={() => {
                 setShow(show.slice(0, show.length - 1));
+                setHide(show.length == 1 ? false : true)
+                let last_index = show.length
+                delete state['data']["t"+last_index]
+                delete state['data']["t"+last_index +"_year"]
+                delete state['data']["t"+last_index +"_awarded_by"]
+                delete state['data']["t"+ last_index +"_country_city"]
+                setState(state)
+
               }}
               operation="-"
             />
@@ -247,13 +267,13 @@ export const Training = () => {
   );
 };
 
-const OptionField = ({name, logic_name}) => {
+const OptionField = ({name, logic_name, ignore}) => {
   logic_name = logic_name == undefined ? name.toLowerCase().split(' ').join('_') : logic_name
   return (
     <div>
       <p className="text-center mt-4">{name}</p>
       <div className="flex flex-row jusitfy-between mx-auto my-4">
-        <Radio name={logic_name} ops={['Not Familiar', 'Beginner', 'Intermediate',
+        <Radio name={logic_name + (ignore ? "" : "_skill_level")} ops={['Not Familiar', 'Beginner', 'Intermediate',
         'Advance', 'Expert']}/>
       </div>
     </div>      
