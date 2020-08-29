@@ -5,8 +5,9 @@ import Family from "./family info";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import { SelectField } from "./lang";
-import {Context} from '../store'
 import Radio from './radio'
+import Selector from './selection'
+import {Context} from '../store'
 
 
 export default function Employment() {
@@ -225,23 +226,30 @@ export const Additional_info = () => {
           />
 
           {/* Additional skills  */}
-          <div className="bg-gray">
+          <div className="bg-gray mt-10">
             <p className="text-center ">Add more additional skills</p>
-            <div className="flex felx-col px-14  mx-8 justify-center">
-              <SelectField
-                forValue="team_work"
-                language="Team work capability"
-              />
-              <SelectField
-                forValue="pressure"
-                language="Working under pressure"
-              />
+            <div className="flex felx-col flex-wrap px-14  mx-8 justify-center">
+
+              <div className="flex flex-row my-2">
+                <span className="text-sm mx-4 mt-5">Team Work Skills</span>
+                <Selector name="team_work" ops={['Excellent', 'Very Good', 'Good',
+                'Average', 'Below Average', 'Poor', 'Very Poor']}/>
+              </div>
+
+              <div className="flex flex-row my-2">
+                <span className="text-sm mx-4 mt-5">Work Under Pressure Skills</span>
+                <Selector name="pressure" ops={['Excellent', 'Very Good', 'Good',
+                'Average', 'Below Average', 'Poor', 'Very Poor']}/>
+              </div>
+
+              <div className="flex flex-rowm my-2">
+                <span className="text-sm mx-4 mt-5">Are you Willing To Travel Outshore ?</span>
+                <Selector name="travel" ops={['Excellent', 'Very Good', 'Good',
+                'Average', 'Below Average', 'Poor', 'Very Poor']}/>
+              </div>
+
             </div>
 
-            <SelectField
-              forValue="travel"
-              language="Long distances traveling"
-            />
 
           </div>
           {/* <FormInput placeholder="If you have any additional more skills please describe" className="my-8"/> */}
@@ -261,7 +269,26 @@ export const Additional_info = () => {
 };
 
 export const Refrence = () => {
+  const [state, setState] = useContext(Context)
   const [hide, setHide] = useState(false);
+  const [hider, setHider] = useState(false);
+
+  let handleSubmit = (e) => {
+    fetch("http://localhost:5000/api", {
+      method: "POST",
+      body: JSON.stringify(state.data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+        //  setState([{...res.body}]);
+          //  res = onSubmit
+          setState(response.body)
+          console.log("response =", response);
+    })
+
+  }
+
   return (
     <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
       <div className="flex flex-col my-10">
@@ -286,46 +313,66 @@ export const Refrence = () => {
 
          
           <div className="flex  justify-around flex-row mt-4 ">
-        <Operations
+        {!hide ? (
+          <Operations
           onClick={() => setHide(true)}
+          
           operation="+"
         />
+        ) : null}
         {hide ? (
           <Operations
-            onClick={() => setHide(false) }
-            operation="-"
+          onClick={() => {
+            setHide(false) 
+            delete state['data']["ref_name_1"]
+            delete state['data']["ref_relation_1"]
+            delete state['data']["ref_phone_1"]
+            setState(state)
+          }}
+          operation="-"
           />
         ) : null}
-</div>
+        </div>
 
         <div className="mt-10 flex flex-col ">
         <p> Relative </p>
-            <FormInput placeholder="name" name="ref_name" />
-            <FormInput placeholder="relation" name="ref_relation" />
-            <FormInput placeholder="phone No" name="ref_phone" />
+            <FormInput placeholder="name" name="ref_r_name" />
+            <FormInput placeholder="relation" name="ref_r_relation" />
+            <FormInput placeholder="phone No" name="ref_r_phone" />
           </div>
 
-        { hide?  <div className="mt-10 flex flex-col ">
-            <FormInput placeholder="name" name="ref_name_1" />
-            <FormInput placeholder="relation" name="ref_relation_1" />
-            <FormInput placeholder="phone No" name="ref_phone_1" />
+        { hider?  <div className="mt-10 flex flex-col ">
+            <FormInput placeholder="name" name="ref_r_name_1" />
+            <FormInput placeholder="relation" name="ref_r_relation_1" />
+            <FormInput placeholder="phone No" name="ref_r_phone_1" />
           </div>:null}
 
          
           <div className="flex  justify-around flex-row mt-4 ">
+        {!hider ? (
         <Operations
-          onClick={() => setHide(true)}
+          onClick={() => setHider(true)}
+          
           operation="+"
         />
-        {hide ? (
+        ) : null}
+
+        {hider ? (
           <Operations
-            onClick={() => setHide(false) }
+            onClick={() => {
+              setHider(false) 
+              delete state['data']["ref_r_name_1"]
+              delete state['data']["ref_r_relation_1"]
+              delete state['data']["ref_r_phone_1"]
+              setState(state)
+            }}
+
             operation="-"
           />
         ) : null}
-</div>
+        </div>
 
-<p className="mt-10"> sign here to ensure that every information you provide is correct </p>
+        <p className="mt-10"> sign here to ensure that every information you provide is correct </p>
 
          <div className="flex flex-row my-2 mx-2">
 
@@ -376,7 +423,7 @@ export const Refrence = () => {
           <Button value="Previous" />
         </Link>
         <Link to="/submited">
-          <FormInput type="submit" value="submit" />
+            <Button value="Submit" onClick={handleSubmit}/>
         </Link>
       </div>
     </div>

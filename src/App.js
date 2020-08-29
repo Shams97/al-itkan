@@ -63,9 +63,8 @@ function App() {
 
   return (
     <div className="App">
-      <Api_inegration/>
       {/* Itkan main nav bar goes here  */}
-      <form action="POST" onSubmit={handleSubmit}>
+      {/* <form action="POST" onSubmit={handleSubmit}> */}
         <Router>
           <Switch>
           <Store>
@@ -87,7 +86,7 @@ function App() {
           </Store>
           </Switch>
         </Router>
-      </form>
+      {/* </form> */}
     </div>
   );
 }

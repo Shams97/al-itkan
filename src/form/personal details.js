@@ -5,7 +5,7 @@ import Family from './family info';
 import {  Link } from "react-router-dom";
 import Radio from './radio'
 import Store from "../store";
-
+import Selector from './selection'
 
 
 export default function PersonalDetails() {
@@ -37,36 +37,16 @@ export default function PersonalDetails() {
             type="text"
           />
           <label className="p-4"> gender </label>
-          {/* <div className="flex flex-row jusitfy-between mx-auto"> */}
-            <Radio name="gender" ops={['male', 'female']}/>
-            {/* <label className="text-gray-600"> male </label>{" "}
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2 text-gray-300"
-              value="male"
-              name="male"
-            />
-            <label className="text-gray-600"> female </label>
-            <input
-              type="radio"
-              className="checked:bg-gray-900 checked:border-transparent mx-4 mt-2 "
-              value="female"
-              name="female"
-            />
-          </div> */}
+          <Radio name="gender" ops={['male', 'female']}/>
           <FormInput placeholder="height" name="height" type="text" />
           <FormInput placeholder="weight" name="weight" type="text" />
           <FormInput placeholder="citizenship" name="citizenship" type="text" />
           <FormInput placeholder="religion" name="religion" type="text" />
+
           <label className="p-4">Social Status</label>
-          <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none  p-2">
-            <option value="single" className="text-gray-600">single</option>
-            <option value="enganged">engaged</option>
-            <option value="married">married</option>
-            <option value="seperated">seperated</option>
-            <option value="widowed">widowed</option>
-            <option value="divorced">divorced</option>
-          </select>
+          <Selector name="social_status" classes="p-2" ops={['Single','Engaged', 'Married',
+          'Sperated', 'Widowed', 'Divorced']}/>
+
         </div>
         <div className="mt-10">
        <Link to="/family"><Button value="Next"/></Link>     

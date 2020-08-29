@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "./main";
 import { Operations } from "./family info";
 import Radio from './radio'
+import Selector from './selection'
 import {Context} from '../store'
 
 export default function Education() {
@@ -104,13 +105,10 @@ export default function Education() {
 
         <div className="flex flex-col  my-10">
           <p> How did you refrral to us ? </p>
-          {/* <label htmlFor="referral_source" className="mt-4">Referral resources </label> */}
-          <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none text-sm text-gray-600 ">
-            <option value="walk-in">Walk in</option>
-            <option value="employee"> Employee</option>
-            <option value="facebook"> Facebook</option>
-            <option value="linked-in">Linked-in</option>
-          </select>
+
+          <Selector name="referral_source" classes="text-sm text-gray-600"
+          ops={['Walk-in', 'Employee', 'FaceBook', 'Linked-In']}/>
+
           <FormInput placeholder="other" name="other_referral_source" />
         </div>
 
@@ -118,7 +116,7 @@ export default function Education() {
         <div className="flex flex-col my-10">
           <p> choose your Prefered field of work  </p>
           <div className="flex flex-row  justify-center mt-2">
-              <Radio name="prefered_field" ops={['Technical', 'Sales', 'Administration']}/>
+              <Radio name="preffered_fow" ops={['Technical', 'Sales', 'Administration']}/>
           </div>
           <FormInput placeholder="other" name="other_referral_source" />
         </div>

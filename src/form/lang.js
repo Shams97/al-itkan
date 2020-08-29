@@ -1,14 +1,17 @@
-import React,{useState} from "react";
+import React,{useState, useContext} from "react";
 // import { Button,FormInput } from "../App";
 import { Button } from "../App";
 import {FormInput} from './main';
 import Health from "./health";
 import { Link } from "react-router-dom";
+import Selector from './selection'
+import {Context} from '../store'
 
 export default function Language() {
 
- const [show , setShow] =useState([])
- const [hide, setHide] = useState(false);
+  const [state, setState] = useContext(Context)
+  const [show , setShow] =useState([])
+  const [hide, setHide] = useState(false);
 
   return (
     <div>
@@ -17,8 +20,10 @@ export default function Language() {
            <p className="mt-4 mb-2">Measture your proficiency by selecting level in every language </p>
 
            <div className="flex flex-row justify-center">
-          <SelectField forValue="arabic" language="Arabic"/>
-          <SelectField forValue="english" language="English"/>
+
+            <LangaugeSection name="Arabic" logic_name="ar"/> 
+
+            <LangaugeSection name="English" logic_name="en"/> 
       
            </div>
            <div className="flex flex-col mx-4">
@@ -26,55 +31,31 @@ export default function Language() {
             let n = index;
             return (
               <div className="flex flex-col mt-8 px-8 justify-center"> 
-              <FormInput placeholder={"add the name of language you know"} className="my-8" name={"lang_"+(n+1)}/>
-               
-               <label className="mt-4" htmlFor="arabic"> Read</label>
-               <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none text-sm text-gray-600 px-8">
-                 <option value="excellent">excellent</option>
-                 <option value="very good">very good </option>
-                 <option value="good">good </option>
-                 <option value="average">average</option>
-                 <option value="below average">below average</option>
-               </select>
-             
-               <label className="mt-4" htmlFor="arabic"> Write</label>
-               <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none  text-sm text-gray-600 px-8">
-                 <option value="excellent">excellent</option>
-                 <option value="very good">very good </option>
-                 <option value="good">good </option>
-                 <option value="average">average</option>
-                 <option value="below average">below average</option>
-               </select>
-             
-               <label className="mt-4" htmlFor="arabic"> Speak</label>
-               <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none text-sm text-gray-600 px-8">
-                 <option value="excellent">excellent</option>
-                 <option value="very good">very good </option>
-                 <option value="good">good </option>
-                 <option value="average">average</option>
-                 <option value="below average">below average</option>
-               </select>
-             
-               <label className="mt-4" htmlFor="arabic"> Understand</label>
-               <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none text-sm text-gray-600 px-8">
-                 <option value="excellent">excellent</option>
-                 <option value="very good">very good </option>
-                 <option value="good">good </option>
-                 <option value="average">average</option>
-                 <option value="below average">below average</option>
-               </select>
-             
-       
-               <label className="mt-4" htmlFor="arabic"> Overall</label>
-               <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none  text-sm text-gray-600 px-8">
-                 <option value="excellent">excellent</option>
-                 <option value="very good">very good </option>
-                 <option value="good">good </option>
-                 <option value="average">average</option>
-                 <option value="below average">below average</option>
-               </select>
-             
-       </div> 
+              <FormInput placeholder={"add the name of language you know"}
+              className="my-8" name={"other_name_"+n}/>
+
+              <label htmlFor="arabic" className="mt-4">Read</label>
+              <Selector name={"other_r_" + index} classes="text-sm text-gray-600"
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+              <label htmlFor="arabic" className="mt-4"> Write</label>
+              <Selector name={"other_w_" + index} classes="text-sm text-gray-600"
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+              <label htmlFor="arabic" className="mt-4"> Speak</label>
+              <Selector name={"other_s_" + index} classes="text-sm text-gray-600"
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+              <label htmlFor="arabic" className="mt-4"> Understand</label>
+              <Selector name={"other_u_" + index} classes="text-sm text-gray-600"
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+              <label htmlFor="arabic" className="mt-4" > Overall </label>
+              <Selector name={"other_o_" + index} classes="text-sm text-gray-600"
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+
+           </div> 
            ) } )}
         </div>
      
@@ -86,7 +67,18 @@ export default function Language() {
            >
               +
             </button>
-          { hide ?<button onClick={(index) => setShow(show.slice(-1, 1))} className="px-4  hover:bg-gray-500 focus:bg-gray-600 rounded">
+            { hide ? <button onClick={(index) => {
+                setShow(show.slice(0, show.length - 1))
+                setHide(show.length == 2 ? true : false)
+                let last_index = show.length - 1
+                delete state['data']['other_name_' + last_index]
+                delete state['data']['other_r_' + last_index]
+                delete state['data']['other_w_' + last_index]
+                delete state['data']['other_s_' + last_index]
+                delete state['data']['other_u_' + last_index]
+                delete state['data']['other_o_' + last_index]
+                setState(state)
+            }} className="px-4  hover:bg-gray-500 focus:bg-gray-600 rounded">
               -
             </button>:null }  
           </div>
@@ -110,54 +102,55 @@ export default function Language() {
   );
 }
 
+const LangaugeSection = ({name, logic_name}) => {
+  return <div className="flex flex-col mx-4">
+      <p className="mb-8  mt-4 text-xl"> {name}</p>
 
+      <label htmlFor="arabic" className="mt-4">Read</label>
+      <Selector name={logic_name + "_r"} classes="text-sm text-gray-600"
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+      <label htmlFor="arabic" className="mt-4"> Write</label>
+      <Selector name={logic_name + "_w"} classes="text-sm text-gray-600"
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+      <label htmlFor="arabic" className="mt-4"> Speak</label>
+      <Selector name={logic_name + "_s"} classes="text-sm text-gray-600"
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+      <label htmlFor="arabic" className="mt-4"> Understand</label>
+      <Selector name={logic_name + "_u"} classes="text-sm text-gray-600"
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+
+      <label htmlFor="arabic" className="mt-4" > Overall </label>
+      <Selector name={logic_name + "_o"} classes="text-sm text-gray-600"
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+    </div>
+
+}
 
 export const SelectField = ({language,forValue})=>{
-  return  <div className="flex flex-col mx-4">
+  return <div className="flex flex-col mx-4">
   <p className="mb-8  mt-4 text-xl"  htmlFor={forValue}> {language}</p>
+
   <label htmlFor="arabic" className="mt-4">Read</label>
-  <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none text-sm text-gray-600 ">
-    <option value="excellent">excellent</option>
-    <option value="very good">very good </option>
-    <option value="good">good </option>
-    <option value="average" >average</option>
-    <option value="below average">below average</option>
-  </select>
+  <Selector name="ar_r" classes="text-sm text-gray-600"
+  ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
 
   <label htmlFor="arabic" className="mt-4"> Write</label>
-  <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none  text-sm text-gray-600">
-    <option value="excellent">excellent</option>
-    <option value="very good">very good </option>
-    <option value="good">good </option>
-    <option value="average">average</option>
-    <option value="below average">below average</option>
-  </select>
+  <Selector name="ar_w" classes="text-sm text-gray-600"
+  ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
 
   <label htmlFor="arabic" className="mt-4"> Speak</label>
-  <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none  text-sm text-gray-600 ">
-    <option value="excellent" >excellent</option>
-    <option value="very good">very good </option>
-    <option value="good">good </option>
-    <option value="average">average</option>
-    <option value="below average">below average</option>
-  </select>
+  <Selector name="ar_s" classes="text-sm text-gray-600"
+  ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
 
   <label htmlFor="arabic" className="mt-4"> Understand</label>
-  <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none  text-sm text-gray-600 ">
-    <option value="excellent">excellent</option>
-    <option value="very good">very good </option>
-    <option value="good">good </option>
-    <option value="average">average</option>
-    <option value="below average">below average</option>
-  </select>
+  <Selector name="ar_u" classes="text-sm text-gray-600"
+  ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
 
   <label htmlFor="arabic" className="mt-4" > Overall </label>
-  <select className="border-b-2 border-black-400 focus:border-blue-500  outline-none text-sm text-gray-600 ">
-    <option value="excellent">excellent</option>
-    <option value="very good">very good </option>
-    <option value="good">good </option>
-    <option value="average">average</option>
-    <option value="below average">below average</option>
-  </select>
+  <Selector name="ar_o" classes="text-sm text-gray-600"
+  ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
   </div>
 }
