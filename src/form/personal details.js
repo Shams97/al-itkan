@@ -17,7 +17,7 @@ export default function PersonalDetails() {
         <div className="flex  flex-col mx-4 mb-4 ">
           <FormInput placeholder="name" name="full_name" type="text" />
           <FormInput placeholder="sur name" name="surname" type="text" />
-          <FormInput placeholder="email " name="email_from" type="text" />
+          <FormInput placeholder="email" name="email_from" type="text" />
           <FormInput placeholder="phone number" name="partner_phone" type="text" />
           <FormInput placeholder="address" name="address" type="text" />
           <FormInput placeholder="hai/region" name="hai" type="text" />
