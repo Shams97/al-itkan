@@ -446,11 +446,10 @@ export const Submited = () => {
       <p className="text-center text-2xl mb-8">
         Thank you for your patient, Your application has been submitted
         susseccfully{" "}
+<br/>       <span>for more information, please visit our website </span>
 
       </p>
-      <br/><span>for more information, please visit our website </span><br/>
-
-      <a href="http://www.alitkan.com/">AL-ITKAN.com</a>
+      <a className="text-decoration-none" href="http://www.alitkan.com/">AL-ITKAN.com</a>
     </div>
   );
 };
