@@ -442,15 +442,11 @@ const Options = ({ htmlFor, label_value }) => {
 };
 export const Submited = () => {
   return (
-    <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
-      <p className="text-center text-2xl mb-8">
-        Thank you for your patient, Your application has been submitted
+    <div>
+      <p>
+        Thankyou for your patiente, Your application has been submitted
         susseccfully{" "}
-
       </p>
-      <br/><span>for more information, please visit our website </span><br/>
-
-      <a href="http://www.alitkan.com/">AL-ITKAN.com</a>
     </div>
   );
 };

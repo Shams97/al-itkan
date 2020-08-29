@@ -448,7 +448,7 @@ export const Submited = () => {
         susseccfully{" "}
 
       </p>
-      <br/><span>for more information, please visit our website </span><br/>
+      <br/><span>for more information, please visit our website </span>
 
       <a href="http://www.alitkan.com/">AL-ITKAN.com</a>
     </div>
