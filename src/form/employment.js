@@ -15,16 +15,21 @@ export default function Employment() {
   const [show, setShow] = useState([]);
   const [hide, setHide] = useState(false);
 
+  
   return (
     <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
       <h3 className="my-8 text-2xl"> Employment history </h3>
       <p className="mt-4 text-center" name="contact_disclaimer">
         Can we contact your previous employer(s) ? provide them here{" "}
       </p>
+      <div className="flex flex-col m-2 jusitfy-between mx-auto w-32">
+        <Radio name="contact_disclaimer" ops={['Yes','No']}/>
+      </div>
       <div className="flex flex-col m-2">
-        <FormInput placeholder="employer name  " name="employer_name" />
-        <FormInput placeholder="job title" name="job_title" />
-        <FormInput placeholder="employer province" name="employer_province" />
+        <FormInput placeholder="Employer Name" name="employer_name" />
+        <FormInput placeholder="Job Title" name="job_title" />
+        <FormInput placeholder="Employer Address" name="employer_address" />
+        <FormInput placeholder="Employer Province" name="employer_province" />
 
         {/* EMPLOYEMENT DATE */}
         <span className="text-center mt-4">Date of employment </span>
@@ -44,9 +49,9 @@ export default function Employment() {
         <span className="text-center mt-10 text-lg">salary </span>
         <div className="flex flex-row mb-8">
           <span className="text-sm mx-4 mt-5">start</span>
-          <FormInput name="starting_slry" />
+          <FormInput name="starting_slry" type="number"/>
           <span className="text-sm mx-4 mt-5">end</span>
-          <FormInput name="ending_slry" />
+          <FormInput name="ending_slry" type="number"/>
         </div>
 
         <FormInput placeholder="supervisor" name="supervisor" />
@@ -67,15 +72,11 @@ export default function Employment() {
         let n = index;
         return (
           <div className="flex flex-col my-10" key={index}>
-            <FormInput
-              placeholder={"employer name " + (n+2)}
-              name={"employer_name_" + n}
-            />
-            <FormInput placeholder="job title" name={"job_title_" + n} />
-            <FormInput
-              placeholder="employer province"
-              name={"employer_province_" + n}
-            />
+
+            <FormInput placeholder="Employer Name" name={"employer_name_" + n} />
+            <FormInput placeholder="Job Title" name={"job_title_" + n}/>
+            <FormInput placeholder="Employer Address" name={"employer_address_" + n} />
+            <FormInput placeholder="Employer Province" name={"employer_province_" + n}/>
 
             {/* EMPLOYEMENT DATE */}
             <span className="text-center mt-4">Date of employment </span>
@@ -169,6 +170,7 @@ export default function Employment() {
 }
 
 export const Additional_info = () => {
+
   return (
     <div className="form">
       <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
@@ -255,7 +257,7 @@ export const Additional_info = () => {
           {/* <FormInput placeholder="If you have any additional more skills please describe" className="my-8"/> */}
 
           <div className="flex justify-around flex-row mt-8">
-            <Link to="/sales_skills">
+            <Link to="/emploment">
               <Button value="Previous" />
             </Link>
             <Link to="/refrence">
@@ -282,10 +284,8 @@ export const Refrence = () => {
       },
 
     }).then((response) => {
-        //  setState([{...res.body}]);
-          //  res = onSubmit
-          setState(response.body)
-          console.log("response =", response);
+      //  res = onSubmit
+      console.log("response =", response);
     })
   }
 
@@ -396,6 +396,10 @@ export const Refrence = () => {
                <FormInput name="citizenship_cert" type="file" />
              </div>
              <div className="flex flex-row">
+               <label className="mx-2 mt-2 w-1/2">Accomidation ID</label>
+               <FormInput name="accomodation_id" type="file" />
+             </div>
+             <div className="flex flex-row">
                <label className="mx-2 mt-2 w-1/2"> university degree</label>
                <FormInput name="uni_degree" type="file" />
              </div>
@@ -423,7 +427,7 @@ export const Refrence = () => {
           <Button value="Previous" />
         </Link>
         <Link to="/submited">
-            <Button value="Submit" onClick={handleSubmit}/>
+            <Button onClick={handleSubmit} value="Submit"/>
         </Link>
       </div>
     </div>

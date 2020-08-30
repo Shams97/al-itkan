@@ -13,7 +13,7 @@ export default function Radio ({name, ops, mx}) {
   return (
     <div className={"flex flex-row jusitfy-between " + (mx ? "mx-auto" : "")}>
       {ops.map((op, index) => {
-        let formated_op = op.toLowerCase().split(' ').join('_')
+        let formated_op = op.toLowerCase()
         return (
         <div>
           <label className="text-gray-600"> {op} </label>{" "}

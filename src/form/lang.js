@@ -36,23 +36,28 @@ export default function Language() {
 
               <label htmlFor="arabic" className="mt-4">Read</label>
               <Selector name={"other_r_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
               <label htmlFor="arabic" className="mt-4"> Write</label>
               <Selector name={"other_w_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
               <label htmlFor="arabic" className="mt-4"> Speak</label>
               <Selector name={"other_s_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
               <label htmlFor="arabic" className="mt-4"> Understand</label>
               <Selector name={"other_u_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
               <label htmlFor="arabic" className="mt-4" > Overall </label>
               <Selector name={"other_o_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
 
            </div> 
@@ -108,23 +113,29 @@ const LangaugeSection = ({name, logic_name}) => {
 
       <label htmlFor="arabic" className="mt-4">Read</label>
       <Selector name={logic_name + "_r"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
       <label htmlFor="arabic" className="mt-4"> Write</label>
       <Selector name={logic_name + "_w"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
       <label htmlFor="arabic" className="mt-4"> Speak</label>
       <Selector name={logic_name + "_s"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
       <label htmlFor="arabic" className="mt-4"> Understand</label>
       <Selector name={logic_name + "_u"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
       <label htmlFor="arabic" className="mt-4" > Overall </label>
       <Selector name={logic_name + "_o"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average"]}/>
+      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
+      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+
     </div>
 
 }

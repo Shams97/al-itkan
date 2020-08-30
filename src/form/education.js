@@ -19,22 +19,22 @@ export default function Education() {
         <div className="flex flex-col my-4">
           <p className="text-center">Primary</p>
           <FormInput placeholder="name of school" name="primary_name"/>
-          <FormInput placeholder="years" name="primary_years"/>
-          <FormInput placeholder="average %" name="primary_avg" />
+          <FormInput placeholder="years" name="primary_years" type="number"/>
+          <FormInput placeholder="average %" name="primary_avg" type="number"/>
         </div>
 
         <div className="flex flex-col my-4">
           <p className="text-center">Intermediate</p>
           <FormInput placeholder="name of school" name="Intermediate_name"/>
-          <FormInput placeholder="years" name="Intermediate_years"/>
-          <FormInput placeholder="average %" name="Intermediate_avg"/>
+          <FormInput placeholder="years" name="Intermediate_years" type="number"/>
+          <FormInput placeholder="average %" name="Intermediate_avg" type="number"/>
         </div>
 
         <div className="flex flex-col my-4">
           <p className="text-center">Secondary </p>
           <FormInput placeholder="name of school" name="secondary_name"/>
-          <FormInput placeholder="years" name="secondary_years"/>
-          <FormInput placeholder="average %" name="secondary_avg"/>
+          <FormInput placeholder="years" name="secondary_years" type="number"/>
+          <FormInput placeholder="average %" name="secondary_avg" type="number"/>
         </div>
 
 
@@ -43,8 +43,8 @@ export default function Education() {
           <p className="text-center">College or institute</p>
             <div className="flex flex-col my-4">
               <FormInput placeholder="name of school" name="college_name" />
-              <FormInput placeholder="years" name="college_years"/>
-              <FormInput placeholder="average %" name="college_avg"/>
+              <FormInput placeholder="years" name="college_years" type="number"/>
+              <FormInput placeholder="average %" name="college_avg" type="number"/>
             </div>
 
         {show.map((input, index) => {
@@ -52,8 +52,8 @@ export default function Education() {
           return (
             <div className="flex flex-col my-4">
               <FormInput placeholder="name of school" name={"other_"+ n +"_name"} />
-              <FormInput placeholder="years" name={"other_"+ n +"_years"}/>
-              <FormInput placeholder="average %" name={"other_"+ n +"_avg"}/>
+              <FormInput placeholder="years" name={"other_"+ n +"_years"} type="number"/>
+              <FormInput placeholder="average %" name={"other_"+ n +"_avg"} type="number"/>
             </div>
           );
         })}
@@ -97,7 +97,7 @@ export default function Education() {
             placeholder="hieghest acamic qalification "
             name="highest_acad"
           />
-          <FormInput placeholder="graduation year " name="highest_grad_year" />
+          <FormInput placeholder="graduation year " name="highest_grad_year" type="number"/>
           <FormInput placeholder="university" name="highest_uni" />
           <FormInput placeholder="country" name="highest_country" />
         </div>
@@ -118,7 +118,10 @@ export default function Education() {
           <div className="flex flex-row  justify-center mt-2">
               <Radio name="preffered_fow" ops={['Technical', 'Sales', 'Administration']}/>
           </div>
-          <FormInput placeholder="other" name="other_referral_source" />
+          <p className="mt-10"> Prefered Contract Preiod </p>
+          <div className="flex flex-row  justify-center mt-2">
+            <Radio name="preferred_cp" ops={['3 Years', '5 Years', '10 Years']} />
+          </div>
         </div>
 
 

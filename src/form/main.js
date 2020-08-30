@@ -1,5 +1,5 @@
 // Main navigator between form steps
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm, useStep } from "react-hooks-helper";
 import PersonalDetails from './personal details';
 import FamilyInfo from './family info';
@@ -94,6 +94,11 @@ export const FormInput = ({placeholder, name, type, textarea})=>{
   const [state, setState] = useContext(Context)
   let value = state.data[name]
 
+  // useEffect(() => {
+  //   if (state['data'][name] !== undefined){
+  //   }
+  // }, [])
+
   async function handleChange(e) {
     let type = e.target.type
 
@@ -110,9 +115,10 @@ export const FormInput = ({placeholder, name, type, textarea})=>{
       }
       reader.readAsDataURL(file);
 
-    } else {      
+    } else {
       let value = e.target.value
-      state['data'][name] = value
+      state['data'][name] = type == "number" ? Number(value) : value
+    
     }
     console.log(state)
     setState(state)
