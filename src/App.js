@@ -65,9 +65,10 @@ function App() {
     <div className="App">
       {/* Itkan main nav bar goes here  */}
       {/* <form action="POST" onSubmit={handleSubmit}> */}
+        <Store>
+        <Api_inegration />
         <Router>
           <Switch>
-          <Store>
             <Route exact path="/" component={PersonalDetails} />
             <Route path="/family" component={FamilyInfo} />
             <Route path="/health" component={Health} />
@@ -83,9 +84,9 @@ function App() {
             <Route path="/additional" component={Additional_info} />
             <Route path="/refrence" component={Refrence} />
              <Route path="/submited" component={Submited} />
-          </Store>
           </Switch>
         </Router>
+        </Store>
       {/* </form> */}
     </div>
   );

@@ -116,7 +116,7 @@ export const FormInput = ({placeholder, name, type, textarea})=>{
       reader.readAsDataURL(file);
 
     } else {
-      let value = e.target.value
+      value = e.target.value
       state['data'][name] = type == "number" ? Number(value) : value
     
     }
