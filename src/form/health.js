@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Button} from '../App';
 import {Link } from 'react-router-dom'
 import Radio from './radio'
+import {Context} from '../store'
 
 export default function Health({ formData, navigation }) {
   // const { phone, email } = formData;
   // const { previous, next } = navigation;
+  const [state, setState] = useContext(Context)
+
   return (
     <div className="form">
       <form action="POST">
@@ -14,28 +17,28 @@ export default function Health({ formData, navigation }) {
         <div className="flex  flex-col mx-4 mb-4 ">
         <div className="mt-2">
           <label className="p-4" htmlFor="helath_status"> Your health status ? </label>
-          <Radio name="health_status" ops={['excellent', 'good', 'average',
-          'below average', 'poor', 'very poor']} />
+          <Radio name="health_status" ops={['Excellent', 'Good', 'Average',
+          'Below average', 'Poor', 'Very Poor']} />
         </div>
 
         <div className="mt-2">
           <label className="p-4" htmlFor="disease">Have you suffered or are you suffering from any terminal illness or chronic disease? </label>
           <div className="flex flex-row  justify-center my-4" >
-            <Radio name="suffered_from" ops={['yes', 'no']} />
+            <Radio name="disease" ops={['Yes', 'No']} />
           </div>
         </div>
   
         <div className="mt-2">
           <label className="p-4" htmlFor="limitation">Are there any limitations on your ability to perform in your prospective field of work? </label>
           <div className="flex flex-row  justify-center my-4" >
-            <Radio name="prospective_limitaion" ops={['yes', 'no']} />
+            <Radio name="limitaions" ops={['Yes', 'No']} />
           </div>
         </div>
 
         <div className="mt-2">
           <label className="p-4" htmlFor="travel_limitation"> Are there any limitations on your ability to engage in all types of travel? Inside or outside Iraq </label>
           <div className="flex flex-row  justify-center my-4">
-            <Radio name="travel_limitaion" ops={['yes', 'no']} />
+            <Radio name="limitaions_travel" ops={['Yes', 'No']} />
           </div>
         </div>
 

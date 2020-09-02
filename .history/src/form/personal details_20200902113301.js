@@ -1,6 +1,13 @@
+import React from "react";
 import { FormInput, Button } from "../App";
+// import { Button } from "./main";
 import {  Link } from "react-router-dom";
+import Radio from './radio'
 import React, {useContext} from "react";
+import { FormInput } from "./main";
+import { Button } from "./main";
+import Family from './family info';
+import {  Link } from "react-router-dom";
 import Radio from './radio'
 import Store, {Context} from "../store";
 import Selector from './selection'
