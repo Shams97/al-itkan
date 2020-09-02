@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { FormInput, Button } from "../App";
+import Health from "./health";
 import { Link } from "react-router-dom";
 
 import {Context} from '../store'

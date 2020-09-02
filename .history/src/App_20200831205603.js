@@ -98,30 +98,34 @@ const Dot = ({ value }) => {
 // };
 
 
-export const FormInput = ({placeholder, name, type, textarea})=>{
-  // state.data 
+export const FormInput = ({placeholder, name, value, type, textarea})=>{
+
   const [state, setState] = useContext(Context)
 
   const handleChange = (e) => {
     let type = e.target.type
     if (type === 'file') {
+
       let file = e.target.files[0]
+      
       if(file){   
       let reader = new FileReader();
+
       reader.onloadend = function () {
         // let Ob64 = reader.result;
         let b64 = reader.result.replace(/^data:.+;base64,/, '');
+
         state['files'][name] = b64
         // state['files']['original_' + name] = Ob64
       }
       reader.readAsDataURL(file);
+
    }
 
 
      } else {      
       let value = e.target.value
       state['data'][name] = value
-      console.log("all value == ", value)
     }
     console.log(state)
     setState(state)
@@ -130,12 +134,12 @@ export const FormInput = ({placeholder, name, type, textarea})=>{
 
   if (!!textarea){
     return (
-      <textarea type={type} placeholder={placeholder} name={name} onChange={handleChange}  
+      <textarea type={type} placeholder={placeholder} name={name} onChange={handleChange} value={value}
       className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2" />
     )
   } else {
     return (
-      <input type={type} placeholder={placeholder} name={name} onChange={handleChange}  
+      <input type={type} placeholder={placeholder} name={name} onChange={handleChange}  value={value}
       className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2"  />
     )
   }

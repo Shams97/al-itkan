@@ -1,8 +1,10 @@
 import React from "react";
 import { FormInput, Button } from "../App";
 // import { Button } from "./main";
+import Family from './family info';
 import {  Link } from "react-router-dom";
 import Radio from './radio'
+import Store from "../store";
 import Selector from './selection'
 
 

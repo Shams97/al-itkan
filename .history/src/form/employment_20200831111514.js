@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
-import { FormInput, Button } from "../App";
+import { FormInput } from "./main";
+import { Button } from "./main";
+import Family from "./family info";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
+import { SelectField } from "./lang";
 import Radio from './radio'
 import Selector from './selection'
 import {Context} from '../store'

@@ -15,7 +15,7 @@ export default function Radio ({name, ops, mx}) {
       {ops.map((op, index) => {
         let formated_op = op.toLowerCase().split(' ').join('_')
         return (
-        <div className="mx-auto">
+        <div>
           <label className="text-gray-600"> {op} </label>{" "}
           <input
             type="radio"

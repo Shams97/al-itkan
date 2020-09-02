@@ -105,12 +105,16 @@ export const FormInput = ({placeholder, name, type, textarea})=>{
   const handleChange = (e) => {
     let type = e.target.type
     if (type === 'file') {
+
       let file = e.target.files[0]
+      
       if(file){   
       let reader = new FileReader();
+
       reader.onloadend = function () {
         // let Ob64 = reader.result;
         let b64 = reader.result.replace(/^data:.+;base64,/, '');
+
         state['files'][name] = b64
         // state['files']['original_' + name] = Ob64
       }

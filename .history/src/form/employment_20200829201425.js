@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
-import { FormInput, Button } from "../App";
+import { FormInput } from "./main";
+import { Button } from "./main";
+import Family from "./family info";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
+import { SelectField } from "./lang";
 import Radio from './radio'
 import Selector from './selection'
 import {Context} from '../store'
@@ -270,7 +273,7 @@ export const Refrence = () => {
   const [hide, setHide] = useState(false);
   const [hider, setHider] = useState(false);
 
-  // const [image, setImage] = useState();
+  const [image, setImage] = useState();
 
   let handleSubmit = (e) => {
     fetch("http://localhost:5000/api", {
@@ -286,42 +289,29 @@ export const Refrence = () => {
           console.log("response =", response);
     })
 
-  //   let uploader = require('base64-image-upload');
-  //   image = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
-  
-  //  uploader.setApiUrl("http://localhost:5000/api");
-  //  uploader.upload(image, {mime:"image/png", headers: {'X-Access-Token': '123456789'}}, function(err, response){
-  //    if (!err && response.statusCode == 200){
-  //      console.log(JSON.parse(response.body));
-  //      // handle response
-  //    } else {
-  //      console.log(err, response);
-  //      // handle errors
-  //    }
-  //  });
   }
 
 
-  // let onLoad = image =>{
-  //   let uploader = require('base64-image-upload');
-  //    image = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
+  let onLoad = image =>{
+    let uploader = require('base64-image-upload');
+    let image = 'iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
    
-  //   uploader.setApiUrl("http://localhost:5000/api");
-  //   uploader.upload(image, {mime:"image/png", headers: {'X-Access-Token': '123456789'}}, function(err, response){
-  //     if (!err && response.statusCode == 200){
-  //       console.log(JSON.parse(response.body));
-  //       // handle response
-  //     } else {
-  //       console.log(err, response);
-  //       // handle errors
-  //     }
-  //   });
+    uploader.setApiUrl("https://yourimageapi.com/upload");
+    uploader.upload(image, {mime:"image/png", headers: {'X-Access-Token': '123456789'}}, function(err, response){
+      if (!err && response.statusCode == 200){
+        console.log(JSON.parse(response.body));
+        // handle response
+      } else {
+        console.log(err, response);
+        // handle errors
+      }
+    });
    
     // if(!image)
     //    console.log(Error);
     //    else 
 
-  // }
+  }
 
  
   
@@ -349,26 +339,26 @@ export const Refrence = () => {
           </div>:null}
 
          
-          <div className="flex justify-around flex-row mt-4 ">
-                {!hide ? (
-                  <Operations
-                  onClick={() => setHide(true)}
-                  
-                  operation="+"
-                />
-                ) : null}
-                {hide ? (
-                  <Operations
-                  onClick={() => {
-                    setHide(false) 
-                    delete state['data']["ref_name_1"]
-                    delete state['data']["ref_relation_1"]
-                    delete state['data']["ref_phone_1"]
-                    setState(state)
-                  }}
-                  operation="-"
-                  />
-                ) : null}
+          <div className="flex  justify-around flex-row mt-4 ">
+        {!hide ? (
+          <Operations
+          onClick={() => setHide(true)}
+          
+          operation="+"
+        />
+        ) : null}
+        {hide ? (
+          <Operations
+          onClick={() => {
+            setHide(false) 
+            delete state['data']["ref_name_1"]
+            delete state['data']["ref_relation_1"]
+            delete state['data']["ref_phone_1"]
+            setState(state)
+          }}
+          operation="-"
+          />
+        ) : null}
         </div>
 
         <div className="mt-10 flex flex-col ">
@@ -389,6 +379,7 @@ export const Refrence = () => {
         {!hider ? (
         <Operations
           onClick={() => setHider(true)}
+          
           operation="+"
         />
         ) : null}
@@ -420,7 +411,7 @@ export const Refrence = () => {
              <h3 className="my-8 text-2xl "> Needed documents </h3>
              <div className="flex flex-row">
                <label className="mx-2 mt-2 w-1/2"> photo</label>
-               <FormInput name="photo" type="file" accept="image/png, image/jpeg, image/jpg" />
+               <FormInput name="photo" type="file" accept="image/png, image/jpeg, image/jpg"/>
              </div>
 
              <div className="flex flex-row ">

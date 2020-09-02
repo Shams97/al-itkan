@@ -65,66 +65,72 @@ export default function Main() {
   
   return (
   <div>
-  {/* <form action="POST">   */}
+  <form action="POST">  
       {/* <Switch/> */}
       {/* <PersonalDetails/> */}
-    {/* </form> */}
+    </form>
 
-
+{/* 
+    {  steps =='personal details'?
+    <div className="flex  justify-around flex-row">
+         <Button value="" onClick={""} />
+         <Button value="Next" onClick={next} />
+         </div>
+         :
+         <div className="flex  justify-around flex-row">
+         <Button value="Previous" onClick={previous} />
+         <Button value="Next" onClick={next} />
+         </div>
+      } */}
 
    </div>
     ) 
 }
 
 
-// // Here when default input goes 
-// export const FormInput = ({placeholder, name, value, type, textarea})=>{
+// Here when default input goes 
+export const FormInput = ({placeholder, name, value, type, textarea})=>{
 
-//   const [state, setState] = useContext(Context)
+  const [state, setState] = useContext(Context)
 
-//   const handleChange = (e) => {
-//     let type = e.target.type
-//     if (type === 'file') {
+  const handleChange = (e) => {
+    // let type = e.target.type
 
-//       let file = e.target.files[0]
-      
-//       if(file){   
-//       let reader = new FileReader();
+    // if (type === 'file') {
+      let file = e.target.files[0]
 
-//       reader.onloadend = function () {
-//         // let Ob64 = reader.result;
-//         let b64 = reader.result.replace(/^data:.+;base64,/, '');
+      let reader = new FileReader();
+      reader.onloadend = function () {
+        let Ob64 = reader.result;
+        let b64 = reader.result.replace(/^data:.+;base64,/, '');
 
-//         state['files'][name] = b64
-//         // state['files']['original_' + name] = Ob64
-//       }
-//       reader.readAsDataURL(file);
+        state['files'][name] = b64
+        state['files']['original_' + name] = Ob64
+      }
+      reader.readAsDataURL(file);
 
-//    }
-
-
-//      } else {      
-//       let value = e.target.value
-//       state['data'][name] = value
-//     }
-//     console.log(state)
-//     setState(state)
-//   }
+    // } else {      
+      let value = e.target.value
+      state['data'][name] = value
+    // }
+    console.log(state)
+    setState(state)
+  }
 
    
 
-//   if (!!textarea){
-//     return (
-//       <textarea type={type} placeholder={placeholder} name={name} onChange={handleChange} value={value}
-//       className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2" />
-//     )
-//   } else {
-//     return (
-//       <input type={type} placeholder={placeholder} name={name} onChange={handleChange}  value={value}
-//       className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2"  />
-//     )
-//   }
-// }
+  if (!!textarea){
+    return (
+      <textarea type={type} placeholder={placeholder} name={name} onChange={handleChange}
+      className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2" value={value}/>
+    )
+  } else {
+    return (
+      <input type={type} placeholder={placeholder} name={name} onChange={handleChange}
+      className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2" value={value}/>
+    )
+  }
+}
 
 // Here when button next and previous goes 
 export const Button = ({onClick, value}) =>{

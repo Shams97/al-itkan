@@ -1,5 +1,8 @@
 import React,{useState, useContext} from "react";
-import { Button,FormInput } from "../App";
+// import { Button,FormInput } from "../App";
+import { Button } from "../App";
+import {FormInput} from './main';
+import Health from "./health";
 import { Link } from "react-router-dom";
 import Selector from './selection'
 import {Context} from '../store'

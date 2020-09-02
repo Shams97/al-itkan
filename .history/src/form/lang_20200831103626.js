@@ -1,5 +1,8 @@
 import React,{useState, useContext} from "react";
-import { Button,FormInput } from "../App";
+// import { Button,FormInput } from "../App";
+import { Button } from "../App";
+import {FormInput} from './main';
+import Health from "./health";
 import { Link } from "react-router-dom";
 import Selector from './selection'
 import {Context} from '../store'
@@ -101,7 +104,7 @@ export default function Language() {
 
 const LangaugeSection = ({name, logic_name}) => {
   return <div className="flex flex-col mx-4 w-1/2 ">
-      <p className="mb-8 mt-4 text-xl"> {name}</p>
+      <p className="mb-8  mt-4 text-xl"> {name}</p>
 
       <label htmlFor="arabic" className="mt-4">Read</label>
       <Selector name={logic_name + "_r"} classes="text-sm text-gray-600"

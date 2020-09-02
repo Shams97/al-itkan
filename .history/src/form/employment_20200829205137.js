@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
-import { FormInput, Button } from "../App";
+import { FormInput } from "./main";
+import { Button } from "./main";
+import Family from "./family info";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
+import { SelectField } from "./lang";
 import Radio from './radio'
 import Selector from './selection'
 import {Context} from '../store'
@@ -349,26 +352,26 @@ export const Refrence = () => {
           </div>:null}
 
          
-          <div className="flex justify-around flex-row mt-4 ">
-                {!hide ? (
-                  <Operations
-                  onClick={() => setHide(true)}
-                  
-                  operation="+"
-                />
-                ) : null}
-                {hide ? (
-                  <Operations
-                  onClick={() => {
-                    setHide(false) 
-                    delete state['data']["ref_name_1"]
-                    delete state['data']["ref_relation_1"]
-                    delete state['data']["ref_phone_1"]
-                    setState(state)
-                  }}
-                  operation="-"
-                  />
-                ) : null}
+          <div className="flex  justify-around flex-row mt-4 ">
+        {!hide ? (
+          <Operations
+          onClick={() => setHide(true)}
+          
+          operation="+"
+        />
+        ) : null}
+        {hide ? (
+          <Operations
+          onClick={() => {
+            setHide(false) 
+            delete state['data']["ref_name_1"]
+            delete state['data']["ref_relation_1"]
+            delete state['data']["ref_phone_1"]
+            setState(state)
+          }}
+          operation="-"
+          />
+        ) : null}
         </div>
 
         <div className="mt-10 flex flex-col ">
@@ -389,6 +392,7 @@ export const Refrence = () => {
         {!hider ? (
         <Operations
           onClick={() => setHider(true)}
+          
           operation="+"
         />
         ) : null}
