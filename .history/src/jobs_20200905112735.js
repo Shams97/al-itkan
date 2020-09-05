@@ -7,8 +7,8 @@ export default function Jobs(vacancy) {
 
   useEffect(() => {
     const headers = { "Content-Type": "application/json" };
-   async  function fetchData(){
-    await fetch("http://localhost:5000/api/get", { headers })
+  //  async  function fetchData(){
+     fetch("http://localhost:5000/api/get", { headers })
       .then((response) => response.json())
       .then((data) => {
         let result = data;
@@ -24,16 +24,16 @@ export default function Jobs(vacancy) {
         );
       });
 
-    }
-    fetchData();
+    // }
+    // fetchData();
   }, []);
 
   return (
-    <div className=" flex flex-row flex flex-wrap  my-auto">
+    <div className=" flex flex-row flex flex-wrap">
       {jobState.map((item, index) => {
         return (
           <div
-            className="rounded overflow-hidden bg-white shadow-lg  mx-auto mt-12 p-12 "
+            className="rounded overflow-hidden bg-white shadow-lg  m-auto mt-12 px-12 "
             key={index}
           >
             <img src={item.image} width="100" height="100" />
@@ -41,7 +41,7 @@ export default function Jobs(vacancy) {
             <p> {item.description}</p>
             <div className="flex flex-row justify-between">
               <Link to="/personal">
-                <button className="px-4 bg-blue-300  rounded text-white ">Apply now</button>
+                <button className="px-4 bg-blue-300 ">Apply now</button>
               </Link>
               <p className="text-red-600 text-sm"> {item.dead_line}</p>
             </div>

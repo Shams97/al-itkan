@@ -41,7 +41,7 @@ export default function Jobs(vacancy) {
             <p> {item.description}</p>
             <div className="flex flex-row justify-between">
               <Link to="/personal">
-                <button className="px-4 bg-blue-300  rounded text-white ">Apply now</button>
+                <button className="px-4 bg-blue-300 ">Apply now</button>
               </Link>
               <p className="text-red-600 text-sm"> {item.dead_line}</p>
             </div>
