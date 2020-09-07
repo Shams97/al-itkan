@@ -1,0 +1,26 @@
+.wave {
+  width: 200px;
+  height: 100px;
+  position: relative;
+}
+
+.wave:after {
+    content: '';
+    width: 50%;
+    position: absolute;
+    height: 200px;
+    display: block;
+    border-bottom: 19px solid black;
+    border-radius: 50%;
+    left: 50%;
+}
+
+.wave:before {
+    content: '';
+    width: 50%;
+    position: absolute;
+    height: 200px;
+    display: block;
+    border-top: 19px solid black;
+    border-radius: 50%;
+}
