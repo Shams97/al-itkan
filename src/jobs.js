@@ -5,6 +5,8 @@ import Img1 from "./asstes/img1.jpg";
 import Img2 from "./asstes/img2.jpg";
 import { Context } from "./store";
 import "./job.css";
+const axios = require("axios");
+
 const curvedDiv = {};
 
 export default function Jobs(vacancy) {
@@ -14,32 +16,29 @@ export default function Jobs(vacancy) {
   useEffect(() => {
     const headers = { 'Content-Type': 'application/json','Accept': 'text/plain'  };
   
-    async function fetchData(data) {
-      await fetch("http://localhost:5000/api/get",{
-        header:{'Content-Type': 'application/json'},
-        // mode:'basic',
-        credentials:'same-origin',
-      //  body: JSON.stringify(data) // body data type must match "Content-Type" header
 
-    })
-        .then((response) => (response.json() , console.log("resp in json ", response.type ) )  )
-        .then((json) => {
-           let result = data;
-           console.log("data ===", json);
+    async function fetchData(){
+      const response = await axios ({
+        url: "http://localhost:5000/api/get",
+        method: "GET"
+      })      
+      let result = response.data
+      // console.log(result)
 
-        }).then((err)=>console.log(err));
-          // result.map((item) => {
-            // jobState.push(item);
-          // });
-          // setjobs((res) => [...res]);
-        // });
+      result.map((item) => {
+        jobState.push(item);
+      });
+
+      setjobs((res) => [...res]);
     }
+
     fetchData();
   }, []);
 
   function handleClick(e) {
-    let job = e.target.name;
-    state["data"]["job_name"] = job;
+    let job_id = e.target.value;
+    state["data"]["job_id"] = Number(job_id)
+    // console.log(job_id)
     setState(state);
   }
 
@@ -61,23 +60,23 @@ export default function Jobs(vacancy) {
               <div className="py-10 px-4 ">
                 <h3 className="text-left text-2xl mx-2 font-sans font-medium">
                   {" "}
-                  {item.job_name}{" "}
+                  {item.name}{" "}
                 </h3>
                 <p className="text-base text-left mx-2 font-sans  mb-8">
                   {" "}
                   {item.description}
                 </p>
                 <div className="flex flex-row justify-between">
-                  <Link to={{ pathname: `/personal/job=${item.job_name}` }}>
+                  <Link to={{ pathname: `/personal/job=${item.name}` }}>
                     <button
                       className="px-4 py-1 border border-green-600 bg-transparent text-green-600 hover:bg-green-700 active:bg-green-700  rounded hover:text-white active:text-white mb-2 "
-                      name={item.job_name}
+                      value={item.id}
+                      name={item.name}
                       onClick={handleClick}
                     >
                       Apply now
                     </button>
                   </Link>
-                  <p className="text-red-600 text-sm font-sans mt-2"> <span className="font-sans text-black">Ends in</span> {item.dead_line}</p>
                 </div>
               </div>
             </div>
