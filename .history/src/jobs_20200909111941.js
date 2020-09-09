@@ -12,27 +12,19 @@ export default function Jobs(vacancy) {
   const [state, setState] = useContext(Context);
 
   useEffect(() => {
-    const headers = { 'Content-Type': 'application/json','Accept': 'text/plain'  };
-  
-    async function fetchData(data) {
-      await fetch("http://localhost:5000/api/get",{
-        header:{'Content-Type': 'application/json'},
-        // mode:'basic',
-        credentials:'same-origin',
-      //  body: JSON.stringify(data) // body data type must match "Content-Type" header
+    const headers = { "Content-Type": "application/json" };
+    async function fetchData() {
+      await fetch("45.79.249.74:8069/api/get", { headers })
+        .then((response) => response.json())
+        .then((data) => {
+          let result = data;
+          console.log("data ===", result);
 
-    })
-        .then((response) => (response.json() , console.log("resp in json ", response.type ) )  )
-        .then((json) => {
-           let result = data;
-           console.log("data ===", json);
-
-        }).then((err)=>console.log(err));
-          // result.map((item) => {
-            // jobState.push(item);
-          // });
-          // setjobs((res) => [...res]);
-        // });
+          result.map((item) => {
+            jobState.push(item);
+          });
+          setjobs((res) => [...res]);
+        });
     }
     fetchData();
   }, []);
@@ -44,6 +36,7 @@ export default function Jobs(vacancy) {
   }
 
   let src = [Img, Img1, Img2];
+
   return (
     (vacancy = "anything"),
     (

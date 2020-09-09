@@ -13,21 +13,13 @@ export default function Jobs(vacancy) {
 
   useEffect(() => {
     const headers = { 'Content-Type': 'application/json','Accept': 'text/plain'  };
-  
-    async function fetchData(data) {
-      await fetch("http://localhost:5000/api/get",{
-        header:{'Content-Type': 'application/json'},
-        // mode:'basic',
-        credentials:'same-origin',
-      //  body: JSON.stringify(data) // body data type must match "Content-Type" header
-
-    })
-        .then((response) => (response.json() , console.log("resp in json ", response.type ) )  )
-        .then((json) => {
+    async function fetchData() {
+      await fetch("http://localhost:5000/api/get",{header:headers , body:JSON.stringify})
+        .then((response) => (response.json() , console.log("resp in json ", response ) )  )
+        .then((data) => {
            let result = data;
-           console.log("data ===", json);
-
-        }).then((err)=>console.log(err));
+           console.log("data ===", data);
+        });
           // result.map((item) => {
             // jobState.push(item);
           // });
@@ -44,6 +36,7 @@ export default function Jobs(vacancy) {
   }
 
   let src = [Img, Img1, Img2];
+
   return (
     (vacancy = "anything"),
     (

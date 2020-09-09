@@ -12,28 +12,34 @@ export default function Jobs(vacancy) {
   const [state, setState] = useContext(Context);
 
   useEffect(() => {
-    const headers = { 'Content-Type': 'application/json','Accept': 'text/plain'  };
-  
-    async function fetchData(data) {
-      await fetch("http://localhost:5000/api/get",{
-        header:{'Content-Type': 'application/json'},
-        // mode:'basic',
-        credentials:'same-origin',
-      //  body: JSON.stringify(data) // body data type must match "Content-Type" header
-
-    })
-        .then((response) => (response.json() , console.log("resp in json ", response.type ) )  )
-        .then((json) => {
-           let result = data;
-           console.log("data ===", json);
-
-        }).then((err)=>console.log(err));
-          // result.map((item) => {
-            // jobState.push(item);
-          // });
-          // setjobs((res) => [...res]);
-        // });
-    }
+    const headers = {
+      "Content-Type": "application/json",
+      Accept: "text/plain",
+    };
+    async function fetchData() {
+      await fetch("http://localhost:5000/api/get", {
+        header:headers,
+        method: "GET", // *GET, POST, PUT, DELETE, etc.
+        mode: "no-cors", // no-cors, *cors, same-origin
+        // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin",
+      })
+        .then(
+          (response) => (
+            response.json(), console.log("resp in json ", response)
+          )
+        )
+        .then((data) => {
+          let result = data;
+          console.log("data ===", data);
+        })
+        // .then((err) => console.log(err));
+      // result.map((item) => {
+      // jobState.push(item);
+      // });
+      // setjobs((res) => [...res]);
+      // });
+  }
     fetchData();
   }, []);
 
@@ -54,9 +60,8 @@ export default function Jobs(vacancy) {
               className="rounded overflow-hidden bg-white shadow-lg  mx-auto mt-20 md:w-1/4 lg:w-1/4 sm:1/2  "
               key={index}
             >
-              <img src={src[index]} className="object-cover h-50 w-full"/>
-              <div className="wave bg-transparent"/>
-  
+              <img src={src[index]} className="object-cover h-50 w-full" />
+              <div className="wave bg-transparent" />
 
               <div className="py-10 px-4 ">
                 <h3 className="text-left text-2xl mx-2 font-sans font-medium">
@@ -77,14 +82,18 @@ export default function Jobs(vacancy) {
                       Apply now
                     </button>
                   </Link>
-                  <p className="text-red-600 text-sm font-sans mt-2"> <span className="font-sans text-black">Ends in</span> {item.dead_line}</p>
+                  <p className="text-red-600 text-sm font-sans mt-2">
+                    {" "}
+                    <span className="font-sans text-black">Ends in</span>{" "}
+                    {item.dead_line}
+                  </p>
                 </div>
               </div>
             </div>
           );
         })}
 
-{/* 
+        {/* 
       <div>{jobState.map((item)=>{
         return <div>{item}</div>
       })}</div> */}

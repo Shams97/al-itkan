@@ -13,20 +13,17 @@ export default function Jobs(vacancy) {
 
   useEffect(() => {
     const headers = { 'Content-Type': 'application/json','Accept': 'text/plain'  };
-  
-    async function fetchData(data) {
+    async function fetchData() {
       await fetch("http://localhost:5000/api/get",{
-        header:{'Content-Type': 'application/json'},
-        // mode:'basic',
-        credentials:'same-origin',
-      //  body: JSON.stringify(data) // body data type must match "Content-Type" header
-
+        header:headers,
+        mode:'no-cors',
+        credentials:'same-origin'
+      
     })
-        .then((response) => (response.json() , console.log("resp in json ", response.type ) )  )
-        .then((json) => {
+        .then((response) => (response.json() , console.log("resp in json ", response ) )  )
+        .then((data) => {
            let result = data;
-           console.log("data ===", json);
-
+           console.log("data ===", data);
         }).then((err)=>console.log(err));
           // result.map((item) => {
             // jobState.push(item);

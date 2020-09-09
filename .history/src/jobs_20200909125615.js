@@ -23,9 +23,9 @@ export default function Jobs(vacancy) {
 
     })
         .then((response) => (response.json() , console.log("resp in json ", response.type ) )  )
-        .then((json) => {
+        .then((josn) => {
            let result = data;
-           console.log("data ===", json);
+           console.log("data ===", json.data);
 
         }).then((err)=>console.log(err));
           // result.map((item) => {

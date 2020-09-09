@@ -19,14 +19,13 @@ export default function Jobs(vacancy) {
         header:{'Content-Type': 'application/json'},
         // mode:'basic',
         credentials:'same-origin',
-      //  body: JSON.stringify(data) // body data type must match "Content-Type" header
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
 
     })
         .then((response) => (response.json() , console.log("resp in json ", response.type ) )  )
-        .then((json) => {
+        .then((data) => {
            let result = data;
-           console.log("data ===", json);
-
+           console.log("data ===", data);
         }).then((err)=>console.log(err));
           // result.map((item) => {
             // jobState.push(item);
