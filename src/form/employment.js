@@ -66,7 +66,7 @@ export default function Employment() {
         />
       </div>
 
-      {show.map((input, index, m) => {
+      {show.map((input, index) => {
         let n = index;
         return (
           <div className="flex flex-col my-10" key={index}>
@@ -105,14 +105,14 @@ export default function Employment() {
           </div>
 
 
-            {/*SALARY */}
+            {/*SALARY 22 */}
             <div className="flex flex-row justify-around mb-4 flex-wrap">
             <span className="text-center mt-4 text-lg px-4">Salary </span>
-            <div className="flex flex-row  my-2">
+            <div className="flex flex-row  ml-20 flex-wrap">
               <span className="mx-4 mt-5">start</span>
-              <FormInput name={"starting_slry_" + n} />
+              <FormInput name={"starting_slry_" + n} type="number"/>
               <span className="mx-4 mt-5">end</span>
-              <FormInput name={"ending_slry_" + n} />
+              <FormInput name={"ending_slry_" + n} type="number"/>
             </div>
 </div>
 
@@ -132,10 +132,10 @@ export default function Employment() {
         );
       })}
 
-      <div className="flex  justify-around flex-row mt-4 ">
-        <p className="mt-8 font-serif text-red-400 ">
+      <div className="flex  justify-around flex-row mt-4">
+        <span className="font-serif text-red-400 ">
           Want to provide more than one employer ?{" "}
-        </p>
+        </span>
 
         <Operations
           onClick={() => {
@@ -492,7 +492,7 @@ export const Refrence = () => {
             />
           </div>
           <div className="flex flex-row">
-            <label className="mx-2 mt-2 w-1/2">Accomidation ID</label>
+            <label className="mx-2 mt-2 w-1/2">accomidation ID</label>
             <FormInput name="accomodation_id" type="file" />
           </div>
           <div className="flex flex-row">
@@ -551,13 +551,13 @@ export const Submited = () => {
     <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
       <p className="text-center text-2xl mb-8">
         Thank you for your patient, Your application has been submitted
-        susseccfully{" "}
+        successfully{" "}
       </p>
       <br />
       <span>for more information, please visit our website </span>
       <br />
 
-      <a href="http://www.alitkan.com/">AL-ITKAN.com</a>
+      <a href="http://www.alitkan.com/">AL ITKAN.com</a>
     </div>
   );
 };

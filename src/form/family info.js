@@ -41,8 +41,8 @@ export default function FamilyInfo() {
               );
             })}
 
-            <div className="flex  justify-around flex-row mt-4 ">
-              <span className="text-red-400 ">Add more brothers and sisters </span>
+            <div className="flex justify-around flex-row mt-4">
+              <span className=" font-serif text-red-400">Add more brothers and sisters </span>
           <Operations  onClick={() => {setShow([...show, {}]); setHide(true) }} operation="+" />
 
             { hide ?
@@ -56,14 +56,6 @@ export default function FamilyInfo() {
               :null}
             </div>
           </div>
-          {/* <div className="flex justify-around flex-row mt-10">
-            <Link to="/personal">
-              <Button value="Previous" />
-            </Link>
-            <Link to="/health">
-              <Button value="Next" />
-            </Link>
-          </div> */}
       </div>
 
   );

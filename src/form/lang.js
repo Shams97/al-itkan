@@ -27,7 +27,7 @@ export default function Language() {
            {show.map((input, index) => {
             let n = index;
             return (
-              <div className="flex flex-col mt-8 px-8 justify-center"> 
+              <div className="flex flex-col mt-8 px-8 justify-center" key={index}> 
               <FormInput placeholder={"add the name of language you know"}
               className="my-8" name={"other_name_"+n}/>
 

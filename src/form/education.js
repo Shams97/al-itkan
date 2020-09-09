@@ -14,10 +14,10 @@ export default function Education() {
 
   return (
     <div className=" w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 ">
-      <h3 className="my-8 text-2xl"> Education </h3>
-      <div className="flex flex-row justify-around mx-auto flex-wrap">
+      <h3 className="my-8 text-2xl font-serif"> Education </h3>
+      <div className="flex flex-row justify-between mx-auto ">
 
-        <div className="flex flex-col my-4 mx-8 ">
+        <div className="flex flex-col  mx-8 mb-4 w-1/2">
           <p className="text-start my-4">Primary</p>
           <FormInput placeholder="name of school" name="primary_name"/>
           <FormInput placeholder="years" name="primary_years" type="number"/>
@@ -28,7 +28,7 @@ export default function Education() {
           <FormInput placeholder="average %" name="secondary_avg" type="number"/>
         </div>
 
-        <div className="flex flex-col my-4 mx-8">
+        <div className="flex flex-col  mx-8 mb-4 w-1/2 ">
 
           <p className="text-start my-4">Intermediate</p>
           <FormInput placeholder="name of school" name="Intermediate_name"/>
@@ -45,7 +45,7 @@ export default function Education() {
         {show.map((input, index) => {
           let n = index;
           return (
-            <div className="flex flex-col my-4" key={index}>
+            <div className="flex flex-col  mx-8 mb-4 mt-8  max-w-1/2 bg-grey-500" key={index}>
               <FormInput placeholder="name of school" name={"other_"+ n +"_name"} />
               <FormInput placeholder="years" name={"other_"+ n +"_years"} type="number"/>
               <FormInput placeholder="average %" name={"other_"+ n +"_avg"} type="number"/>
