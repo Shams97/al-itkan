@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import Img from "./asstes/img.jpg";
 import Img1 from "./asstes/img1.jpg";
 import Img2 from "./asstes/img2.jpg";
+import Img4 from './asstes/img4.jpg';
+import Img5 from './asstes/img5.jpg';
+import Img6 from './asstes/img6.jpg';
 import { Context } from "./store";
 import "./job.css";
 const axios = require("axios");
 
-const curvedDiv = {};
+
 
 export default function Jobs(vacancy) {
   const [jobState, setjobs] = useState([]);
@@ -42,31 +45,30 @@ export default function Jobs(vacancy) {
     setState(state);
   }
 
-  let src = [Img, Img1, Img2];
+  let src = [Img, Img1, Img2,Img4, Img5, Img6];
   return (
     (vacancy = "anything"),
     (
-      <div className="container max-w-full flex flex-row flex-wrap  justify-center ">
+      <div className="max-w-full flex flex-row flex-wrap  justify-center ">
         {jobState.map((item, index) => {
           return (
             <div
-              className="rounded overflow-hidden bg-white shadow-lg  mx-auto mt-20 md:w-1/4 lg:w-1/4 sm:1/2  "
+              className="rounded overflow-hidden bg-white shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 "
               key={index}
             >
               <img src={src[index]} className="object-cover h-50 w-full"/>
-              <div className="wave bg-transparent"/>
+              {/* <div className="wave bg-transparent"/> */}
   
-
-              <div className="py-10 px-4 ">
+              <div className="pt-10 px-4">
                 <h3 className="text-left text-2xl mx-2 font-sans font-medium">
                   {" "}
                   {item.name}{" "}
                 </h3>
-                <p className="text-base text-left mx-2 font-sans  mb-8">
+                 <p className="text-sm text-left font-sans  overflow-auto h-32 mb-8 ">
                   {" "}
                   {item.description}
-                </p>
-                <div className="flex flex-row justify-between">
+                </p> 
+                <div className="flex flex-row justify-center">
                   <Link to={{ pathname: `/personal/job=${item.name}` }}>
                     <button
                       className="px-4 py-1 border border-green-600 bg-transparent text-green-600 hover:bg-green-700 active:bg-green-700  rounded hover:text-white active:text-white mb-2 "
@@ -78,15 +80,13 @@ export default function Jobs(vacancy) {
                     </button>
                   </Link>
                 </div>
+                <div className="mb-4"/>
               </div>
+              <div className="mb-4"/>
             </div>
           );
         })}
 
-{/* 
-      <div>{jobState.map((item)=>{
-        return <div>{item}</div>
-      })}</div> */}
       </div>
     )
   );
