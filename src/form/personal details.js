@@ -10,10 +10,11 @@ import Selector from "./selection";
 export default function PersonalDetails() {
   // {props.vacancy}
   return (
-      <div className="  w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
+      <div className="  lg:w-3/4 md:w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
         <h3 className="my-8 text-2xl font-serif"> Personal Details </h3>
-        <div className="flex  flex-row justify-between mx-auto ">
-          <div className="flex flex-col  mx-8 mb-4 w-1/2 ">
+        <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col  justify-between mx-auto ">
+          
+          <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full    ">
             <FormInput placeholder="first name" name="full_name" type="text" />
             {/* <FormInput placeholder=" name" name="name" type="text"  /> */}
             <FormInput placeholder="sur name" name="surname" type="text" />
@@ -37,7 +38,7 @@ export default function PersonalDetails() {
               className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2"
             />
           </div>
-          <div className="flex flex-col  mx-8 mb-4 w-1/2 ">
+          <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:max-w-xl">
             
             <FormInput placeholder="birth date " name="birthdate" type="date" />
             <FormInput

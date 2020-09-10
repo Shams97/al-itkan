@@ -12,11 +12,11 @@ export default function Language() {
 
   return (
     <div>
-      <div className="mx-auto mt-10 p-8 ">
+      <div className="mx-auto my-10 lg:p-8 md:p-8 sm:p-4 ">
           <h2 className="my-8 text-2xl"> Language and level of proficiency </h2>
            <p className="mt-4 mb-2">Measture your proficiency by selecting level in every language </p>
 
-           <div className="flex flex-row justify-center">
+           <div className="lg:flex md:flex  flex-row justify-center sm:block ">
 
             <LangaugeSection name="Arabic" logic_name="ar"/> 
 
@@ -61,7 +61,7 @@ export default function Language() {
            ) } )}
         </div>
      
-          <div className="flex  justify-around flex-row mt-4">
+          <div className="lg:flex md:flex justify-around flex-row mt-4  sm:block">
            <p className="text-red-400">Add more language ( just two allowed ) </p> 
            <button
               onClick={() => {
@@ -96,7 +96,7 @@ export default function Language() {
 }
 
 const LangaugeSection = ({name, logic_name}) => {
-  return <div className="flex flex-col mx-4 w-1/2 ">
+  return <div className="flex flex-col mx-4 lg:w-1/2 md:w-1/2 sm:w-full ">
       <p className="mb-8 mt-4 text-xl"> {name}</p>
 
       <label htmlFor="arabic" className="mt-4">Read</label>

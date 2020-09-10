@@ -12,8 +12,9 @@ export default function Employment() {
   const [hide, setHide] = useState(false);
 
   return (
-    <div className=" w-5/6 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
+    <div className=" lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
       <h3 className="my-8 text-2xl font-serif"> Employment history </h3>
+
       <div className="flex flex-row justify-center flex-wrap">
         <p className="mt-2 text-center font-serif" name="contact_disclaimer">
           Can we contact your previous employer(s) ? provide them here{" "}
@@ -23,16 +24,18 @@ export default function Employment() {
         </div>
       </div>
 
-      <div className="flex flex-col m-2 px-16">
-        <FormInput placeholder="Employer Name" name="employer_name" />
-        <FormInput placeholder="Job Title" name="job_title" />
-        <FormInput placeholder="Employer Address" name="employer_address" />
-        <FormInput placeholder="Employer Province" name="employer_province" />
+
+      <div className="flex flex-col flex-wrap m-2 lg:px-16 md:px-16 sm:px-4">
+        <FormInput placeholder="employer name" name="employer_name" />
+        <FormInput placeholder="job title" name="job_title" />
+        <FormInput placeholder="employer address" name="employer_address" />
+        <FormInput placeholder="employer province" name="employer_province" />
 
         {/* EMPLOYEMENT DATE */}
-        <div className="flex flex-row justify-around flex-wrap">
-          <span className="text-center mt-6 text-lg">Date of employment </span>
-          <div className="flex flex-row  my-2 flex-wrap">
+        <div className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap 
+ sm:flex-wrap">
+          <span className="text-center lg:mt-6 md:mt-6 sm:mt-16 lg:text-lg md:text-lg sm:text-base">Date of employment </span>
+          <div className="lg:flex md:flex flex-row  sm:block my-2 flex-wrap">
             <span className="text-sm mx-4 mt-5">from</span>
             <FormInput placeholder="from" name="from_date" type="date" />
             <span className="text-sm mx-4 mt-5">to</span>
@@ -47,7 +50,7 @@ export default function Employment() {
         {/*SALARY */}
         <div className="flex flex-row justify-around mb-4 flex-wrap">
           <span className="text-center mt-4 text-lg px-4">Salary </span>
-          <div className="flex flex-row ml-20 flex-wrap">
+          <div className="flex flex-row lg:ml-20 md:ml-10 sm:ml-2 my-4 flex-wrap">
             <span className=" mx-4 mt-5">start</span>
             <FormInput name="starting_slry" type="number" />
             <span className=" mx-4 mt-5">end</span>
@@ -69,25 +72,26 @@ export default function Employment() {
       {show.map((input, index) => {
         let n = index;
         return (
-          <div className="flex flex-col my-10" key={index}>
+          <div className="flex flex-col flex-wrap mx-2 lg:px-16 md:px-16 sm:px-4 my-10" key={index}>
             <FormInput
-              placeholder="Employer Name"
+              placeholder="employer Name"
               name={"employer_name_" + n}
             />
             <FormInput placeholder="Job Title" name={"job_title_" + n} />
             <FormInput
-              placeholder="Employer Address"
+              placeholder="employer Address"
               name={"employer_address_" + n}
             />
             <FormInput
-              placeholder="Employer Province"
+              placeholder="employer Province"
               name={"employer_province_" + n}
             />
 
-            {/* EMPLOYEMENT DATE */}
-         <div className="flex flex-row justify-around flex-wrap">
-          <span className="text-center mt-6 text-lg">Date of employment </span>
-          <div className="flex flex-row  my-2 flex-wrap">
+            {/* EMPLOYEMENT DATE 22 */}
+         <div className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap 
+ sm:flex-wrap">
+          <span className="text-center lg:mt-6 md:mt-6 sm:mt-16 lg:text-lg md:text-lg sm:text-base">Date of employment </span>
+          <div className="lg:flex md:flex flex-row  sm:block  my-2 flex-wrap">
               <span className="text-sm mx-4 mt-5">from</span>
               <FormInput
                 placeholder="from"
@@ -108,7 +112,7 @@ export default function Employment() {
             {/*SALARY 22 */}
             <div className="flex flex-row justify-around mb-4 flex-wrap">
             <span className="text-center mt-4 text-lg px-4">Salary </span>
-            <div className="flex flex-row  ml-20 flex-wrap">
+            <div className="flex flex-row  lg:ml-20 md:ml-10 sm:ml-2  my-4 flex-wrap">
               <span className="mx-4 mt-5">start</span>
               <FormInput name={"starting_slry_" + n} type="number"/>
               <span className="mx-4 mt-5">end</span>
@@ -179,29 +183,29 @@ export default function Employment() {
 
 export const Additional_info = () => {
   return (
-    <div className="mx-auto mt-10 p-8">
+    <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4">
       <h3 className="my-8 text-2xl"> Additional information </h3>
 
-      <div className="flex flex-col my-4">
-        <div className="flex flex-row justify-between ">
+      <div className="flex flex-col my-8">
+        <div className="flex flex-row justify-between flex-wrap my-4">
           <Options
             htmlFor="union_member"
             label_value="Are you a member of the Iraqi engineers union?"
           />
-          <div className="flex flex-row flex-wrap">
+          <div className="flex flex-row flex-wrap mx-auto">
             <span className="text-sm mx-4 mt-5"> date </span>
 
             <FormInput  name="from_date" type="date" />
           </div>
         </div>
 
-        <div className="flex flex-row justify-between mb-4">
+        <div className="flex flex-row justify-between mb-4 flex-wrap mt-4 lg:mx-0 md:mx-0 sm:mx-auto ">
           <Options
             htmlFor="driver_license"
             label_value="Do you have a valid drivers license?"
           />
           <div className="flex flex-row  flex-wrap">
-            <span className="text-sm mx-4 mt-8">if yes since when ?</span>
+            <span className="text-sm mx-4 lg:mt-8 md:mt-8 sm:mt-2 ">if yes since when ?</span>
             <FormInput name="driver_license_date" type="date" />
           </div>
         </div>
@@ -225,7 +229,7 @@ export const Additional_info = () => {
             htmlFor="long_hours"
           />
 
-          <div className="flex flex-row">
+          <div className="flex flex-row flex-wrap my-4">
             <span className="mx-4 mt-5">When can you begin to work?</span>
             <FormInput name="start_date" type="date" />
           </div>
@@ -252,7 +256,7 @@ export const Additional_info = () => {
           <p className="text-center text-xl my-8 ">Add more additional skills</p>
       
       <div className="flex flex-col justify-center ">
-            <div className="flex flex-row flex-wrap">
+            <div className="lg:flex md:flex sm:block flex-row flex-wrap my-4">
               <span className="mx-4 mt-5 w-1/2 text-left">Team Work Skills</span>
               <Selector
                 name="team_work"
@@ -271,8 +275,8 @@ export const Additional_info = () => {
             </div>
 
 
-            <div className="flex flex-row my-2 flex-wrap ">
-              <span className="mx-4 mt-5 w-1/2 text-left ">
+            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
+              <span className="mx-4 mt-5 lg:w-1/2 md:w-1/2 sm:w-full text-left ">
                 Work Under Pressure Skills
               </span>
               <Selector
@@ -286,12 +290,12 @@ export const Additional_info = () => {
                   "Poor",
                   "Very Poor",
                 ]}
-                className="w-1/2"
+                className="lg:w-1/2 md:w-1/2 sm:w-full"
 
               />
             </div>
 
-            <div className="flex flex-row my-2 flex-wrap ">
+            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
               <span className=" mx-4 mt-5 w-1/2 text-left">
                 Are you Willing To Travel Outshore ?
               </span>
@@ -315,12 +319,12 @@ export const Additional_info = () => {
 
 
 
-          <div className="flex flex-row my-10 justify-around ">
+          <div className="flex flex-row my-10 justify-around flex-wrap">
             <p className="mt-4"> How did you refrral to us ? </p>
 
             <Selector
               name="referral_source"
-              classes="text-sm text-gray-600 w-1/4"
+              classes="text-sm text-gray-600 lg:w-1/4 md:w-1/4 sm:w-full"
               ops={["Walk-in", "Employee", "FaceBook", "Linked-In"]}
             
             />
@@ -329,10 +333,10 @@ export const Additional_info = () => {
           </div>
 
 
-<div className="flex flex-row mt-20">
-          <div className="flex flex-col w-1/2 ">
+<div className="lg:flex md:flex flex-row sm:block mt-20 ">
+          <div className="flex flex-col lg:w-1/2 md:w-1/2 sm:w-full">
             <p> choose your Prefered field of work </p>
-            <div className="flex flex-row  justify-center mt-2">
+            <div className="flex flex-row  justify-center mt-2 mb-4">
               <Radio
                 name="preffered_fow"
                 ops={["Technical", "Sales", "Administration"]}
@@ -343,9 +347,9 @@ export const Additional_info = () => {
 
 
 
-          <div className="flex flex-col  w-1/2 ">
+          <div className="flex flex-col   lg:w-1/2 md:w-1/2 sm:w-full">
             <p> Prefered Contract Preiod </p>
-            <div className="flex flex-row  justify-center mt-2">
+            <div className="flex flex-row  justify-center mt-2 mb-4">
               <Radio
                 name="preferred_cp"
                 ops={["3 Years", "5 Years", "10 Years"]}
@@ -457,7 +461,7 @@ export const Refrence = () => {
 
         
 
-        <div className="flex flex-row my-2 mx-2">
+        <div className="flex flex-row my-2 mx-2 flex-wrap">
         <p className="mt-8 mx-4">
           {" "}
           Sign here to ensure that every information you provide is correct{" "}
@@ -468,9 +472,9 @@ export const Refrence = () => {
         </div>
 
 
-        <div className="flex flex-col my-10">
+        <div className="flex flex-col my-10 lg:p-8 md:p-8 sm:p-2">
           <h3 className="my-8 text-2xl "> Needed documents </h3>
-          <div className="flex flex-row">
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> photo</label>
             <FormInput
               name="photo"
@@ -479,11 +483,11 @@ export const Refrence = () => {
             />
           </div>
 
-          <div className="flex flex-row ">
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 px-4 w-1/2"> national ID </label>
             <FormInput name="national_id" type="file" />
           </div>
-          <div className="flex flex-row">
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> citizenship certificate</label>
             <FormInput
               name="citizenship_cert"
@@ -491,30 +495,30 @@ export const Refrence = () => {
               accept="image/png, image/jpeg , image/jpg"
             />
           </div>
-          <div className="flex flex-row">
+          <div className="lg:flex md:flex sm:block flex-row my-4" >
             <label className="mx-2 mt-2 w-1/2">accomidation ID</label>
             <FormInput name="accomodation_id" type="file" />
           </div>
-          <div className="flex flex-row">
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> university degree</label>
             <FormInput name="uni_degree" type="file" />
           </div>
-          <div className="flex flex-row">
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> medical test </label>
             <FormInput name="medical" type="file" />
           </div>
-          <div className="flex flex-row">
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> no criminal record </label>
             <FormInput name="no_crim_req" type="file" />
           </div>
-          <div className="flex flex-row">
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2">
               {" "}
               letter of recommendation 1
             </label>
             <FormInput name="letter_rec_1" type="file" />
           </div>
-          <div className="flex flex-row">
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2">
               {" "}
               letter of recommendation 2

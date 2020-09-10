@@ -50,6 +50,7 @@ export default function Jobs(vacancy) {
     (vacancy = "anything"),
     (
       <div className="max-w-full flex flex-row flex-wrap  justify-center ">
+        
         {jobState.map((item, index) => {
           return (
             <div

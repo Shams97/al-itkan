@@ -13,12 +13,12 @@ export const Technical_skills = () => {
   const [state, setState] = useContext(Context)
   
   return (
-    <div className="w-5/6 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
+    <div className="lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
       <h3 className="my-8 text-2xl"> Technical Skills</h3>
       <div className="flex  flex-col">
         <p className="my-4"> write down what you good at and how much </p>
 
-        <div className="flex flex-row ml-4 flex-wrap">
+        <div className="flex flex-row ml-4 my-4 flex-wrap">
           <FormInput placeholder="your technical skills" name="skill_0_Desc"/>
           <div className="flex flex-row jusitfy-between mx-auto mt-4">
             <Radio name="skill_0_level" ops={['Not Familiar', 'Beginner', 'Intermediate',
@@ -26,7 +26,7 @@ export const Technical_skills = () => {
           </div>
         </div>
 
-        <div className="flex flex-row ml-4 flex-wrap">
+        <div className="flex flex-row ml-4 my-4 flex-wrap">
           <FormInput placeholder="your technical skills" name="skill_1_Desc"/>
           <div className="flex flex-row jusitfy-between mx-auto mt-4">
             <Radio name="skill_1_level" ops={['Not Familiar', 'Beginner', 'Intermediate',
@@ -37,7 +37,7 @@ export const Technical_skills = () => {
         {show.map((input, index) => {
          let n = index + 2;
           return (
-            <div className="flex flex-row ml-4 flex-wrap" key={index}>
+            <div className="flex flex-row ml-4 my-4 flex-wrap" key={index}>
               <FormInput placeholder="your technical skills" name={"skill_"+ n +"_Desc"}/>
               <div className="flex flex-row jusitfy-between mx-auto mt-4">
                 <Radio name={"skill_"+ n +"_level"} ops={['Not Familiar', 'Beginner', 'Intermediate',
@@ -95,7 +95,7 @@ export const Technical_skills = () => {
 export default function Admin_Skills() {
 
   return (
-    <div className="mx-auto mt-10 p-8">
+    <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4">
       <h3 className="my-8 text-2xl">Adminstration skills</h3>
       <div className="flex  flex-col m-2">
 
@@ -153,7 +153,7 @@ export default function Admin_Skills() {
 export const Sales_Skills = () => {
   
   return (
-      <div className="mx-auto mt-10 p-8" >
+      <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4" >
         <h3 className="my-8 text-2xl">Sales Skills</h3>
         <div className="flex  flex-col m-2">
 
@@ -214,7 +214,7 @@ export const Training = () => {
   const [state, setState] = useContext(Context)
 
   return (
-      <div className="mx-auto mt-10 p-8 ">
+      <div className="mx-auto my-10 lg:p-8 md:p-8 sm:p-4">
         <h3 className="my-8 text-2xl"> Training and Certification </h3>
        
         <div className="flex flex-col my-4">
@@ -275,9 +275,9 @@ export const Training = () => {
 const OptionField = ({name, logic_name}) => {
   logic_name = logic_name == undefined ? name.toLowerCase().split(' ').join('_') : logic_name
   return (
-    <div className="flex flex-row flex-wrap justify-between">
-      <p className="text-center mt-4 w-2/5">{name}</p>
-      <div className="flex flex-row jusitfy-between mx-auto my-4 w-3/5">
+    <div className="flex lg:flex-row md:flex-row sm:flex-col  flex-wrap justify-between">
+      <p className="text-center text-lg   lg:mt-4 md:mt-4 lg:w-2/5 md:w-2/5  sm:w-full  sm:my-10 ">{name}</p>
+      <div className="flex flex-row jusitfy-between mx-auto my-4 lg:w-3/5 md:w-3/5 sm:w-full ">
         <Radio name={logic_name}
         ops={['Not Familiar', 'Beginner', 'Intermediate',
         'Advanced', 'Expert']}/>
