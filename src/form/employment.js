@@ -49,7 +49,7 @@ export default function Employment() {
         </div>
         {/*SALARY */}
         <div className="flex flex-row justify-around mb-4 flex-wrap">
-          <span className="text-center mt-4 text-lg px-4">Salary </span>
+          <span className="text-center mt-6 text-lg px-4">Salary </span>
           <div className="flex flex-row lg:ml-20 md:ml-10 sm:ml-2 my-4 flex-wrap">
             <span className=" mx-4 mt-5">start</span>
             <FormInput name="starting_slry" type="number" />
@@ -111,7 +111,7 @@ export default function Employment() {
 
             {/*SALARY 22 */}
             <div className="flex flex-row justify-around mb-4 flex-wrap">
-            <span className="text-center mt-4 text-lg px-4">Salary </span>
+            <span className="text-center mt-6 text-lg px-4">Salary </span>
             <div className="flex flex-row  lg:ml-20 md:ml-10 sm:ml-2  my-4 flex-wrap">
               <span className="mx-4 mt-5">start</span>
               <FormInput name={"starting_slry_" + n} type="number"/>
@@ -192,7 +192,7 @@ export const Additional_info = () => {
             htmlFor="union_member"
             label_value="Are you a member of the Iraqi engineers union?"
           />
-          <div className="flex flex-row flex-wrap mx-auto">
+          <div className="flex flex-row flex-wrap ">
             <span className="text-sm mx-4 mt-5"> date </span>
 
             <FormInput  name="from_date" type="date" />

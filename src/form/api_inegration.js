@@ -13,9 +13,7 @@ export default function Api_inegration() {
       headers: {
         "Content-Type": "application/json",
       },
-
     }).then((response) => {
-      //  res = onSubmit
       console.log("response =", response);
     })
   }    

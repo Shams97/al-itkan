@@ -17,6 +17,7 @@ import Employment_history from "./form/employment";
 import { Additional_info } from "./form/employment";
 import { Refrence } from "./form/employment";
 import { Submited } from "./form/employment";
+import {job_id} from './jobs';
 import Jobs from "./jobs";
 
 function App() {
@@ -54,37 +55,17 @@ function App() {
 
 export default App;
 
-// steps indecator
-// const Dot = ({ value }) => {
-//   return (
-//     <div className="rounded-full w-25 justify-center bg-gray-500 ">{value}</div>
-//   );
-// };
 
-// Here when default input goes
-// export const FormInput = ({ placeholder, name, value, type, onChange }) => {
-//   return (
-//     <input
-//       type={type}
-//       placeholder={placeholder}
-//       name={name}
-//       className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2"
-//       onChange={onChange}
-
-//     />
-//   );
-// };
-
-export const FormInput = ({ placeholder, name, type, textarea }) => {
-  // state.data
+export const FormInput = ({ placeholder, name, type, textarea,onFocus }) => {
   const [state, setState] = useContext(Context);
   const [val, setVal] = useState("");
-  // const [fil, setFile] =useState(null) 
-
+  const [job, setjob ] = useContext(Context);
   
   useEffect(() => {
       if(state['data'][name])
        setVal(state['data'][name])
+
+    
   }, []);
 
   const handleChange = (e) => {
@@ -98,7 +79,7 @@ export const FormInput = ({ placeholder, name, type, textarea }) => {
          
           state["files"][name] = b64;
           state['files']['original_'+name] =file 
-        
+
         };
         reader.readAsDataURL(file);
       }
@@ -106,9 +87,22 @@ export const FormInput = ({ placeholder, name, type, textarea }) => {
       let value = e.target.value;
       state["data"][name] = type=="number"? Number(value) :value ;
       setVal(value);
+
+
+
+
+
     }
     setState(state);
-    console.log("state = =", state);
+    // console.log("state = =", state);
+    job['data']['job_id']=Number(job_id)
+
+
+
+    setjob(job)
+
+
+   console.log("job id ==", job_id , "state == ", state)
   };
 
   if (!!textarea) {
@@ -129,6 +123,7 @@ export const FormInput = ({ placeholder, name, type, textarea }) => {
         placeholder={placeholder}
         name={name}
         onChange={handleChange}
+        onFocus={onFocus}
         className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2 font-serif"
         value={ type=='file' ? undefined : val}
       />
@@ -148,7 +143,3 @@ export const Button = ({ onClick, value }) => {
   );
 };
 
-// Here when the down arrow for see more goes
-export const SeeMore = () => {
-  return <button>see more </button>;
-};
