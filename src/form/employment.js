@@ -1,10 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FormInput, Button } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
+const axios = require("axios");
+
+// let Global_ref ;
 
 export default function Employment() {
   const [state, setState] = useContext(Context);
@@ -24,7 +27,6 @@ export default function Employment() {
         </div>
       </div>
 
-
       <div className="flex flex-col flex-wrap m-2 lg:px-16 md:px-16 sm:px-4">
         <FormInput placeholder="employer name" name="employer_name" />
         <FormInput placeholder="job title" name="job_title" />
@@ -32,9 +34,13 @@ export default function Employment() {
         <FormInput placeholder="employer province" name="employer_province" />
 
         {/* EMPLOYEMENT DATE */}
-        <div className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap 
- sm:flex-wrap">
-          <span className="text-center lg:mt-6 md:mt-6 sm:mt-16 lg:text-lg md:text-lg sm:text-base">Date of employment </span>
+        <div
+          className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap 
+ sm:flex-wrap"
+        >
+          <span className="text-center lg:mt-6 md:mt-6 sm:mt-16 lg:text-lg md:text-lg sm:text-base">
+            Date of employment{" "}
+          </span>
           <div className="lg:flex md:flex flex-row  sm:block my-2 flex-wrap">
             <span className="text-sm mx-4 mt-5">from</span>
             <FormInput placeholder="from" name="from_date" type="date" />
@@ -72,7 +78,10 @@ export default function Employment() {
       {show.map((input, index) => {
         let n = index;
         return (
-          <div className="flex flex-col flex-wrap mx-2 lg:px-16 md:px-16 sm:px-4 my-10" key={index}>
+          <div
+            className="flex flex-col flex-wrap mx-2 lg:px-16 md:px-16 sm:px-4 my-10"
+            key={index}
+          >
             <FormInput
               placeholder="employer Name"
               name={"employer_name_" + n}
@@ -88,37 +97,40 @@ export default function Employment() {
             />
 
             {/* EMPLOYEMENT DATE 22 */}
-         <div className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap 
- sm:flex-wrap">
-          <span className="text-center lg:mt-6 md:mt-6 sm:mt-16 lg:text-lg md:text-lg sm:text-base">Date of employment </span>
-          <div className="lg:flex md:flex flex-row  sm:block  my-2 flex-wrap">
-              <span className="text-sm mx-4 mt-5">from</span>
-              <FormInput
-                placeholder="from"
-                name={"from_date_" + n}
-                type="date"
-              />
-              <span className="text-sm mx-4 mt-5">to</span>
-              <FormInput
-                placeholder="to"
-                name={"to_date_" + n}
-                type="date"
-                className="placeholder:none"
-              />
+            <div
+              className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap 
+ sm:flex-wrap"
+            >
+              <span className="text-center lg:mt-6 md:mt-6 sm:mt-16 lg:text-lg md:text-lg sm:text-base">
+                Date of employment{" "}
+              </span>
+              <div className="lg:flex md:flex flex-row  sm:block  my-2 flex-wrap">
+                <span className="text-sm mx-4 mt-5">from</span>
+                <FormInput
+                  placeholder="from"
+                  name={"from_date_" + n}
+                  type="date"
+                />
+                <span className="text-sm mx-4 mt-5">to</span>
+                <FormInput
+                  placeholder="to"
+                  name={"to_date_" + n}
+                  type="date"
+                  className="placeholder:none"
+                />
+              </div>
             </div>
-          </div>
-
 
             {/*SALARY 22 */}
             <div className="flex flex-row justify-around mb-4 flex-wrap">
-            <span className="text-center mt-6 text-lg px-4">Salary </span>
-            <div className="flex flex-row  lg:ml-20 md:ml-10 sm:ml-2  my-4 flex-wrap">
-              <span className="mx-4 mt-5">start</span>
-              <FormInput name={"starting_slry_" + n} type="number"/>
-              <span className="mx-4 mt-5">end</span>
-              <FormInput name={"ending_slry_" + n} type="number"/>
+              <span className="text-center mt-6 text-lg px-4">Salary </span>
+              <div className="flex flex-row  lg:ml-20 md:ml-10 sm:ml-2  my-4 flex-wrap">
+                <span className="mx-4 mt-5">start</span>
+                <FormInput name={"starting_slry_" + n} type="number" />
+                <span className="mx-4 mt-5">end</span>
+                <FormInput name={"ending_slry_" + n} type="number" />
+              </div>
             </div>
-</div>
 
             <FormInput placeholder="supervisor" name={"supervisor_" + n} />
             <FormInput
@@ -195,7 +207,7 @@ export const Additional_info = () => {
           <div className="flex flex-row flex-wrap ">
             <span className="text-sm mx-4 mt-5"> date </span>
 
-            <FormInput  name="from_date" type="date" />
+            <FormInput name="from_date" type="date" />
           </div>
         </div>
 
@@ -205,7 +217,9 @@ export const Additional_info = () => {
             label_value="Do you have a valid drivers license?"
           />
           <div className="flex flex-row  flex-wrap">
-            <span className="text-sm mx-4 lg:mt-8 md:mt-8 sm:mt-2 ">if yes since when ?</span>
+            <span className="text-sm mx-4 lg:mt-8 md:mt-8 sm:mt-2 ">
+              if yes since when ?
+            </span>
             <FormInput name="driver_license_date" type="date" />
           </div>
         </div>
@@ -236,28 +250,31 @@ export const Additional_info = () => {
         </div>
 
         <div className="flex flex-row justify-between flex-wrap ">
-        <Options
-          label_value="Do you plan to complete studies, currently or in the future?"
-          htmlFor="planning_to_study"
-        />
-        <Options
-          label_value="Are you currently employed?"
-          htmlFor="presently_employed"
-        />
+          <Options
+            label_value="Do you plan to complete studies, currently or in the future?"
+            htmlFor="planning_to_study"
+          />
+          <Options
+            label_value="Are you currently employed?"
+            htmlFor="presently_employed"
+          />
         </div>
         <Options
           label_value="Can we contact your past employers?"
           htmlFor="contact_employer"
         />
 
-
         {/* Additional skills  */}
         <div className="mt-10">
-          <p className="text-center text-xl my-8 ">Add more additional skills</p>
-      
-      <div className="flex flex-col justify-center ">
-            <div className="lg:flex md:flex sm:block flex-row flex-wrap my-4">
-              <span className="mx-4 mt-5 w-1/2 text-left">Team Work Skills</span>
+          <p className="text-center text-xl my-8 ">
+            Add more additional skills
+          </p>
+
+          <div className="flex flex-row justify-center ">
+            <div className="lg:flex md:flex sm:block flex-col flex-wrap my-4">
+              <span className="mx-4 mt-5 w-1/2 text-left">
+                Team Work Skills
+              </span>
               <Selector
                 name="team_work"
                 ops={[
@@ -270,12 +287,10 @@ export const Additional_info = () => {
                   "Very Poor",
                 ]}
                 className="w-1/2"
-
               />
             </div>
 
-
-            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
+            <div className="lg:flex md:flex sm:block  flex-col my-4 flex-wrap ">
               <span className="mx-4 mt-5 lg:w-1/2 md:w-1/2 sm:w-full text-left ">
                 Work Under Pressure Skills
               </span>
@@ -291,11 +306,10 @@ export const Additional_info = () => {
                   "Very Poor",
                 ]}
                 className="lg:w-1/2 md:w-1/2 sm:w-full"
-
               />
             </div>
 
-            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
+            <div className="lg:flex md:flex sm:block  flex-col my-4 flex-wrap ">
               <span className=" mx-4 mt-5 w-1/2 text-left">
                 Are you Willing To Travel Outshore ?
               </span>
@@ -310,14 +324,10 @@ export const Additional_info = () => {
                   "Poor",
                   "Very Poor",
                 ]}
-  className="w-1/2"
+                className="w-1/2"
               />
             </div>
-
-
-</div>
-
-
+          </div>
 
           <div className="flex flex-row my-10 justify-around flex-wrap">
             <p className="mt-4"> How did you refrral to us ? </p>
@@ -326,38 +336,31 @@ export const Additional_info = () => {
               name="referral_source"
               classes="text-sm text-gray-600 lg:w-1/4 md:w-1/4 sm:w-full"
               ops={["Walk-in", "Employee", "FaceBook", "Linked-In"]}
-            
             />
 
             <FormInput placeholder="other" name="other_referral_source" />
           </div>
 
-
-<div className="lg:flex md:flex flex-row sm:block mt-20 ">
-          <div className="flex flex-col lg:w-1/2 md:w-1/2 sm:w-full">
-            <p> choose your Prefered field of work </p>
-            <div className="flex flex-row  justify-center mt-2 mb-4">
-              <Radio
-                name="preffered_fow"
-                ops={["Technical", "Sales", "Administration"]}
-              />
-
+          <div className="lg:flex md:flex flex-row sm:block mt-20 ">
+            <div className="flex flex-col lg:w-1/2 md:w-1/2 sm:w-full">
+              <p> choose your Prefered field of work </p>
+              <div className="flex flex-row  justify-center mt-2 mb-4">
+                <Radio
+                  name="preffered_fow"
+                  ops={["Technical", "Sales", "Administration"]}
+                />
+              </div>
             </div>
-</div>
 
-
-
-          <div className="flex flex-col   lg:w-1/2 md:w-1/2 sm:w-full">
-            <p> Prefered Contract Preiod </p>
-            <div className="flex flex-row  justify-center mt-2 mb-4">
-              <Radio
-                name="preferred_cp"
-                ops={["3 Years", "5 Years", "10 Years"]}
-              />
+            <div className="flex flex-col   lg:w-1/2 md:w-1/2 sm:w-full">
+              <p> Prefered Contract Preiod </p>
+              <div className="flex flex-row  justify-center mt-2 mb-4">
+                <Radio
+                  name="preferred_cp"
+                  ops={["3 Years", "5 Years", "10 Years"]}
+                />
+              </div>
             </div>
-         
-         </div>
-        
           </div>
         </div>
       </div>
@@ -369,18 +372,26 @@ export const Refrence = () => {
   const [state, setState] = useContext(Context);
   const [hide, setHide] = useState(false);
   const [hider, setHider] = useState(false);
+  const [globel_ref, setRef] = useState("");
 
-  // const [image, setImage] = useState();
+  // useEffect(()=>{
 
-  let handleSubmit = (e) => {
-    fetch("http://localhost:5000/api", {
-      method: "POST",
-      body: JSON.stringify(state),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((response) => {
-      console.log("response =", response);
+  //   axios.post("http://localhost:5000/api", state)
+  //   .then(
+  //     (res) =>
+  //     {
+  //       let reference  = res.data
+  //       setRef(reference)
+  //       console.log("response ", res, globel_ref  )
+  //     })
+  // },[])
+
+  let handleSubmit = () => {
+    axios.post("http://localhost:5000/api", state).then((res) => {
+      let reference = res.data;
+      state["key"] = reference;
+
+      console.log("response key ====", state.key);
     });
   };
 
@@ -411,6 +422,7 @@ export const Refrence = () => {
           {!hide ? (
             <Operations onClick={() => setHide(true)} operation="+" />
           ) : null}
+
           {hide ? (
             <Operations
               onClick={() => {
@@ -459,18 +471,15 @@ export const Refrence = () => {
           ) : null}
         </div>
 
-        
-
         <div className="flex flex-row my-2 mx-2 flex-wrap">
-        <p className="mt-8 mx-4">
-          {" "}
-          Sign here to ensure that every information you provide is correct{" "}
-        </p>
+          <p className="mt-8 mx-4">
+            {" "}
+            Sign here to ensure that every information you provide is correct{" "}
+          </p>
           <FormInput placeholder="your signature" name="signature" />
           <span className="text-sm mx-4 mt-5">date</span>
           <FormInput name="sig_date" type="date" />
         </div>
-
 
         <div className="flex flex-col my-10 lg:p-8 md:p-8 sm:p-2">
           <h3 className="my-8 text-2xl "> Needed documents </h3>
@@ -495,7 +504,7 @@ export const Refrence = () => {
               accept="image/png, image/jpeg , image/jpg"
             />
           </div>
-          <div className="lg:flex md:flex sm:block flex-row my-4" >
+          <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2">accomidation ID</label>
             <FormInput name="accomodation_id" type="file" />
           </div>
@@ -532,7 +541,7 @@ export const Refrence = () => {
         <Link to="/technical">
           <Button value="Previous" />
         </Link>
-        <Link to="/submited">
+        <Link to={{ pathname: `/submited` }}>
           <Button onClick={handleSubmit} value="Submit" />
         </Link>
       </div>
@@ -550,13 +559,29 @@ const Options = ({ htmlFor, label_value }) => {
     </div>
   );
 };
+
 export const Submited = () => {
+  const [ref, setRef] = useState(0);
+  const [state, setState] = useContext(Context);
+
+  useEffect(() => {
+    setTimeout(() => {
+    console.log("key ===", state['key'])
+      if (state['key']) {
+        setRef( state['key']);
+        console.log("key ==", state.key, "refrence ", ref);
+      }
+    }, 6000);
+  }, []);
+
+
   return (
-    <div className=" max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
+    <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
       <p className="text-center text-2xl mb-8">
         Thank you for your patient, Your application has been submitted
         successfully{" "}
       </p>
+      <p className="text-base">To follow up with your application, you can use this reference <span className="text-red-400">{ref}</span></p>
       <br />
       <span>for more information, please visit our website </span>
       <br />

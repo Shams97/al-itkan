@@ -39,26 +39,24 @@ export default function PersonalDetails() {
 
   const  _onFocus =(e)=>{
     e.target.type="date";
-    // e.target.name="birth dateeeee"
   }
 
-  // {props.vacancy}
   return (
       <div className="  lg:w-3/4 md:w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
         <h3 className="my-8 text-2xl font-serif"> Personal Details </h3>
         <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col  justify-between mx-auto ">
           
           <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full">
-            <FormInput placeholder="first name" name="full_name" type="text" />
-            {/* <FormInput placeholder=" name" name="name" type="text"  /> */}
+            {/* <FormInput placeholder="first name" name="full_name" type="text" value="dfghfd" /> */}
+            <FormInput placeholder="full name" name="name" type="text"  />
             <FormInput placeholder="sur name" name="surname" type="text" />
             <FormInput placeholder="email" name="email_from" type="text" />
-            <FormInput placeholder="skype id " name="skype_id" type="text"/>
+            <FormInput placeholder="skype id " name="skype_id" type="text" />
 
             <FormInput
               placeholder="phone number"
               name="partner_phone"
-              type="number"
+              type="text"
             />
 
             <FormInput placeholder="address" name="address" type="text" />

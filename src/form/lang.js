@@ -102,18 +102,18 @@ const LangaugeSection = ({name, logic_name}) => {
       <label htmlFor="arabic" className="mt-4">Read</label>
       <Selector name={logic_name + "_r"} classes="text-sm text-gray-600"
       ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]} label="speak"/>
+      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
 
       <label htmlFor="arabic" className="mt-4"> Write</label>
       <Selector name={logic_name + "_w"} classes="text-sm text-gray-600"
       ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]} label="speak"/>
+      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]} />
 
       <label htmlFor="arabic" className="mt-4"> Speak</label>
       {/* <option value ="" selected>speak</option> */}
       <Selector name={logic_name + "_s"} classes="text-sm text-gray-600"
       ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]} label="speak"/>
+      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]} />
 
       <label htmlFor="arabic" className="mt-4"> Understand</label>
       <Selector name={logic_name + "_u"} classes="text-sm text-gray-600"

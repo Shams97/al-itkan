@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import { Context } from "../store"
 
-export default function Radio ({name, ops, classes, values, label}) {
+export default function Radio ({name, ops, classes, values, placeholder}) {
   const [state,setState] = useContext(Context)
   const [val, setVal] = useState("");
 
@@ -31,7 +31,7 @@ export default function Radio ({name, ops, classes, values, label}) {
 
   return (
     <select onChange={handleChange} value={val}
-    className={"border-b-2 border-black-400 focus:border-blue-500 outline-none font-serif bg-none " + (!!classes ? classes: "")} placeholder="from">
+    className={"border-b-2 border-black-400 focus:border-blue-500 outline-none font-serif bg-none " + (!!classes ? classes: "")} placeholder={placeholder}>
       {ops.map((op, index) => {
         let formated_op = op.toLowerCase().split(' ').join('_')
         return (

@@ -87,22 +87,10 @@ export const FormInput = ({ placeholder, name, type, textarea,onFocus }) => {
       let value = e.target.value;
       state["data"][name] = type=="number"? Number(value) :value ;
       setVal(value);
-
-
-
-
-
     }
     setState(state);
-    // console.log("state = =", state);
-    job['data']['job_id']=Number(job_id)
 
 
-
-    setjob(job)
-
-
-   console.log("job id ==", job_id , "state == ", state)
   };
 
   if (!!textarea) {

@@ -3,9 +3,9 @@ import React, { useState } from "react";
 const initalState = {
   name: "",
   email: "",
-  // value:"valuesss",
   data: {},
   files: {},
+  key:0
 };
 
 export const Context = React.createContext();

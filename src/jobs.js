@@ -30,10 +30,11 @@ export default function Jobs({vacancy,handleClick}) {
       let result = response.data
       result.map((item) => {
          jobState.push(item);
-        console.log(item)
       });
 
       setjobs((res) => [...res]);
+      console.log(jobState)
+
     }
 
     fetchData();
