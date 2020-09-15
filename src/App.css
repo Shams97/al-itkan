@@ -2,8 +2,9 @@
   text-align: center;
   
 }
-p, span , h2 ,h3,label {
-  font-family: 'Times New Roman', Times, serif;
+input:placeholder-shown {font-family: 'Montserrat','Poppins',sans-serif;}
+p, span , h2 ,h3,label,:placeholder-shown {
+  font-family:  'Montserrat', 'Poppins',sans-serif;
 }
 .App-logo {
   height: 40vmin;

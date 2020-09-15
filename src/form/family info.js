@@ -12,11 +12,11 @@ export default function FamilyInfo() {
 
   return (
       <div className="mx-auto my-12 lg:p-8 md:p-8 sm:p-4">
-          <h3 className="my-8 text-2xl font-serif" > Family information </h3>
+          <h3 className="my-8 text-2xl " > Family information </h3>
           <div className="flex  flex-col m-2">
             <FormInput placeholder="Father's profession " name="father_profession" />
             <FormInput placeholder="Mother's professtion" name="mother_profession" />
-            <p className="text-center my-2 font-serif">Do you have any sisters or brothers ?</p>
+            <p className="text-center my-2 ">Do you have any sisters or brothers ?</p>
             <FormInput
               placeholder="Brother/sister first name "
               name="first_name"
@@ -42,7 +42,7 @@ export default function FamilyInfo() {
             })}
 
             <div className="flex justify-around flex-row mt-4">
-              <span className=" font-serif text-red-400">Add more brothers and sisters </span>
+              <span className="  text-red-400">Add more brothers and sisters </span>
           <Operations  onClick={() => {setShow([...show, {}]); setHide(true) }} operation="+" />
 
             { hide ?

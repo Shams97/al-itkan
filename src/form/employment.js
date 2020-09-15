@@ -540,11 +540,8 @@ export const Refrence = () => {
         <Link to="/technical">
           <Button value="Previous" />
         </Link>
-        {/* {handleSubmit ? 
-        <p>handle submit is wroking {state['key']} </p>
-      :<p>whart the hell im doing</p>} */}
-
-        <Link to={{ pathname: `/submited/key=${state['key']}` }}>
+      
+        <Link to={{ pathname: `/submited` }}>
           <Button onClick={handleSubmit} value="Submit" />
         </Link>
       </div>
@@ -577,7 +574,7 @@ export const Submited = () => {
         setRef( state['key']);
         console.log("key ==", state.key, "refrence ", ref);
       }
-      else return <p> Something went wrong  </p>
+      
     }, 3000);
  
   }, []);
@@ -589,7 +586,10 @@ export const Submited = () => {
         Thank you for your patient, Your application has been submitted
         successfully{" "}
       </p>
-      <p className="text-base">To follow up with your application, you can use this reference <span className="text-red-400">{ref}</span></p>
+      <p className="text-base mx-4">To follow up with your application, you can use this reference 
+     {ref? <span className="text-red-400 mx-2">{ref}</span>
+     :<span className="mx-2">Still loading .. </span>}
+      </p>
       <br />
       <span>for more information, please visit our website </span>
       <br />

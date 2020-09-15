@@ -16,10 +16,12 @@ import { Refrence } from "./form/employment";
 import { Submited } from "./form/employment";
 import Check from './check';
 import Jobs from "./jobs";
+import Header from './'
 
 function App() {
   return (
     <div className="App">
+
       {/* Itkan main nav bar goes here  */}
       <Store>
         <Router>
@@ -27,7 +29,7 @@ function App() {
             <Route exact path="/" component={Jobs} />
             <Route path="/personal" component={PersonalDetails } />           
             <Route path="/education" component={Education} />
-<Route path="/check" component={Check}/>
+            <Route path="/check" component={Check}/>
             <Route path="/technical" component={Technical_skills} />
             <Route path="/admin_skills" component={Admin_Skills} />
             <Route path="/sales_skills" component={Sales_Skills} />
@@ -91,7 +93,7 @@ export const FormInput = ({ placeholder, name, type, textarea,onFocus }) => {
         placeholder={placeholder}
         name={name}
         onChange={handleChange}
-        className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2 font-serif"
+        className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2 "
         value={val}
       />
     );
@@ -103,7 +105,7 @@ export const FormInput = ({ placeholder, name, type, textarea,onFocus }) => {
         name={name}
         onChange={handleChange}
         onFocus={onFocus}
-        className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2 font-serif"
+        className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2 "
         value={ type=='file' ? undefined : val}
       />
     );
@@ -115,7 +117,7 @@ export const Button = ({ onClick, value }) => {
   return (
     <button
       onClick={onClick}
-      className="text-red-500 hover:bg-orange-500 hover:text-white focus:bg-orange-500 py-2 px-4 rounded font-serif"
+      className="text-red-500 hover:bg-orange-500 hover:text-white focus:bg-orange-500 py-2 px-4 rounded "
     >
       {value}
     </button>
