@@ -5,9 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Store, { Context } from "./store";
 
 import PersonalDetails from "./form/personal details";
-import FamilyInfo from "./form/family info";
-import Health from "./form/health";
-import Language from "./form/lang";
 import Education from "./form/education";
 import Admin_Skills from "./form/skills";
 import { Technical_skills } from "./form/skills";
@@ -17,7 +14,7 @@ import Employment_history from "./form/employment";
 import { Additional_info } from "./form/employment";
 import { Refrence } from "./form/employment";
 import { Submited } from "./form/employment";
-import {job_id} from './jobs';
+import Check from './check';
 import Jobs from "./jobs";
 
 function App() {
@@ -28,15 +25,9 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Jobs} />
-            <Route path="/personal" component={PersonalDetails } />
-
-            {/* <Route path="/family" component={FamilyInfo} /> */}
-            {/* <Route path="/health" component={Health} /> */}
-            {/* <Route path="/language" component={Language} /> */}
-           
-           
+            <Route path="/personal" component={PersonalDetails } />           
             <Route path="/education" component={Education} />
-
+<Route path="/check" component={Check}/>
             <Route path="/technical" component={Technical_skills} />
             <Route path="/admin_skills" component={Admin_Skills} />
             <Route path="/sales_skills" component={Sales_Skills} />

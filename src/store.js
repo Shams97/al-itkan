@@ -5,7 +5,8 @@ const initalState = {
   email: "",
   data: {},
   files: {},
-  key:0
+  key:0,
+  ref:{}
 };
 
 export const Context = React.createContext();

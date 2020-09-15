@@ -386,11 +386,10 @@ export const Refrence = () => {
   //     })
   // },[])
 
-  let handleSubmit = () => {
-    axios.post("http://localhost:5000/api", state).then((res) => {
+  let handleSubmit = async() => {
+   await axios.post("http://localhost:5000/api", state).then((res) => {
       let reference = res.data;
       state["key"] = reference;
-
       console.log("response key ====", state.key);
     });
   };
@@ -541,7 +540,11 @@ export const Refrence = () => {
         <Link to="/technical">
           <Button value="Previous" />
         </Link>
-        <Link to={{ pathname: `/submited` }}>
+        {/* {handleSubmit ? 
+        <p>handle submit is wroking {state['key']} </p>
+      :<p>whart the hell im doing</p>} */}
+
+        <Link to={{ pathname: `/submited/key=${state['key']}` }}>
           <Button onClick={handleSubmit} value="Submit" />
         </Link>
       </div>
@@ -565,13 +568,18 @@ export const Submited = () => {
   const [state, setState] = useContext(Context);
 
   useEffect(() => {
+    // for(let i=0; i<2; i++)
     setTimeout(() => {
     console.log("key ===", state['key'])
+     
+    
       if (state['key']) {
         setRef( state['key']);
         console.log("key ==", state.key, "refrence ", ref);
       }
-    }, 6000);
+      else return <p> Something went wrong  </p>
+    }, 3000);
+ 
   }, []);
 
 
