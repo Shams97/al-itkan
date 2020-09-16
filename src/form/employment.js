@@ -376,24 +376,21 @@ export const Refrence = () => {
   const [hider, setHider] = useState(false);
   
   let handleSubmit = async() => {
+    let end = new Date();
+    let final;
+   if(state['data'])
+    {     
+        final = (end.getHours() - start.getHours() ) +":"+ (end.getMinutes() - start.getMinutes());  
+        state['data']['filling_time'] = final; 
+
+          console.log("final timer =",final )
+    }
+
    await axios.post("http://localhost:5000/api", state).then((res) => {
       let reference = res.data;
-      state["key"] = reference;
+      state["key"]  = reference;
       console.log("response key ====", state.key);
-    
-
-
-      let end = new Date();
-
-     let end_in_hours = {"hours":end.getHours()  , "minutes":end.getMinutes()}
-      if(state['data'])
-        console.log("start in submittion ==", start_in_hours  , end_in_hours)
-
-       let final = (end.getHours() - start.getHours() ) +":"+ (end.getMinutes() - start.getMinutes());  
-       state['data']['filling_time'] = final; 
   
-        console.log("final timer =",final )
-
          setState(state)
          console.log("filling state", state)
          });
