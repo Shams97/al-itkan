@@ -384,14 +384,15 @@ export const Refrence = () => {
 
 
       let end = new Date();
+
      let end_in_hours = {"hours":end.getHours()  , "minutes":end.getMinutes()}
       if(state['data'])
-       console.log("start in submittion ==", start_in_hours  , end_in_hours)
+        console.log("start in submittion ==", start_in_hours  , end_in_hours)
 
-       let final ={"hours":(end_in_hours.hours - start_in_hours.hours),"minutes":(end_in_hours.minutes - start_in_hours.minutes) }
+       let final = (end.getHours() - start.getHours() ) +":"+ (end.getMinutes() - start.getMinutes());  
        state['data']['filling_time'] = final; 
   
-        console.log("final timer =", state['data'] )
+        console.log("final timer =",final )
 
          setState(state)
          console.log("filling state", state)

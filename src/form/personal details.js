@@ -29,7 +29,7 @@ export default function PersonalDetails() {
      setState(state);
     //  console.log("job id====", job_id, state)
     
-     state['data']['filling_time'] = start_in_hours
+     state['data']['filling_time'] = start.toString()
      console.log("start ", state['data'] )
 
 
