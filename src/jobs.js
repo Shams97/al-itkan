@@ -51,27 +51,29 @@ export default function Jobs({ vacancy, handleClick }) {
 
   return (
     <>
-      <div className="mx-auto mt-10 px-4">
-        <p className="text-base font-sans">
+      <div className="flex flex-row justify-center mx-auto mt-10 px-4 ">
+        <p className="text-base px-4 mt-2 mt-2">
           {" "}
-          Already have an application ? 
-          <Link to="/check" className="text-blue-500 mx-2">
-            {" "}
-            check from here
-          </Link>
+          Already have an application ?
+          
         </p>
+        <button className="hover:bg-transparent focus:bg-transparent  bg-blue-500 hover:text-blue-700 active:text-blue-700 focus:text-blue-700 hover:font-semibold text-white py-2 px-4 border hover:border-blue-500  border-transparent rounded mb-4"> 
+          <Link to="/check" >
+            {" "}
+            check
+          </Link>
+          </button>
       </div>
       <div className="max-w-full flex flex-row flex-wrap  justify-center ">
         {jobState.length === 0 ? (
           <div className="my-4">
             <div className="p-8 mt-10 text-wrap rounded w-1/2 mx-auto">
-              <p className="text-center lg:text-2xl md:text-lg sm:text-base font-sans">
+              <p className="text-center lg:text-2xl md:text-lg sm:text-base ">
                 {" "}
-                Unfortunately there no job vacancy open
+                Unfortunately there is no job vacancy available
               </p>
-              <p className="text-base lg:text-base md:text-sm sm:text-xs font-sans">
-                please make sure that you follow us to know when the any job
-                opens
+              <p className="text-base lg:text-base md:text-sm sm:text-xs">
+                please make sure that you follow us to know when any job vacancy available 
               </p>
             </div>
             <img src={NotFound} className="w-1/2 h-1/2 mx-auto " />

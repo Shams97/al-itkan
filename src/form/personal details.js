@@ -8,7 +8,13 @@ import Radio from "./radio";
 import Selector from "./selection";
 import {Context} from '../store';
 
+export let start = new Date();
+  
+export let start_in_hours = {"hours":start.getHours()  , "minutes":start.getMinutes()}
+
+
 export default function PersonalDetails() {
+
 
   const [state, setState] = useContext(Context);
 
@@ -19,20 +25,14 @@ export default function PersonalDetails() {
     let index = url.search("job_id=")
     let job_id = url.slice(index + 7 , index + 9 )
 
-     // var url = new URL(url_string);
-    //  var job_id = url.search.get("job_id");
-     // let url = document.URL;
-     // let params = new URLSearchParams(url)
-     // let job_id= params.get("job_id")
-      // console.log("params == ", job_id)
-
-
-
-
      state['data']['job_id'] = Number(job_id)
      setState(state);
-     console.log("job id====", job_id, state)
+    //  console.log("job id====", job_id, state)
     
+     state['data']['filling_time'] = start_in_hours
+     console.log("start ", state['data'] )
+
+
   }
     
    },[])
@@ -40,6 +40,10 @@ export default function PersonalDetails() {
   const  _onFocus =(e)=>{
     e.target.type="date";
   }
+
+  // const start = (e)=>{
+  //      let start = e.documetn
+  // } 
 
   return (
       <div className="  lg:w-3/4 md:w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">

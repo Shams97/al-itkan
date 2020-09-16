@@ -31,12 +31,12 @@ export default function Radio ({name, ops, classes, values, placeholder}) {
 
   return (
     <select onChange={handleChange} value={val}
-    className={"border-b-2 border-black-400 focus:border-blue-500 outline-none font-serif bg-none " + (!!classes ? classes: "")} placeholder={placeholder}>
+    className={"border-b-2 border-black-400 focus:border-blue-500 outline-none  bg-none " + (!!classes ? classes: "")} placeholder={placeholder}>
       {ops.map((op, index) => {
         let formated_op = op.toLowerCase().split(' ').join('_')
         return (
           <option value={!!values ? values[index] : formated_op}
-          className="text-gray-600 font-serif" key={index}>
+          className="text-gray-600 " key={index}>
             {op}
           </option>
         )}

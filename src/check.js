@@ -38,14 +38,15 @@ export default function Check() {
           placeholder="Write down your reference number"
           name="check"
           onChange={handleChange}
-          className="pt-8 border-b-2 border-black-400 focus:border-blue-500  outline-none px-4 font-sans"
+          className="pt-8 border-b-2 border-black-400 focus:border-blue-500  outline-none px-4 "
         />
         <div className="px-4 my-4">
-          <Button onClick={handleCheck} value="Submit status" className="font-sans" />
+          <Button onClick={handleCheck} value="Check status" />
         </div>
+
         {/* the string that should be displayed here is returned from the post request */}
        
-       {check? <p className="font-sans">Your application status is  <span className="text-red-400">{check}</span></p>:null} 
+       {check?  <span className="text-red-400 my-8">{check}</span>:null} 
       </div>
     </>
   );

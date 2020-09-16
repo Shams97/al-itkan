@@ -6,7 +6,8 @@ const initalState = {
   data: {},
   files: {},
   key:0,
-  ref:{}
+  ref:{},
+  timer :{}
 };
 
 export const Context = React.createContext();

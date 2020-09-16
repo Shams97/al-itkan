@@ -5,9 +5,10 @@ import { Operations } from "./family info";
 import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
+import {start ,start_in_hours} from './personal details';
+
 const axios = require("axios");
 
-// let Global_ref ;
 
 export default function Employment() {
   const [state, setState] = useContext(Context);
@@ -16,10 +17,10 @@ export default function Employment() {
 
   return (
     <div className=" lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
-      <h3 className="my-8 text-2xl font-serif"> Employment history </h3>
+      <h3 className="my-8 text-2xl "> Employment history </h3>
 
       <div className="flex flex-row justify-center flex-wrap">
-        <p className="mt-2 text-center font-serif" name="contact_disclaimer">
+        <p className="mt-2 text-center " name="contact_disclaimer">
           Can we contact your previous employer(s) ? provide them here{" "}
         </p>
         <div className="flex flex-col m-2 jusitfy-between  mx-8  w-32">
@@ -98,8 +99,7 @@ export default function Employment() {
 
             {/* EMPLOYEMENT DATE 22 */}
             <div
-              className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap 
- sm:flex-wrap"
+              className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap sm:flex-wrap"
             >
               <span className="text-center lg:mt-6 md:mt-6 sm:mt-16 lg:text-lg md:text-lg sm:text-base">
                 Date of employment{" "}
@@ -149,7 +149,7 @@ export default function Employment() {
       })}
 
       <div className="flex  justify-around flex-row mt-4">
-        <span className="font-serif text-red-400 ">
+        <span className="text-red-400 ">
           Want to provide more than one employer ?{" "}
         </span>
 
@@ -368,30 +368,34 @@ export const Additional_info = () => {
   );
 };
 
+
+
 export const Refrence = () => {
   const [state, setState] = useContext(Context);
   const [hide, setHide] = useState(false);
   const [hider, setHider] = useState(false);
-  const [globel_ref, setRef] = useState("");
-
-  // useEffect(()=>{
-
-  //   axios.post("http://localhost:5000/api", state)
-  //   .then(
-  //     (res) =>
-  //     {
-  //       let reference  = res.data
-  //       setRef(reference)
-  //       console.log("response ", res, globel_ref  )
-  //     })
-  // },[])
-
+  
   let handleSubmit = async() => {
    await axios.post("http://localhost:5000/api", state).then((res) => {
       let reference = res.data;
       state["key"] = reference;
       console.log("response key ====", state.key);
-    });
+    
+
+
+      let end = new Date();
+     let end_in_hours = {"hours":end.getHours()  , "minutes":end.getMinutes()}
+      if(state['data'])
+       console.log("start in submittion ==", start_in_hours  , end_in_hours)
+
+       let final ={"hours":(end_in_hours.hours - start_in_hours.hours),"minutes":(end_in_hours.minutes - start_in_hours.minutes) }
+       state['data']['filling_time'] = final; 
+  
+        console.log("final timer =", state['data'] )
+
+         setState(state)
+         console.log("filling state", state)
+         });
   };
 
   return (
@@ -586,10 +590,8 @@ export const Submited = () => {
         Thank you for your patient, Your application has been submitted
         successfully{" "}
       </p>
-      <p className="text-base mx-4">To follow up with your application, you can use this reference 
      {ref? <span className="text-red-400 mx-2">{ref}</span>
-     :<span className="mx-2">Still loading .. </span>}
-      </p>
+     :<span className="mx-2">Reference still loading .. </span>}
       <br />
       <span>for more information, please visit our website </span>
       <br />

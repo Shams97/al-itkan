@@ -29,10 +29,10 @@ export default function Radio ({name, ops, mx}) {
         let formated_op = op.toLowerCase()
         return (
         <div className="ml-2 flex flex-row " key={index}>
-          <label className="text-gray-600 font-serif"> {op} </label>{" "}
+          <label className="text-gray-600 "> {op} </label>{" "}
           <input
             type="radio"
-            className="checked:bg-gray-900 checked:border-transparent ml-2 mt-2 text-gray-300 font-serif"
+            className="checked:bg-gray-900 checked:border-transparent ml-2 mt-2 text-gray-300 "
             onChange = {handleChange}
             checked={val===formated_op}
             value={formated_op}

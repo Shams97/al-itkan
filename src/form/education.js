@@ -14,7 +14,7 @@ export default function Education() {
 
   return (
     <div className=" lg:w-3/4 md:w-3/4  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
-      <h3 className="my-8 text-2xl font-serif"> Education </h3>
+      <h3 className="my-8 text-2xl "> Education </h3>
       <div className="lg:flex md:flex  sm:block  flex-row justify-between mx-auto ">
 
         <div className="flex flex-col lg:mx-8 md:mx-8 sm:mx-2 mb-4 lg:w-1/2 md:w-1/2 sm:w-full">
