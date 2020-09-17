@@ -3,7 +3,7 @@
   
 }
 input:placeholder-shown {font-family: 'Montserrat','Poppins',sans-serif;}
-p, span , h2 ,h3,label,:placeholder-shown , option , select {
+p, span , h2 ,h3,label,:placeholder-shown , option , select , li , a {
   font-family:  'Montserrat', 'Poppins',sans-serif;
 }
 .App-logo {

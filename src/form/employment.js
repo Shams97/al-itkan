@@ -5,10 +5,9 @@ import { Operations } from "./family info";
 import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
-import {start ,start_in_hours} from './personal details';
+import { start, start_in_hours } from "./personal details";
 
 const axios = require("axios");
-
 
 export default function Employment() {
   const [state, setState] = useContext(Context);
@@ -98,9 +97,7 @@ export default function Employment() {
             />
 
             {/* EMPLOYEMENT DATE 22 */}
-            <div
-              className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap sm:flex-wrap"
-            >
+            <div className="flex flex-row justify-around lg:flex-no-wrap md:flex-no-wrap sm:flex-wrap">
               <span className="text-center lg:mt-6 md:mt-6 sm:mt-16 lg:text-lg md:text-lg sm:text-base">
                 Date of employment{" "}
               </span>
@@ -368,32 +365,31 @@ export const Additional_info = () => {
   );
 };
 
-
-
 export const Refrence = () => {
   const [state, setState] = useContext(Context);
   const [hide, setHide] = useState(false);
   const [hider, setHider] = useState(false);
-  
-  let handleSubmit = async() => {
+
+  let handleSubmit = async () => {
     let end = new Date();
     let final;
-   if(state['data'])
-    {     
-        final = (end.getHours() - start.getHours() ) +":"+ (end.getMinutes() - start.getMinutes());  
-        state['data']['filling_time'] = final; 
-
-          console.log("final timer =",final )
+    if (state["data"]) {
+      final =
+        end.getHours() -
+        start.getHours() +
+        ":" +
+        (end.getMinutes() - start.getMinutes());
+      state["data"]["filling_time"] = final;
+      console.log("final timer =", final);
     }
 
-   await axios.post("http://localhost:5000/api", state).then((res) => {
+    await axios.post("http://localhost:5000/api", state).then((res) => {
       let reference = res.data;
-      state["key"]  = reference;
+      state["key"] = reference;
       console.log("response key ====", state.key);
-  
-         setState(state)
-         console.log("filling state", state)
-         });
+      setState(state);
+      console.log("filling state", state);
+    });
   };
 
   return (
@@ -542,7 +538,7 @@ export const Refrence = () => {
         <Link to="/technical">
           <Button value="Previous" />
         </Link>
-      
+
         <Link to={{ pathname: `/submited` }}>
           <Button onClick={handleSubmit} value="Submit" />
         </Link>
@@ -569,18 +565,14 @@ export const Submited = () => {
   useEffect(() => {
     // for(let i=0; i<2; i++)
     setTimeout(() => {
-    console.log("key ===", state['key'])
-     
-    
-      if (state['key']) {
-        setRef( state['key']);
+      console.log("key ===", state["key"]);
+
+      if (state["key"]) {
+        setRef(state["key"]);
         console.log("key ==", state.key, "refrence ", ref);
       }
-      
     }, 3000);
- 
   }, []);
-
 
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
@@ -588,8 +580,11 @@ export const Submited = () => {
         Thank you for your patient, Your application has been submitted
         successfully{" "}
       </p>
-     {ref? <span className="text-red-400 mx-2">{ref}</span>
-     :<span className="mx-2">Reference still loading .. </span>}
+      {ref ? (
+        <span className="text-red-400 mx-2">{ref}</span>
+      ) : (
+        <span className="mx-2">Reference still loading .. </span>
+      )}
       <br />
       <span>for more information, please visit our website </span>
       <br />

@@ -18,6 +18,7 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -28,6 +29,7 @@ module.exports = {
         700: '#4a5568',
         800: '#2d3748',
         900: '#1a202c',
+        // 950: '#8c8c8c',
       },
       red: {
         100: '#fff5f5',

@@ -30,11 +30,15 @@ export default function Jobs({ vacancy, handleClick }) {
       });
       let result = response.data;
       result.map((item) => {
+        //  let image = item.card_image;
+        //  console.log("images ", image)
         jobState.push(item);
+
       });
 
       setjobs((res) => [...res]);
       console.log(jobState);
+      console.log("img =", Img)
     }
 
     fetchData();
@@ -51,7 +55,7 @@ export default function Jobs({ vacancy, handleClick }) {
 
   return (
     <>
-      <div className="flex flex-row justify-center mx-auto mt-10 px-4 ">
+      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-10 px-4 ">
         <p className="text-base px-4 mt-2 mt-2">
           {" "}
           Already have an application ?
@@ -85,15 +89,15 @@ export default function Jobs({ vacancy, handleClick }) {
                 className="rounded overflow-hidden bg-white shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 "
                 key={index}
               >
-                <img src={src[index]} className="object-cover h-50 w-full" />
+                <img src={ item.card_image===false? Img :`data:image/jpg;base64,${item.card_image}`}  className="object-cover h-50 w-full " />
                 {/* <div className="wave bg-transparent"/> */}
 
                 <div className="pt-10 px-4">
-                  <h3 className="text-left text-2xl mx-2 font-sans font-medium">
+                  <h3 className="text-left text-2xl font-sans font-medium">
                     {" "}
                     {item.name}{" "}
                   </h3>
-                  <p className="text-left my-4 mx-2 font-sans ">
+                  <p className="text-left mb-4 font-sans ">
                     Opening date
                     <span className="mx-2 font-sans text-red-600 text-xs">
                       {item.opening_date}

@@ -16,14 +16,18 @@ import { Refrence } from "./form/employment";
 import { Submited } from "./form/employment";
 import Check from './check';
 import Jobs from "./jobs";
-import Header from './'
+import Header from './header'
+import {Footer} from './header'
 
 function App() {
   return (
-    <div className="App">
+    <>
+    <Header/>
 
+    <div className="App">
       {/* Itkan main nav bar goes here  */}
       <Store>
+        
         <Router>
           <Switch>
             <Route exact path="/" component={Jobs} />
@@ -42,7 +46,11 @@ function App() {
           </Switch>
         </Router>
       </Store>
+
     </div>
+    <Footer/>
+
+    </>
   );
 }
 
