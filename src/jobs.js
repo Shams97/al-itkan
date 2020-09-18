@@ -61,7 +61,7 @@ export default function Jobs({ vacancy, handleClick }) {
           Already have an application ?
           
         </p>
-        <button className="hover:bg-transparent focus:bg-transparent  bg-blue-500 hover:text-blue-700 active:text-blue-700 focus:text-blue-700 hover:font-semibold text-white py-2 px-4 border hover:border-blue-500  border-transparent rounded mb-4"> 
+        <button  className="hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded mb-4"> 
           <Link to="/check" >
             {" "}
             check
@@ -70,13 +70,13 @@ export default function Jobs({ vacancy, handleClick }) {
       </div>
       <div className="max-w-full flex flex-row flex-wrap  justify-center ">
         {jobState.length === 0 ? (
-          <div className="my-4">
-            <div className="p-8 mt-10 text-wrap rounded w-1/2 mx-auto">
+          <div className="lg:p-8 md:p-8 sm:px-0  my-4">
+            <div className="p-8 mt-10 text-wrap rounded lg:w-1/2 md:w-1/2 sm:w-full mx-auto">
               <p className="text-center lg:text-2xl md:text-lg sm:text-base ">
                 {" "}
                 Unfortunately there is no job vacancy available
               </p>
-              <p className="text-base lg:text-base md:text-sm sm:text-xs">
+              <p className="text-base lg:text-base md:text-sm sm:text-xs ">
                 please make sure that you follow us to know when any job vacancy available 
               </p>
             </div>
@@ -89,8 +89,7 @@ export default function Jobs({ vacancy, handleClick }) {
                 className="rounded overflow-hidden bg-white shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 "
                 key={index}
               >
-                <img src={ item.card_image===false? Img :`data:image/jpg;base64,${item.card_image}`}  className="object-cover h-50 w-full " />
-                {/* <div className="wave bg-transparent"/> */}
+                <img src={ item.card_image===false? Img :`data:image/jpg;base64,${item.card_image}`}  className="object-cover  h-50 w-full " />
 
                 <div className="pt-10 px-4">
                   <h3 className="text-left text-2xl font-sans font-medium">
@@ -111,7 +110,7 @@ export default function Jobs({ vacancy, handleClick }) {
                   <div className="flex flex-row justify-center">
                     <Link to={{ pathname: `/personal/job_id=${item.id}` }}>
                       <button
-                        className="px-4 py-1 border border-green-600 bg-transparent text-green-600 hover:bg-green-700 active:bg-green-700  rounded hover:text-white active:text-white mb-2 "
+                        className="px-4 py-1 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2 "
                         value={item.id}
                         name={item.name}
                         onClick={handleClick}
@@ -120,7 +119,6 @@ export default function Jobs({ vacancy, handleClick }) {
                       </button>
                     </Link>
                   </div>
-                  <div className="mb-4" />
                 </div>
                 <div className="mb-4" />
               </div>

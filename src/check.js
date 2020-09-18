@@ -26,7 +26,7 @@ export default function Check() {
 
   return (
     <>
-      <h3 className="text-center mt-10 text-2xl">
+      <h3 className="text-center mt-10 lg:text-2xl md:text-2xl sm:text-sm">
         Check your application status
       </h3>
       
@@ -35,10 +35,10 @@ export default function Check() {
       <img src={Back} className="w-4 h-4 mt-4"/>
       </Link>
         <input
-          placeholder="Write down your reference number"
+          placeholder="Enter your reference number"
           name="check"
           onChange={handleChange}
-          className="pt-8 border-b-2 border-black-400 focus:border-blue-500  outline-none px-4 "
+          className="pt-8 border-b-2 border-black-400 focus:border-blue-500  outline-none lg:px-4 md:px-4 sm:px-0  "
         />
         <div className="px-4 my-4">
           <Button onClick={handleCheck} value="Check status" />
