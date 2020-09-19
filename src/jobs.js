@@ -55,13 +55,13 @@ export default function Jobs({ vacancy, handleClick }) {
 
   return (
     <>
-      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-10 px-4 ">
+      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-24 px-4 ">
         <p className="text-base px-4 mt-2 mt-2">
           {" "}
           Already have an application ?
           
         </p>
-        <button  className="hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded mb-4"> 
+        <button  className="hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded mb-4  transition ease-linear duration-500 "> 
           <Link to="/check" >
             {" "}
             check
@@ -89,7 +89,7 @@ export default function Jobs({ vacancy, handleClick }) {
                 className="rounded overflow-hidden bg-white shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 "
                 key={index}
               >
-                <img src={ item.card_image===false? Img :`data:image/jpg;base64,${item.card_image}`}  className="object-cover  h-50 w-full " />
+                <img src={ item.card_image===false? Img :`data:image/jpg;base64,${item.card_image}`}  className="object-cover  h-48 w-full " />
 
                 <div className="pt-10 px-4">
                   <h3 className="text-left text-2xl font-sans font-medium">
@@ -110,7 +110,7 @@ export default function Jobs({ vacancy, handleClick }) {
                   <div className="flex flex-row justify-center">
                     <Link to={{ pathname: `/personal/job_id=${item.id}` }}>
                       <button
-                        className="px-4 py-1 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2 "
+                        className="px-4 py-1 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500  "
                         value={item.id}
                         name={item.name}
                         onClick={handleClick}
