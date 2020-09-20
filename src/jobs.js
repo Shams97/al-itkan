@@ -55,7 +55,7 @@ export default function Jobs({ vacancy, handleClick }) {
 
   return (
     <>
-      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-24 px-4 ">
+      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-20 px-4 ">
         <p className="text-base px-4 mt-2 mt-2">
           {" "}
           Already have an application ?

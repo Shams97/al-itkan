@@ -2,53 +2,82 @@ import React, { useState } from "react";
 import LOGO from "./asstes/logo.png";
 import Footer_image from "./asstes/footer.png";
 import Facebook from "./asstes/facebook.png";
+import Down from "./asstes/arrow-down.svg";
+import Up from "./asstes/up.svg";
 
 export default function Header() {
   const [isOpen, setOpen] = useState(false);
+  const [dropDown, setDropDown] = useState(false);
 
   let _toggleNav = () => {
     setOpen(!isOpen);
   };
 
+  let _dropDown = (e) => {
+    setDropDown(!dropDown);
+
+  //  let animation = `transition ease-in-out duration-700`
+  //  e.target.className =animation
+  };
+
   return (
     <>
-    <div
-      className="flex flex-row  justify-between px-8 pt-6  pb-4 fixed"
-      style={{ backgroundColor: "#8c8c8c",top:0,width:'100%' }}
-    >
-      <div className="flex  flex-row ">
-        {/* <img src={LOGO} width="100" height="100" className="object-contain" />{" "} */}
-        <p ><a href="http://alitkan.com/index.php" className="italic text-2xl text-white font-serif">ALITKAN</a></p>
-        <span className="text-xs text-white text-left mt-4">Job Portal</span>
-      </div>
+      <div
+        className="flex flex-row  justify-between px-8 pt-6  pb-3  fixed"
+        style={{ backgroundColor: "#333333", top: 0, width: "100%" }}
+      >
+        <div className="flex  flex-row ">
+          {/* <img src={LOGO} width="100" height="100" className="object-contain" />{" "} */}
+          <p>
+            <a
+              href="http://alitkan.com/index.php"
+              className="italic text-2xl text-white font-serif"
+            >
+              ALITKAN
+            </a>
+          </p>
+          <span className="text-xs text-white text-left mt-4">Job Portal</span>
+        </div>
 
-      <ul className="lg:flex md:flex flex-row  px-4 hidden mt-1">
-        <li className="mx-2 text-white hover:text-black  transition ease-linear duration-500  ">
-          <a href="http://alitkan.com/index.php">HOME</a>
-        </li>
+        <ul className="lg:flex md:flex flex-row  px-4 hidden mt-1">
+          <li className="mx-2 text-white hover:text-gray-600  transition ease-linear duration-300  ">
+            <a href="http://alitkan.com/index.php">HOME</a>
+          </li>
 
-        <li className="mx-2  text-white hover:text-black  transition ease-linear duration-500 ">
-          <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-            {" "}
-            SERVICE <i className="fa fa-angle-down"></i>
-          </a>
-        </li>
-        <li className="mx-2 text-white text-bold hover:text-black transition ease-linear duration-500 ">
-          <a href="http://alitkan.com/projects.php">PROJECTS</a>
-        </li>
-        <li className="mx-2 text-white text-bold  hover:text-black  transition ease-linear duration-500 ">
-          <a href="http://alitkan.com/index.php#news">NEWS</a>
-        </li>
+          <li className="mx-2  text-white hover:text-gray-600 transition ease-linear duration-500 ">
+            <a
+              href="#"
+              className="dropdown-toggle flex mx-3 "
+              onClick={_dropDown}
+              // onAnimationEnd={()=>setFade(false)}
+            >
+              {" "}
+              SERVICE{" "}
+              {/* {dropDown ? ( */}
+                <img src={Down} className="ml-2 w-4 h-4 mt-1 " />
+              {/* // ) : (
+              //   <img src={Down} className="ml-2 w-4 h-4 mt-1" />
+              // )} */}
+            </a>
+          </li>
+          <li className="mx-2 text-white text-bold hover:text-gray-600 transition ease-linear duration-500 ">
+            <a href="http://alitkan.com/projects.php">PROJECTS</a>
+          </li>
+          <li className="mx-2 text-white text-bold  hover:text-gray-600 transition ease-linear duration-500 ">
+            <a href="http://alitkan.com/index.php#news">NEWS</a>
+          </li>
 
-        <li className="mx-2 text-white text-bold  hover:text-black  transition ease-linear duration-500 ">
-          <a href="http://alitkan.com/about.php">ABOUT</a>
-        </li>
-        <li className="mx-2 text-white text-bold  hover:text-black  transition ease-linear duration-500 ">
-          <a href="http://alitkan.com/contact.php">CONTACT US </a>
-        </li>
-      </ul>
+          <li className="mx-2 text-white text-bold  hover:text-gray-600 transition ease-linear duration-500 ">
+            <a href="http://alitkan.com/about.php">ABOUT</a>
+          </li>
+          <li className="mx-2 text-white text-bold  hover:text-gray-600 transition ease-linear duration-500 ">
+            <a href="http://alitkan.com/contact.php">CONTACT US </a>
+          </li>
+        </ul>
 
-      {/* <div className="lg:hidden md:hidden sm:flex flex-col my-4   "> */}
+        
+
+        {/* <div className="lg:hidden md:hidden sm:flex flex-col my-4   "> */}
         <div className="sm:absolute inset-y-0 left-0 flex items-center lg:hidden md:hidden">
           <button
             className="inline-flex items-center justify-center py-1 px-4 rounded text-gray-300 bg-transparent  hover:bg-white focus:outline-none focus:bg-white focus:text-gray-500  hover:text-gray-500 transition duration-200 ease-linear"
@@ -85,40 +114,90 @@ export default function Header() {
           </button>
         </div>
       </div>
-    {/* </div> */}
+      {/* </div> */}
 
-    {isOpen ? (
-      <>
-                 <div className="mt-20 bg-gray-100"/>
-          <div className="flex mt-10 flex-col mx-auto bg-orange-500 w-3/4  rounded sm:absolute  items-start lg:hidden md:hidden">
+      {isOpen ? (
+        <>
+          <div className="mt-20 bg-gray-100" />
+          <div className="mt-10 flex-col mx-auto bg-orange-500 w-3/4 py-2 rounded sm:absolute  items-start lg:hidden md:hidden">
             <ul className="px-4 pt-0 pb-4">
-              <li className="mx-2 text-white hover:text-black mt-2  transition ease-linear duration-500 ">
+              <li className="mx-2 text-white hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
                 <a href="http://alitkan.com/index.php">HOME</a>
               </li>
 
-              <li className="mx-2  text-white hover:text-black mt-2  transition ease-linear duration-500 ">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+              <li className="mx-2  text-white hover:text-gray-600  focus:text-gray-600 mt-2  transition ease-linear duration-500 ">
+                <a href="#"   className="flex flex-row" 
+              onClick={_dropDown} data-toggle="dropdown">
                   {" "}
-                  SERVICE <i className="fa fa-angle-down"></i>
+                  SERVICE
+                  <img src={Down} className="ml-2 w-4 h-4 mt-1 " />
+
                 </a>
+                {dropDown ? (
+    
+            <div
+              className="mt-2 pl-2 py-4 rounded max-w-full"
+              style={{ backgroundColor: "#8c8c8c" }}
+            >
+              <ul>
+                <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500 ">
+                  <a href="http://alitkan.com/tops.php">Tops</a>
+                </li>
+                <li className="text-white hover:bg-white  hover:text-gray-600 py-1 transition duration-500">
+                  <a href="http://alitkan.com/acts.php">Acts</a>
+                </li>
+                <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500">
+                  <a href="http://alitkan.com/agencies.php">Agencies</a>
+                </li>
+              </ul>{" "}
+            </div>
+        ) : null}
+
               </li>
-              <li className="mx-2 text-white text-bold hover:text-black mt-2  transition ease-linear duration-500 ">
+              <li className="mx-2 text-white text-bold hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
                 <a href="http://alitkan.com/projects.php">PROJECTS</a>
               </li>
-              <li className="mx-2 text-white text-bold  hover:text-black mt-2  transition ease-linear duration-500 ">
+              <li className="mx-2 text-white text-bold  hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
                 <a href="http://alitkan.com/index.php#news">NEWS</a>
               </li>
 
-              <li className="mx-2 text-white text-bold  hover:text-black mt-2  transition ease-linear duration-500 ">
+              <li className="mx-2 text-white text-bold  hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
                 <a href="http://alitkan.com/about.php">ABOUT</a>
               </li>
-              <li className="mx-2 text-white text-bold  hover:text-black mt-2  transition ease-linear duration-500 ">
+              <li className="mx-2 text-white text-bold  hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
                 <a href="http://alitkan.com/contact.php">CONTACT US </a>
               </li>
             </ul>
           </div>
+        </>
+      ) : null}
+
+{dropDown  ? (
+  dropDown &&isOpen ? null :
+          <>
+            {" "}
+            <div className="mt-20 bg-gray-100 " />
+            <div
+              className="pl-2 py-4 rounded max-w-xs mx-auto transition ease-linear duration-700"
+              style={{ backgroundColor: "#8c8c8c" }}
+            >
+              <ul className="w-full">
+                <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500 ">
+                  <a href="http://alitkan.com/tops.php">Tops</a>
+                </li>
+                <li className="text-white hover:bg-white  hover:text-gray-600 py-1 transition duration-500">
+                  <a href="http://alitkan.com/acts.php">Acts</a>
+                </li>
+                <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500">
+                  <a href="http://alitkan.com/agencies.php">Agencies</a>
+                </li>
+              </ul>{" "}
+            </div>{" "}
           </>
-        ) : null}
+        ) : !isOpen}
+
+
+
     </>
   );
 }
@@ -134,7 +213,7 @@ export const Footer = () => {
       }}
     >
       <ul className="inline-flex  flex-row items-center flex-wrap  justify-center my-20">
-        <li >
+        <li>
           <a
             className="font-bold text-white mx-4 lg:text-2xl md:text-2xl sm:text-sm hover:text-orange-700 transition ease-linear duration-300 "
             href="http://alitkan.com/index.php"
@@ -191,5 +270,3 @@ export const Footer = () => {
     </div>
   );
 };
-
-
