@@ -202,9 +202,9 @@ export const Additional_info = () => {
             label_value="Are you a member of the Iraqi engineers union?"
           />
           <div className="flex flex-row flex-wrap ">
-            <span className="text-sm mx-4 mt-5"> date </span>
+            <span className="text-sm mx-4 mt-5"> If yes since when ? </span>
 
-            <FormInput name="from_date" type="date" />
+            <FormInput name="union_member_date" type="date" />
           </div>
         </div>
 
