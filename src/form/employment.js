@@ -204,7 +204,7 @@ export const Additional_info = () => {
           <div className="flex flex-row flex-wrap ">
             <span className="text-sm mx-4 mt-5"> date </span>
 
-            <FormInput name="from_date" type="date" />
+            <FormInput name="union_member_date" type="date" />
           </div>
         </div>
 
