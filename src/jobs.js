@@ -23,12 +23,14 @@ export default function Jobs({ vacancy, handleClick }) {
       Accept: "text/plain",
     };
 
-    async function fetchData() {
-      const response = await axios({
-        url: "http://localhost:5000/api/get",
-        method: "GET",
-      });
-      let result = response.data;
+    async function fetchData(){
+      const response = await axios ({
+        url: "http://191.101.164.149:5000/api/get",
+        method: "GET"
+      })      
+      let result = response.data
+      // console.log(result)
+
       result.map((item) => {
         //  let image = item.card_image;
         //  console.log("images ", image)
