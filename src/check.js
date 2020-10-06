@@ -10,7 +10,7 @@ export default function Check() {
   const [check, setCheck] = useState("");
 
   let handleCheck = (e) => {
-    axios.post("http://localhost:5000/api/check", state).then((res) => {
+    axios.post("https://jobsbackend.aliktan.com/api/check", state).then((res) => {
       console.log("responseee ", res, res.data.msg );
       let msg = res.data.msg
      setCheck(msg)
