@@ -8,7 +8,7 @@ export default function Api_inegration() {
  const [state, setState] = useContext(Context)
 
   let handleSubmit = (e) => {
-    axios.post("http://191.101.164.149:5000/api", {
+    axios.post("https://jobsbackend.aliktan.com/api", {
       headers: {"Content-Type": "application/json"}
     }).then((response) => {
       console.log("response =", response);
