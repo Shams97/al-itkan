@@ -21,7 +21,7 @@ export default function Jobs({ vacancy, handleClick }) {
 
     async function fetchData() {
       const response = await axios({
-        url: "http://191.101.164.149:5000/api/get",
+        url: "https://jobsbackend.alitkan.com/api/get",
         method: "GET",
       });
       let result = response.data;
