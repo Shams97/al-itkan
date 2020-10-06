@@ -131,7 +131,7 @@ export default function Jobs({ vacancy, handleClick }) {
                 <p className="text-xl text-red-500 ">
                   Unfortunately, this job isn't available right now
                 </p>
-                <p   className="text-xs mb-8">please keep following us for more  </p>
+                <p   className="text-xs mb-8">please keep following us for more updates </p>
 </div>
 </div>
             );

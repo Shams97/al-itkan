@@ -69,7 +69,7 @@ export const FormInput = ({ placeholder, name, type, textarea, onFocus }) => {
       if (file) {
         if (file.size > 10e6) {
           alert("file is too big, please upload file less than 10MB ");
-          return 
+          e.target.value=null
         } else {
           let reader = new FileReader();
           reader.onloadend = function () {
