@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Img from "./asstes/img.jpg";
-import Img1 from "./asstes/img1.jpg";
-import Img2 from "./asstes/img2.jpg";
-import Img4 from "./asstes/img4.jpg";
-import Img5 from "./asstes/img5.jpg";
-import Img6 from "./asstes/img6.jpg";
 import NotFound from "./asstes/undraw_Taken.svg";
 import { Context } from "./store";
+import Expired from './asstes/expired.svg'
 import "./job.css";
 const axios = require("axios");
 
@@ -33,12 +29,10 @@ export default function Jobs({ vacancy, handleClick }) {
         //  let image = item.card_image;
         //  console.log("images ", image)
         jobState.push(item);
-
       });
 
       setjobs((res) => [...res]);
-      console.log(jobState);
-      console.log("img =", Img)
+      console.log(jobState, );
     }
 
     fetchData();
@@ -51,7 +45,6 @@ export default function Jobs({ vacancy, handleClick }) {
     console.log("state == ", state);
   }
 
-  let src = [Img, Img1, Img2, Img4, Img5, Img6];
 
   return (
     <>
@@ -85,6 +78,7 @@ export default function Jobs({ vacancy, handleClick }) {
         ) : (
           jobState.map((item, index) => {
             return (
+              item.state=="open"?
               <div
                 className="rounded overflow-hidden bg-white shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 "
                 key={index}
@@ -122,6 +116,24 @@ export default function Jobs({ vacancy, handleClick }) {
                 </div>
                 <div className="mb-4" />
               </div>
+              : <div
+              className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 opacity-75 "
+              key={index}
+              style={{zIndex:'-1'}}
+            >
+              <img src={ Expired }  className="object-contain  h-48 w-full bg-gray-100 "/>
+
+              <div className="pt-10 px-4">
+                <h3 className="text-2xl font-medium my-2">
+                  {" "}
+                  {item.name}{" "}
+                </h3>
+                <p className="text-xl text-red-500 ">
+                  Unfortunately, this job isn't available right now
+                </p>
+                <p   className="text-xs mb-8">please keep following us for more  </p>
+</div>
+</div>
             );
           })
         )}
