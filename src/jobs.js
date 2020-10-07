@@ -75,7 +75,7 @@ export default function Jobs({ vacancy, handleClick }) {
           </div>
         ) : (
           jobState.map((item, index) => {
-            return item.state == "open" ? (
+            return item.state != "open" ? (
               <div
                 className="rounded overflow-hidden bg-white shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 "
                 key={index}
