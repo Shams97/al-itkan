@@ -22,6 +22,7 @@ export default function Check() {
   let handleChange = (e) => {
     let value = e.target.value;
     state["ref"] = value;
+    setState(state)
   };
 
   return (
