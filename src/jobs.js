@@ -94,6 +94,10 @@ export default function Jobs({ vacancy, handleClick }) {
                     {" "}
                     {item.name}{" "}
                   </h3>
+                  <h4 className="text-left text-lg font-sans">
+                    {" "}
+                    {item.city}{" "}
+                  </h4>
                   <p className="text-left mb-4 font-sans ">
                     Opening date
                     <span className="mx-2 font-sans text-red-600 text-xs">
