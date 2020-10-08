@@ -577,7 +577,7 @@ export const Submited = () => {
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
       <p className="text-center text-2xl mb-8">
-        Thank you for your patient, Your application has been submitted
+        Thank you for your patience, Your application has been submitted
         successfully{" "}
       </p>
       {ref ? (
