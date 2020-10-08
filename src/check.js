@@ -10,7 +10,7 @@ export default function Check() {
   const [check, setCheck] = useState("");
 
   let handleCheck = (e) => {
-    axios.post("https://jobsbackend.aliktan.com/api/check", state).then((res) => {
+    axios.post("https://jobsbackend.alitkan.com/api/check", state).then((res) => {
       console.log("responseee ", res, res.data.msg );
       let msg = res.data.msg
      setCheck(msg)
@@ -22,6 +22,7 @@ export default function Check() {
   let handleChange = (e) => {
     let value = e.target.value;
     state["ref"] = value;
+    console.log(state)
     setState(state)
   };
 
