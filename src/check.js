@@ -23,7 +23,6 @@ export default function Check() {
     let value = e.target.value;
     state["ref"] = value;
     console.log(state)
-    setState(state)
   };
 
   return (

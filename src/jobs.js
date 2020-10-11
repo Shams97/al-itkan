@@ -112,7 +112,7 @@ export default function Jobs({ vacancy, handleClick }) {
                         value={item.id}
                         name={item.name}
                         onClick={handleClick}
-                      >
+                       >
                         Apply now
                       </button>
                     </Link>
