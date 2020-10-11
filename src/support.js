@@ -12,7 +12,7 @@ useEffect(()=>{
 
 
 const handle_Ticket_Submit= async ()=>{ 
-    axios.post("http://localhost:5000/api",state).then((res)=>{
+    axios.post("http://localhost:5000/api/helpdesk",state).then((res)=>{
         console.log("response", res.state)
     })
 
@@ -25,12 +25,12 @@ const handle_Ticket_Submit= async ()=>{
         <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col  justify-between mx-auto ">
           <div className="flex flex-col  mx-8 mb-4 w-full">
             <FormInput
-              name="partenr_name"
+              name="partner_name"
               type="text"
               placeholder="your name"
             />
             <FormInput
-              name="partenr_email"
+              name="partner_email"
               type="text"
               placeholder="your email"
             />
