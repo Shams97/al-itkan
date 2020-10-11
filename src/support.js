@@ -42,7 +42,7 @@ const handle_Ticket_Submit= async ()=>{
             />
             <FormInput name="Attachment" type="file" />
             <div className="px-4 my-4">
-            <Link to={{ pathname: `/` }}>
+            <Link to="/ticket_submitted">
             <Button value="Submit a ticket" onClick={handle_Ticket_Submit}/>
             </Link>
             </div>
@@ -54,8 +54,8 @@ const handle_Ticket_Submit= async ()=>{
 
 
 
-export const ticket_submitted =()=>{
-    return   <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
+export const Ticket_submitted =()=>{
+    return  <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8">
     <p className="text-center text-2xl mb-8">
         Your ticket has been submitted successfully, Our support staff will contact you shorty 
         </p></div>

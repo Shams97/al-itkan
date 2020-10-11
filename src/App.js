@@ -14,7 +14,7 @@ import Employment_history from "./form/employment";
 import { Additional_info } from "./form/employment";
 import { Refrence } from "./form/employment";
 import { Submited } from "./form/employment";
-import {ticket_submitted} from './support';
+import {Ticket_submitted} from './support';
 import Support from './support';
 import Check from "./check";
 import Jobs from "./jobs";
@@ -44,7 +44,7 @@ function App() {
               <Route path="/refrence" component={Refrence} />
               <Route path="/submited" component={Submited} />
               <Route path="/helpdesk" component={Support}/>
-              <Route path="/helpdesk" component={Support}/>
+              <Route path="/ticket_submitted" component={Ticket_submitted}/>
             </Switch>
           </Router>
         </Store>
