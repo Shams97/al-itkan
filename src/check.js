@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Button, FormInput } from "./App";
+import React, { useState, useContext } from "react";
+import { Button } from "./App";
 import { Context } from "./store";
 import Back from './asstes/icon-arrow-back.svg'
 import {Link} from 'react-router-dom'
 const axios = require("axios");
 
 export default function Check() {
-  const [state, setState] = useContext(Context);
+  const [state] = useContext(Context);
   const [check, setCheck] = useState("");
 
   let handleCheck = (e) => {
@@ -32,7 +32,7 @@ export default function Check() {
       
       <div className="flex flex-col lg:w-3/4 md:w-3/4 rounded bg-white shadow-lg mx-auto mt-16  px-10 py-4 sm:w-3/4 ">
       <Link to="/">
-      <img src={Back} className="w-4 h-4 mt-4 object-cover"/>
+      <img src={Back} className="w-4 h-4 mt-4 object-cover" alt="back button"/>
       </Link>
         <input
           placeholder="Enter your reference number"

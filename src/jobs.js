@@ -14,11 +14,6 @@ export default function Jobs({ vacancy, handleClick }) {
   const [state, setState] = useContext(Context);
 
   useEffect(() => {
-    const headers = {
-      "Content-Type": "application/json",
-      Accept: "text/plain",
-    };
-
     async function fetchData() {
       const response = await axios({
         url: "https://jobsbackend.alitkan.com/api/get",
@@ -100,12 +95,13 @@ export default function Jobs({ vacancy, handleClick }) {
                       {item.opening_date}
                     </span>
                   </p>
-
-                  <p className="text-sm text-left font-sans  overflow-auto h-32 mb-8 ">
+  {item.description ? 
+   <div className="h-32 w-full"><p className="text-sm text-left font-sans  overflow-auto h-32 mb-8 ">
                     {" "}
                     {item.description}
-                  </p>
-                  <div className="flex flex-row justify-center">
+                  </p></div>:null }
+                  
+                  <div className="flex flex-row justify-left my-8">
                     <Link to={{ pathname: `/personal/job_id=${item.id}` }}>
                       <button
                         className="px-4 py-1 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500  "

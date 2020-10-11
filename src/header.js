@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LOGO from "./asstes/logo.png";
 import Footer_image from "./asstes/footer.png";
+import { Link } from "react-router-dom";
 import Facebook from "./asstes/facebook.png";
 import Down from "./asstes/arrow-down.svg";
 import Up from "./asstes/up.svg";
@@ -16,8 +17,8 @@ export default function Header() {
   let _dropDown = (e) => {
     setDropDown(!dropDown);
 
-  //  let animation = `transition ease-in-out duration-700`
-  //  e.target.className =animation
+    //  let animation = `transition ease-in-out duration-700`
+    //  e.target.className =animation
   };
 
   return (
@@ -52,9 +53,8 @@ export default function Header() {
               // onAnimationEnd={()=>setFade(false)}
             >
               {" "}
-              SERVICE{" "}
-              {/* {dropDown ? ( */}
-                <img src={Down} className="ml-2 w-4 h-4 mt-1 " />
+              SERVICE {/* {dropDown ? ( */}
+              <img src={Down} className="ml-2 w-4 h-4 mt-1 " />
               {/* // ) : (
               //   <img src={Down} className="ml-2 w-4 h-4 mt-1" />
               // )} */}
@@ -66,7 +66,10 @@ export default function Header() {
           <li className="mx-2 text-white text-bold  hover:text-gray-600 transition ease-linear duration-500 ">
             <a href="http://alitkan.com/index.php#news">NEWS</a>
           </li>
-
+          <li className="mx-2 text-white text-bold  hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
+            {/* <Link to="/helpdesk"><p>SUPPORT</p></Link> */}
+            {/* <a >SUPPORT</a> */}
+          </li>
           <li className="mx-2 text-white text-bold  hover:text-gray-600 transition ease-linear duration-500 ">
             <a href="http://alitkan.com/about.php">ABOUT</a>
           </li>
@@ -74,8 +77,6 @@ export default function Header() {
             <a href="http://alitkan.com/contact.php">CONTACT US </a>
           </li>
         </ul>
-
-        
 
         {/* <div className="lg:hidden md:hidden sm:flex flex-col my-4   "> */}
         <div className="sm:absolute inset-y-0 left-0 flex items-center lg:hidden md:hidden">
@@ -126,33 +127,34 @@ export default function Header() {
               </li>
 
               <li className="mx-2  text-white hover:text-gray-600  focus:text-gray-600 mt-2  transition ease-linear duration-500 ">
-                <a href="#"   className="flex flex-row" 
-              onClick={_dropDown} data-toggle="dropdown">
+                <a
+                  href="#"
+                  className="flex flex-row"
+                  onClick={_dropDown}
+                  data-toggle="dropdown"
+                >
                   {" "}
                   SERVICE
                   <img src={Down} className="ml-2 w-4 h-4 mt-1 " />
-
                 </a>
                 {dropDown ? (
-    
-            <div
-              className="mt-2 pl-2 py-4 rounded max-w-full"
-              style={{ backgroundColor: "#8c8c8c" }}
-            >
-              <ul>
-                <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500 ">
-                  <a href="http://alitkan.com/tops.php">Tops</a>
-                </li>
-                <li className="text-white hover:bg-white  hover:text-gray-600 py-1 transition duration-500">
-                  <a href="http://alitkan.com/acts.php">Acts</a>
-                </li>
-                <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500">
-                  <a href="http://alitkan.com/agencies.php">Agencies</a>
-                </li>
-              </ul>{" "}
-            </div>
-        ) : null}
-
+                  <div
+                    className="mt-2 pl-2 py-4 rounded max-w-full"
+                    style={{ backgroundColor: "#8c8c8c" }}
+                  >
+                    <ul>
+                      <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500 ">
+                        <a href="http://alitkan.com/tops.php">Tops</a>
+                      </li>
+                      <li className="text-white hover:bg-white  hover:text-gray-600 py-1 transition duration-500">
+                        <a href="http://alitkan.com/acts.php">Acts</a>
+                      </li>
+                      <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500">
+                        <a href="http://alitkan.com/agencies.php">Agencies</a>
+                      </li>
+                    </ul>{" "}
+                  </div>
+                ) : null}
               </li>
               <li className="mx-2 text-white text-bold hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
                 <a href="http://alitkan.com/projects.php">PROJECTS</a>
@@ -160,7 +162,10 @@ export default function Header() {
               <li className="mx-2 text-white text-bold  hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
                 <a href="http://alitkan.com/index.php#news">NEWS</a>
               </li>
-
+              <li className="mx-2 text-white text-bold  hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
+                {/* <Link to="/">SUPPORT</Link> */}
+                {/* <a >SUPPORT</a> */}
+              </li>
               <li className="mx-2 text-white text-bold  hover:text-gray-600 mt-2  transition ease-linear duration-500 ">
                 <a href="http://alitkan.com/about.php">ABOUT</a>
               </li>
@@ -172,8 +177,8 @@ export default function Header() {
         </>
       ) : null}
 
-{dropDown  ? (
-  dropDown &&isOpen ? null :
+      {dropDown ? (
+        dropDown && isOpen ? null : (
           <>
             {" "}
             <div className="mt-20 bg-gray-100 " />
@@ -194,10 +199,10 @@ export default function Header() {
               </ul>{" "}
             </div>{" "}
           </>
-        ) : !isOpen}
-
-
-
+        )
+      ) : (
+        !isOpen
+      )}
     </>
   );
 }
@@ -205,11 +210,15 @@ export default function Header() {
 export const Footer = () => {
   return (
     <div
-      className="flex flex-col flex-wrap  h-64 w-full object-fill"
+      className="flex flex-col h-64 flex-wrap w-full object-fill mt-12"
       style={{
         backgroundImage: `url(${Footer_image})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        clear: "both",
+        position: "relative",
+        // height: "200px",
+        // marginTop: "300px",
       }}
     >
       <ul className="inline-flex  flex-row items-center flex-wrap  justify-center my-20">

@@ -14,6 +14,7 @@ import Employment_history from "./form/employment";
 import { Additional_info } from "./form/employment";
 import { Refrence } from "./form/employment";
 import { Submited } from "./form/employment";
+import Support from './support';
 import Check from "./check";
 import Jobs from "./jobs";
 import Header from "./header";
@@ -29,7 +30,7 @@ function App() {
         <Store>
           <Router>
             <Switch>
-              <Route exact path="/" component={Jobs} />
+              <Route exact path="/" component={Jobs}/> 
               <Route path="/personal" component={PersonalDetails} />
               <Route path="/education" component={Education} />
               <Route path="/check" component={Check} />
@@ -38,10 +39,10 @@ function App() {
               <Route path="/sales_skills" component={Sales_Skills} />
               <Route path="/training" component={Training} />
               <Route path="/emploment" component={Employment_history} />
-
               <Route path="/additional" component={Additional_info} />
               <Route path="/refrence" component={Refrence} />
               <Route path="/submited" component={Submited} />
+              <Route path="/helpdesk" component={Support}/>
             </Switch>
           </Router>
         </Store>
