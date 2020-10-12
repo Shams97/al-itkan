@@ -7,14 +7,15 @@ const initalState = {
   files: {},
   key:0,
   ref:{},
-  timer :{}
+  timer :{},
+  ticket:""
 };
+
 
 export const Context = React.createContext();
 
 const Store = ({ children }) => {
   const [state, setState] = useState(initalState);
-
   return (
     <Context.Provider value={[state, setState]}>{children}</Context.Provider>
   );

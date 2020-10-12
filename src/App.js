@@ -6,18 +6,11 @@ import Store, { Context } from "./store";
 
 import PersonalDetails from "./form/personal details";
 import Education from "./form/education";
-import Admin_Skills from "./form/skills";
-import { Technical_skills } from "./form/skills";
-import { Sales_Skills } from "./form/skills";
-import { Training } from "./form/skills";
-import Employment_history from "./form/employment";
-import { Additional_info } from "./form/employment";
-import { Refrence } from "./form/employment";
-import { Submited } from "./form/employment";
-import {Ticket_submitted} from './support';
-import Support from './support';
+import Admin_Skills,{ Sales_Skills,Training,Technical_skills } from "./form/skills";
+import Employment_history,{ Refrence,Submited,Additional_info } from "./form/employment";
+import Support,{Ticket_submitted} from './support';
 import Check from "./check";
-import Jobs from "./jobs";
+import Jobs,{Page_details} from "./jobs";
 import Header from "./header";
 import { Footer } from "./header";
 
@@ -45,6 +38,7 @@ function App() {
               <Route path="/submited" component={Submited} />
               <Route path="/helpdesk" component={Support}/>
               <Route path="/ticket_submitted" component={Ticket_submitted}/>
+              <Route path="/page_details" component={Page_details}/>
             </Switch>
           </Router>
         </Store>

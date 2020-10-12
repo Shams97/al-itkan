@@ -1,24 +1,41 @@
 import React, { useEffect, useContext, useState } from "react";
 import { FormInput, Button } from "./App";
 import { Context } from "./store";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const axios = require("axios");
 
-export default function Support() {
+export default function Support(submittedState) {
   const [state, setState] = useContext(Context);
-  const [ticket, setTicket] = useState("")
+  // const [ticket, setTicket] = useState("")
+  // const [redirect, setRedicet] = useState(null)
 
+  // useEffect(() => {
+  //   let isMounted = true; // note this flag denote mount status
+  //   handle_Ticket_Submit().then(data => {
+  //     if (isMounted) setState(data);
+  //   })
+  //   return () => { isMounted = false }; // use effect cleanup to set flag false, if unmounted
+  // });
 
-  const handle_Ticket_Submit = async () => {
-    let ticket_state;
-    await  axios.post("http://localhost:5000/api/helpdesk", state).then((res) => {
-      ticket_state = res.data.message
-      console.log("response", ticket_state);
+  let handle_Ticket_Submit = async()=>{
+    
+    try {
+    await axios.post("http://erp.alitkan.com:5000/api/helpdesk",state).then((res) => {
+     let ticket_state = res.data.message
+     state['ticket'] = ticket_state
+     setState(state)
+     console.log("state ", state['ticket'] , ticket_state) 
     });
-    setTicket(ticket_state)
-     console.log("state ", ticket)
+      
+      } catch(e) {
+        console.log(e)
+      }
+    // setState(state);
   };
+
+
+
 
   return (
     <div className="lg:w-3/4 md:w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8 sm:w-full">
@@ -35,7 +52,7 @@ export default function Support() {
           <FormInput name="description" type="text" placeholder="description" />
           <FormInput name="Attachment" type="file" />
           <div className="px-4 my-4">
-            <Link to={{pathname:`/ticket_submitted`}} params={{state:ticket}}>
+            <Link to="/ticket_submitted">
               <Button value="Submit a ticket" onClick={handle_Ticket_Submit} />
             </Link>
           </div>
@@ -47,13 +64,16 @@ export default function Support() {
 
 export const Ticket_submitted = () => {
   const [state, setState] = useContext(Context);
-  const [ticket, setTicket] = useState("")
-  // useEffect(() => {
-  //   axios.post("http://localhost:5000/api/helpdesk",state).then((res) => {
-  //     console.log("response in submitted ", res.state);
-  //     setTicket(res.state)
-  //   });
-  // }, []);
+ const [ticket, setTicket] = useState("")
+  useEffect(() => {
+    setTimeout(()=>{
+     if(state['ticket'])
+      setTicket(state['ticket'])
+      console.log("do anything",state['ticket'])
+    },3000)
+  }, []);
+
+
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8">
       {   ticket==="created successfully" ?
@@ -67,3 +87,4 @@ export const Ticket_submitted = () => {
     </div>
   );
 };
+

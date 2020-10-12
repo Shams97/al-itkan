@@ -148,3 +148,11 @@ export default function Jobs({ vacancy, handleClick }) {
     </>
   );
 }
+
+
+
+export const Page_details = () => {
+  return <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-20 px-4">
+
+      </div>
+}

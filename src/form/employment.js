@@ -564,10 +564,8 @@ export const Submited = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log("key ===", state["key"]);
       if (state["key"]) {
         setRef(state["key"]);
-        console.log("key ==", state.key, "refrence ", ref);
       }
     }, 3000);
   }, []);
