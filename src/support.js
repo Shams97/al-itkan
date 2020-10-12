@@ -7,14 +7,17 @@ const axios = require("axios");
 
 export default function Support() {
   const [state, setState] = useContext(Context);
-  const [ticket, setTicket] = useState("ticket")
+  const [ticket, setTicket] = useState("")
 
 
   const handle_Ticket_Submit = async () => {
-    axios.post("http://localhost:8069/api/helpdesk", state).then((res) => {
-      console.log("response", res.state);
-      // setTicket(res.state)
+    let ticket_state;
+    await  axios.post("http://localhost:5000/api/helpdesk", state).then((res) => {
+      ticket_state = res.data.message
+      console.log("response", ticket_state);
     });
+    setTicket(ticket_state)
+     console.log("state ", ticket)
   };
 
   return (
@@ -45,12 +48,12 @@ export default function Support() {
 export const Ticket_submitted = () => {
   const [state, setState] = useContext(Context);
   const [ticket, setTicket] = useState("")
-  useEffect(() => {
-    axios.post("http://localhost:8069/api/helpdesk",state).then((res) => {
-      console.log("response in submitted ", res.state);
-      setTicket(res.state)
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.post("http://localhost:5000/api/helpdesk",state).then((res) => {
+  //     console.log("response in submitted ", res.state);
+  //     setTicket(res.state)
+  //   });
+  // }, []);
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8">
       {   ticket==="created successfully" ?
@@ -58,7 +61,7 @@ export const Ticket_submitted = () => {
           Your ticket has been submitted successfully, Our support staff will
           contact you shorty
         </p>
-        :<p> your ticket has not been submitted successfully, Something went wrong, please contact us </p>
+        :<p> your ticket has not been submitted, Something went wrong, please contact us </p>
       }
     
     </div>
