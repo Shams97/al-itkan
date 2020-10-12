@@ -76,12 +76,14 @@ export const Ticket_submitted = () => {
 
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8">
-      {   ticket==="created successfully" ?
+      {   if(ticket==="created successfully")
           <p className="text-center text-2xl mb-8">
           Your ticket has been submitted successfully, Our support staff will
           contact you shorty
-        </p>
-        :<p> your ticket has not been submitted, Something went wrong, please contact us </p>
+        </p> 
+        else if (ticket =="not created successfully")
+           <p> your ticket has not been submitted, Something went wrong, please contact us </p>
+        else  <p> Please wait ..</p>
       }
     
     </div>
