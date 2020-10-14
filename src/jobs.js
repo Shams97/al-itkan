@@ -106,7 +106,7 @@ export default function Jobs({ vacancy, handleClick }) {
                   </p></div>:null }
                   
                   <div className="flex flex-row justify-left my-8">
-                    <Link to={{ pathname: `/personal/job_id=${item.id}` }}>
+                    <Link to={`/personal?job_id=${item.id}`}>
                       <button
                         className="px-4 py-1 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500  "
                         value={item.id}

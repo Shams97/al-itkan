@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { FormInput, Button } from "../App";
+import { FormInput, Button,R_link } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import Radio from "./radio";
@@ -57,9 +57,9 @@ export default function Employment() {
         <div className="flex flex-row justify-around mb-4 flex-wrap">
           <span className="text-center mt-6 text-lg px-4">Salary </span>
           <div className="flex flex-row lg:ml-20 md:ml-10 sm:ml-2 my-4 flex-wrap">
-            <span className=" mx-4 mt-5">start</span>
+            <span className="mx-4 mt-5">start</span>
             <FormInput name="starting_slry" type="number" />
-            <span className=" mx-4 mt-5">end</span>
+            <span className="mx-4 mt-5">end</span>
             <FormInput name="ending_slry" type="number" />
           </div>
         </div>
@@ -268,7 +268,7 @@ export const Additional_info = () => {
           </p>
 
           <div className="flex flex-row justify-center ">
-            <div className="lg:flex md:flex sm:block flex-col flex-wrap my-4">
+            <div className="lg:flex md:flex sm:block flex-row flex-wrap my-4">
               <span className="mx-4 mt-5 w-1/2 text-left">
                 Team Work Skills
               </span>
@@ -287,7 +287,7 @@ export const Additional_info = () => {
               />
             </div>
 
-            <div className="lg:flex md:flex sm:block  flex-col my-4 flex-wrap ">
+            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
               <span className="mx-4 mt-5 lg:w-1/2 md:w-1/2 sm:w-full text-left ">
                 Work Under Pressure Skills
               </span>
@@ -306,7 +306,7 @@ export const Additional_info = () => {
               />
             </div>
 
-            <div className="lg:flex md:flex sm:block  flex-col my-4 flex-wrap ">
+            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
               <span className=" mx-4 mt-5 w-1/2 text-left">
                 Are you Willing To Travel Outshore ?
               </span>
@@ -370,6 +370,23 @@ export const Refrence = () => {
   const [hide, setHide] = useState(false);
   const [hider, setHider] = useState(false);
 
+  const rfields = ["contact_disclaimer",
+    "ref_name",
+    "ref_relation",
+    "ref_phone" ,
+    "signature",
+    "sig_date",
+      "photo","national_id",
+      "citizenship_cert",
+      "accomodation_id",
+      "uni_degree",
+      "medical" ,
+     "no_crim_req",
+     "letter_rec_1",
+     "letter_rec_2",
+ 
+ ]
+
   let handleSubmit = async () => {
     let end = new Date();
     let final;
@@ -389,6 +406,7 @@ export const Refrence = () => {
       console.log("response key ====", state.key);
       setState(state);
       console.log("filling state", state);
+      // window.location.replace('/submited')
     });
   };
 
@@ -486,12 +504,13 @@ export const Refrence = () => {
               name="photo"
               type="file"
               accept="image/png, image/jpeg, image/jpg"
+              placeholder="photo"
             />
           </div>
 
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 px-4 w-1/2"> national ID </label>
-            <FormInput name="national_id" type="file" />
+            <FormInput name="national_id" type="file" placeholder="national id"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> citizenship certificate</label>
@@ -499,37 +518,38 @@ export const Refrence = () => {
               name="citizenship_cert"
               type="file"
               accept="image/png, image/jpeg , image/jpg"
+              placeholder="citizenship certificate"
             />
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2">accomidation ID</label>
-            <FormInput name="accomodation_id" type="file" />
+            <FormInput name="accomodation_id" type="file" placeholder="accomidation ID"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> university degree</label>
-            <FormInput name="uni_degree" type="file" />
+            <FormInput name="uni_degree" type="file" placeholder="unversity degree "/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> medical test </label>
-            <FormInput name="medical" type="file" />
+            <FormInput name="medical" type="file" placeholder="medical test"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2"> no criminal record </label>
-            <FormInput name="no_crim_req" type="file" />
+            <FormInput name="no_crim_req" type="file" placeholder="no criminal record"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2">
               {" "}
               letter of recommendation 1
             </label>
-            <FormInput name="letter_rec_1" type="file" />
+            <FormInput name="letter_rec_1" type="file"  placeholder="letter recommendation 1"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2">
               {" "}
               letter of recommendation 2
             </label>
-            <FormInput name="letter_rec_2" type="file" />
+            <FormInput name="letter_rec_2" type="file" placeholder="letter recommendation 2"/>
           </div>
         </div>
       </div>
@@ -539,9 +559,12 @@ export const Refrence = () => {
           <Button value="Previous" />
         </Link>
 
-        <Link to={{ pathname: `/submited` }}>
-          <Button onClick={handleSubmit} value="Submit" />
-        </Link>
+        <Link onClick={handleSubmit}>
+          {/* <Button onClick={handleSubmit} value="Submit" /> */}
+           <R_link value="Submit" fields={rfields} route="/submited"/>
+        </Link> 
+
+
       </div>
     </div>
   );
@@ -568,10 +591,12 @@ export const Submited = () => {
         setRef(state["key"]);
       }
     }, 3000);
+    // setRef(state["key"]);
+
   }, []);
 
   return (
-    <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8">
+    <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-20 p-8">
       <p className="text-center text-2xl mb-8">
         Thank you for your patience, Your application has been submitted
         successfully{" "}

@@ -14,10 +14,8 @@ export default function Radio ({name, ops, mx}) {
 
 
   let handleChange = (e) => {
-   
    let value = e.target.value
     state['data'][name] = value
-   
     setVal(value);
     console.log(state)
     setState(state)
@@ -28,8 +26,8 @@ export default function Radio ({name, ops, mx}) {
       {ops.map((op, index) => {
         let formated_op = op.toLowerCase()
         return (
-        <div className="ml-2 flex flex-row " key={index}>
-          <label className="text-gray-600 "> {op} </label>{" "}
+        <div className="ml-2 flex flex-row" key={index}>
+          <label className="text-gray-600"> {op} </label>{" "}
           <input
             type="radio"
             className="checked:bg-gray-900 checked:border-transparent ml-2 mt-2 text-gray-300 "

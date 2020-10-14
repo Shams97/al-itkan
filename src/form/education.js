@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FormInput, Button } from "../App";
+import { FormInput, Button, R_link } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import Radio from './radio'
@@ -11,6 +11,11 @@ export default function Education() {
   const [state, setState] = useContext(Context)
   const [show, setShow] = useState([]);
   const [hide, setHide] = useState(false);
+
+  const required_fields = ['primary_name', 'primary_years', 'primary_avg', 'secondary_name', 'secondary_years', 'secondary_avg',
+    'Intermediate_name', 'Intermediate_years', 'Intermediate_avg', 'college_name', 'college_years', 'college_avg',
+    'highest_acad', 'highest_grad_year', 'highest_uni', 'highest_country',
+    't0', 't0_year', 't0_awarded_by', 't0_country_city']
 
   return (
     <div className=" lg:w-3/4 md:w-3/4  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
@@ -97,38 +102,14 @@ export default function Education() {
 
         <Training/>
 
-{/* 
-        <div className="flex flex-col my-10">
-          <p> How did you refrral to us ? </p>
-
-          <Selector name="referral_source" classes="text-sm text-gray-600"
-          ops={['Walk-in', 'Employee', 'FaceBook', 'Linked-In']}/>
-
-          <FormInput placeholder="other" name="other_referral_source" />
-        </div>
-
-
-        <div className="flex flex-col my-10">
-          <p> choose your Prefered field of work  </p>
-          <div className="flex flex-row  justify-center mt-2">
-              <Radio name="preffered_fow" ops={['Technical', 'Sales', 'Administration']}/>
-          </div>
-          <p className="mt-10"> Prefered Contract Preiod </p>
-          <div className="flex flex-row  justify-center mt-2">
-            <Radio name="preferred_cp" ops={['3 Years', '5 Years', '10 Years']} />
-          </div>
-        </div> */}
-
-
-
-
       <div className="flex justify-around flex-row mt-8">
         <Link to="/personal">
           <Button value="Previous" />
         </Link>
-        <Link to="/technical">
+        {/* <Link to="/technical" >
           <Button value="Next" />
-        </Link>
+        </Link> */}
+        <R_link fields={required_fields} route="/technical" value="Next"/>
       </div>
     </div>
   );

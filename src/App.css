@@ -10,6 +10,14 @@ p, span , h2 ,h3,label,:placeholder-shown , option , select , li , a {
   height: 40vmin;
   pointer-events: none;
 }
+.missing {
+  /* border: solid 1px red ; */
+  border-bottom:solid 1px #f56565;
+  outline: none;
+}
+.missing:focus {
+  border-bottom: solid 1px #4299e1;
+}
 /* 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

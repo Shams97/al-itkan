@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FormInput, Button } from "../App";
+import { FormInput, Button,R_link } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import { Context } from "../store"
@@ -11,7 +11,36 @@ export const Technical_skills = () => {
   const [show, setShow] = useState([]);
   const [hide, setHide] = useState(false);
   const [state, setState] = useContext(Context)
-  
+  const rfields = ["skill_0_level","skill_1_level", "business_correspondence_skill_level", "effective_communication_skill_level",
+  "customer_service_skill_level",
+  "team_work_skill_level",
+  "Internet_and_research_skill_level",
+  "ms_office_and_outlook_skill_level",
+  "office_machine_skill_level",
+  "typing_skill_level",
+  "time_management_skill_level",
+  "attention_to_detail_level",
+  "goal_oriented_skill_level",
+  "multi_tasking_skill_level",
+  "follow_up_skill_level",
+  "employee_relation_skill_level",
+  "supervision_skill_level",
+  "relationship_building_skill_level",
+  "time_management_skill_level",
+  "research_information_gathering_skill_level",
+  "medical_product_knowledge_skill_level",
+  "business_communication_skill_level",
+  "client_engagement_skill_level",
+  "sales_presentations_demos_skill_level",
+  "contract_negotiation_skill_level",
+  "closing_skills_skill_level",
+  "self_motivated_ambitious_skill_level",
+  "adaptability_skill_level",
+  "responsibility_skill_level",
+  "goal_oriented_skill_level",
+  "passionate_about_selling_skill_level",
+
+]
   return (
     <div className="lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
       <h3 className="my-8 text-2xl"> Technical Skills</h3>
@@ -83,9 +112,10 @@ export const Technical_skills = () => {
         <Link to="/education">
           <Button value="Previous" />
         </Link>
-        <Link to="/emploment">
+        {/* <Link to="/emploment">
           <Button value="Next" />
-        </Link>
+        </Link> */}
+        <R_link route="/emploment" fields={rfields} value="Next"/>
       </div>
       <div className="mb-4" />
     </div>

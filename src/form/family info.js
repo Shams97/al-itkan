@@ -9,7 +9,6 @@ export default function FamilyInfo() {
   const [show, setShow] = useState([]);
   const [hide, setHide] = useState(false);
   const [state, setState] = useContext(Context)
-
   return (
       <div className="mx-auto my-12 lg:p-8 md:p-8 sm:p-4">
           <h3 className="my-8 text-2xl " > Family information </h3>

@@ -82,7 +82,7 @@ export const Ticket_submitted = () => {
           Your ticket has been submitted successfully, Our support staff will
           contact you shorty
         </p> 
-          : ticket==="not created successfully" ?<p> your ticket has not been submitted, Something went wrong, please contact us </p>
+          : ticket==="not created successfully" ? <p> your ticket has not been submitted, Something went wrong, please contact us </p>
           : <p> Please wait ..</p> 
       }
     
