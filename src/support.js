@@ -21,7 +21,7 @@ export default function Support(submittedState) {
   let handle_Ticket_Submit = async()=>{
     
     try {
-    await axios.post("http://erp.alitkan.com:5000/api/helpdesk",state).then((res) => {
+    await axios.post("https://jobsbackend.alitkan.com/api/helpdesk",state).then((res) => {
      let ticket_state = res.data.message
      state['ticket'] = ticket_state
      setState(state)
