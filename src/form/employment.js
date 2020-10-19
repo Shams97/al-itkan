@@ -381,6 +381,7 @@ export const Refrence = () => {
       "accomodation_id",
       "uni_degree",
       "medical" ,
+      "cv",
      "no_crim_req",
      "letter_rec_1",
      "letter_rec_2",
@@ -466,7 +467,7 @@ export const Refrence = () => {
           </div>
         ) : null}
 
-        <div className="flex  justify-around flex-row mt-4 ">
+        <div className="flex justify-around flex-row mt-4 ">
           {!hider ? (
             <Operations onClick={() => setHider(true)} operation="+" />
           ) : null}
@@ -498,7 +499,7 @@ export const Refrence = () => {
         <div className="flex flex-col my-10 lg:p-8 md:p-8 sm:p-2">
           <h3 className="my-8 text-2xl "> Needed documents </h3>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2"> photo</label>
+            <label className="mx-2 mt-2 w-1/2 text-left"> photo </label>
             <FormInput
               name="photo"
               type="file"
@@ -508,11 +509,11 @@ export const Refrence = () => {
           </div>
 
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 px-4 w-1/2"> national ID </label>
+            <label className="mx-2 mt-2 w-1/2 text-left "> national ID هوية الاحوال المدنية </label>
             <FormInput name="national_id" type="file" placeholder="national id"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2"> citizenship certificate</label>
+            <label className="mx-2 mt-2 w-1/2 text-left"> citizenship certificate شهادة الجنسية العراقية</label>
             <FormInput
               name="citizenship_cert"
               type="file"
@@ -521,32 +522,36 @@ export const Refrence = () => {
             />
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2">accomidation ID</label>
+            <label className="mx-2 mt-2 w-1/2 text-left">accomidation ID بطاقة السكن</label>
             <FormInput name="accomodation_id" type="file" placeholder="accomidation ID"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2"> university degree</label>
+            <label className="mx-2 mt-2 w-1/2 text-left"> university degree وثقية أو تأييد تخرج</label>
             <FormInput name="uni_degree" type="file" placeholder="unversity degree "/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2"> medical test </label>
+            <label className="mx-2 mt-2 w-1/2 text-left">CV سيرة ذاتية </label>
+            <FormInput name="cv" type="file" placeholder="cv"/>
+          </div>
+          <div className="lg:flex md:flex sm:block flex-row my-4">
+            <label className="mx-2 mt-2 w-1/2 text-left"> medical test فحص طبي </label>
             <FormInput name="medical" type="file" placeholder="medical test"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2"> no criminal record </label>
+            <label className="mx-2 mt-2 w-1/2 text-left">certificate no criminal record وثقية عدم محكومية </label>
             <FormInput name="no_crim_req" type="file" placeholder="no criminal record"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2">
+            <label className="mx-2 mt-2 w-1/2 text-left">
               {" "}
-              letter of recommendation 1
+              letter of recommendation 1 رسالة توصية من جهة التوظيف السابقة في حال كونك موظف سابق 
             </label>
             <FormInput name="letter_rec_1" type="file"  placeholder="letter recommendation 1"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2">
+            <label className="mx-2 mt-2 w-1/2 text-left">
               {" "}
-              letter of recommendation 2
+              letter of recommendation 2 رسالة توصية اخرى
             </label>
             <FormInput name="letter_rec_2" type="file" placeholder="letter recommendation 2"/>
           </div>
