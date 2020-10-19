@@ -43,6 +43,7 @@ export default function Education() {
 
           <p className="text-start my-4">College or institute</p>
               <FormInput placeholder="name of school" name="college_name" />
+              <FormInput placeholder="Major" name="college_major" />
               <FormInput placeholder="years" name="college_years" type="number"/>
               <FormInput placeholder="average %" name="college_avg" type="number"/>
 
@@ -95,7 +96,7 @@ export default function Education() {
             placeholder="Heighest academic qualification "
             name="highest_acad"
           />
-          <FormInput placeholder="Academic major" name=""/>
+          <FormInput placeholder="Academic major" name="major"/>
           <FormInput placeholder="graduation year " name="highest_grad_year" type="number"/>
           <FormInput placeholder="university" name="highest_uni" />
           <FormInput placeholder="country" name="highest_country" />

@@ -8,13 +8,6 @@ import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
 
-export let start = new Date();
-
-export let start_in_hours = {
-  hours: start.getHours(),
-  minutes: start.getMinutes(),
-};
-
 export default function PersonalDetails() {
   const [state, setState] = useContext(Context);
 
@@ -24,13 +17,12 @@ export default function PersonalDetails() {
     if (!state["data"]["job_id"]) {
       let url = new URL(document.URL);
       let job_id = Number( url.searchParams.get("job_id") )
-
       state["data"]["job_id"] = job_id;
-      setState(state);
-
-      state["data"]["filling_time"] = start.toString();
-      console.log("start ", state["data"]);
     }
+
+    state["data"]["filling_time"] = new Date();
+    setState(state);
+    console.log("start ", state["data"]);
   }, []);
 
   const _onFocus = (e) => {

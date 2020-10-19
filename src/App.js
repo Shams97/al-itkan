@@ -146,12 +146,25 @@ export const R_link = ({ route, fields,value }) => {
     if (missingField.length == 0){
       if (value == "Submit"){
         console.log("submit button ")
+
+        // add the filling time
+        if (state['data']['filling_time']){
+          let start = state['data']['filling_time']
+          let end = new Date();
+          let final = end.getHours() - start.getHours() + ":" + (end.getMinutes() - start.getMinutes());
+          state["data"]["filling_time"] = final;
+          setState(state);
+          console.log("final timer =", final);
+        }
+
+        //show loading text
         let lodaing_text= document.getElementById("loading_text")
         lodaing_text.classList.remove("hidden")
+
         await axios.post("https://jobsbackend.alitkan.com/api", state).then((res) => {
           let reference = res.data;
           state["key"] = reference;
-          console.log("response key ====", state.key);
+          console.log("response key ==", state.key);
           setState(state);
           console.log("filling state", state);
         });

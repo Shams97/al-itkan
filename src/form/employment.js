@@ -5,7 +5,6 @@ import { Operations } from "./family info";
 import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
-import { start, start_in_hours } from "./personal details";
 
 const axios = require("axios");
 
@@ -376,39 +375,18 @@ export const Refrence = () => {
     "ref_phone" ,
     "signature",
     "sig_date",
-      "photo","national_id",
-      "citizenship_cert",
-      "accomodation_id",
-      "uni_degree",
-      "medical" ,
-      "cv",
-     "no_crim_req",
-     "letter_rec_1",
-     "letter_rec_2",
+    "photo","national_id",
+    "citizenship_cert",
+    "accomodation_id",
+    "uni_degree",
+    "medical" ,
+    "cv",
+    "no_crim_req",
+    "letter_rec_1",
+    "letter_rec_2",
  
  ]
 
-  let handleSubmit = async () => {
-    let end = new Date();
-    let final;
-    if (state["data"]) {
-      final =
-        end.getHours() -
-        start.getHours() +
-        ":" +
-        (end.getMinutes() - start.getMinutes());
-      state["data"]["filling_time"] = final;
-      console.log("final timer =", final);
-    }
-
-    await axios.post("https://jobsbackend.alitkan.com/api", state).then((res) => {
-      let reference = res.data;
-      state["key"] = reference;
-      console.log("response key ====", state.key);
-      setState(state);
-      console.log("filling state", state);
-    });
-  };
 
   return (
     <div className=" mx-auto">
