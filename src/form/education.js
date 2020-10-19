@@ -95,6 +95,7 @@ export default function Education() {
             placeholder="Heighest academic qualification "
             name="highest_acad"
           />
+          <FormInput placeholder="Academic major" name=""/>
           <FormInput placeholder="graduation year " name="highest_grad_year" type="number"/>
           <FormInput placeholder="university" name="highest_uni" />
           <FormInput placeholder="country" name="highest_country" />
@@ -106,9 +107,6 @@ export default function Education() {
         <Link to="/personal">
           <Button value="Previous" />
         </Link>
-        {/* <Link to="/technical" >
-          <Button value="Next" />
-        </Link> */}
         <R_link fields={required_fields} route="/technical" value="Next"/>
       </div>
     </div>

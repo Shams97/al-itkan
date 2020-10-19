@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Family from "./family info";
 import Health from "./health";
 import Language from "./lang";
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
@@ -44,6 +44,7 @@ export default function PersonalDetails() {
         <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full">
           <FormInput placeholder="full name" name="name" type="text" />
           <FormInput placeholder="sur name" name="surname" type="text" />
+          <FormInput placeholder="الاسم الرباعي" name="arabic_name" type="text" />
           <FormInput placeholder="email" name="email_from" type="text" />
           <FormInput placeholder="skype ID " name="skype_id" type="text" />
           <FormInput

@@ -9,9 +9,10 @@ import Admin_Skills,{ Sales_Skills,Training,Technical_skills } from "./form/skil
 import Employment_history,{ Refrence,Submited,Additional_info } from "./form/employment";
 import Support,{Ticket_submitted} from './support';
 import Check from "./check";
-import Jobs,{Page_details} from "./jobs";
+import Jobs,{Page_details} from "./jobs/jobs";
 import Header from "./header";
 import { Footer } from "./header";
+import Description from './jobs/description'
 const axios = require("axios");
 
 
@@ -27,6 +28,7 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/" component={Jobs}/> 
+              <Route  path="/jobs/description" component={Description}/> 
               <Route path="/personal" component={PersonalDetails} />
               <Route path="/education" component={Education} />
               <Route path="/check" component={Check} />
@@ -41,6 +43,7 @@ function App() {
               <Route path="/helpdesk" component={Support}/>
               <Route path="/ticket_submitted" component={Ticket_submitted}/>
               <Route path="/page_details" component={Page_details}/>
+
             </Switch>
           </Router>
         </Store>
@@ -122,7 +125,7 @@ export const FormInput = ({ placeholder, name, type, textarea, onFocus }) => {
 export const R_link = ({ route, fields,value }) => {
   const [state, setState] = useContext(Context);
 
-  let handle_click = (e) => {
+  let handle_click = async(e) => {
     let missingField = [];
     for (let x in fields) {
       let item = fields[x];
@@ -141,17 +144,22 @@ export const R_link = ({ route, fields,value }) => {
     let link = document.getElementsByName("rLink")[0];
     console.log("before the last if ", missingField, link);
     if (missingField.length == 0){
-      // if (value == "Submit"){
-      //   console.log("submit button ")
-      //   await axios.post("https://jobsbackend.alitkan.com/api", state).then((res) => {
-      //     let reference = res.data;
-      //     state["key"] = reference;
-      //     console.log("response key ====", state.key);
-      //     setState(state);
-      //     console.log("filling state", state);
-      //   });
-      // }
-      link.click()
+      if (value == "Submit"){
+        console.log("submit button ")
+        let lodaing_text= document.getElementById("loading_text")
+        lodaing_text.classList.remove("hidden")
+        await axios.post("https://jobsbackend.alitkan.com/api", state).then((res) => {
+          let reference = res.data;
+          state["key"] = reference;
+          console.log("response key ====", state.key);
+          setState(state);
+          console.log("filling state", state);
+        });
+        link.click()
+        console.log("route =", route)
+        return  null
+      }
+      else link.click()
 
     }      
     else {

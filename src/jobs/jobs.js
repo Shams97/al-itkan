@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import Img from "./asstes/img.jpg";
-import NotFound from "./asstes/undraw_Taken.svg";
-import { Context } from "./store";
-import Expired from "./asstes/expired.svg";
-import "./job.css";
+import Img from "../asstes/img.jpg";
+import NotFound from "../asstes/undraw_Taken.svg";
+import { Context } from "../store";
+import Expired from "../asstes/expired.svg";
 const axios = require("axios");
 
 export let job_id;
-
+export let job_state;
 export default function Jobs({ vacancy, handleClick }) {
   const [jobState, setjobs] = useState([]);
   const [state, setState] = useContext(Context);
@@ -23,9 +22,8 @@ export default function Jobs({ vacancy, handleClick }) {
       // console.log(result)
 
       result.map((item) => {
-        //  let image = item.card_image;
-        //  console.log("images ", image)
         jobState.push(item);
+        job_state = item.state;
       });
 
       setjobs((res) => [...res]);
@@ -53,6 +51,7 @@ export default function Jobs({ vacancy, handleClick }) {
           <Link to="/check"> check</Link>
         </button>
       </div>
+
       <div className="max-w-full flex flex-row flex-wrap  justify-center ">
         {jobState.length === 0 ? (
           <div className="lg:p-8 md:p-8 sm:px-0  my-4">
@@ -89,22 +88,24 @@ export default function Jobs({ vacancy, handleClick }) {
                     {" "}
                     {item.name}{" "}
                   </h3>
-                  <h4 className="text-left text-lg font-sans">
-                    {" "}
-                    {item.city}{" "}
-                  </h4>
+                  <h4 className="text-left text-lg font-sans"> {item.city} </h4>
                   <p className="text-left mb-4 font-sans ">
                     Opening date
                     <span className="mx-2 font-sans text-red-600 text-xs">
                       {item.opening_date}
                     </span>
                   </p>
-  {item.description ? 
-   <div className="h-32 w-full"><p className="text-sm text-left font-sans  overflow-auto h-32 mb-8 ">
-                    {" "}
-                    {item.description}
-                  </p></div>:null }
-                  
+
+
+                  {item.description ? (
+                    <div className="h-32 w-full">
+                      <p className="text-sm text-left font-sans  overflow-auto h-32 mb-8 ">
+                        {" "}
+                        {item.description}
+                      </p>
+                    </div>
+                  ) : null}
+
                   <div className="flex flex-row justify-left my-8">
                     <Link to={`/personal?job_id=${item.id}`}>
                       <button
@@ -112,8 +113,8 @@ export default function Jobs({ vacancy, handleClick }) {
                         value={item.id}
                         name={item.name}
                         onClick={handleClick}
-                       >
-                        Apply now
+                      >
+                        Apply 
                       </button>
                     </Link>
                   </div>
@@ -149,10 +150,8 @@ export default function Jobs({ vacancy, handleClick }) {
   );
 }
 
-
-
 export const Page_details = () => {
-  return <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-20 px-4">
-
-      </div>
-}
+  return (
+    <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-20 px-4"></div>
+  );
+};

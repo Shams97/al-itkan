@@ -5,14 +5,14 @@ import {Context} from '../store'
 const axios = require("axios");
 
 export default function Api_inegration() {
- const [state, setState] = useContext(Context)
+//  const [state, setState] = useContext(Context)
 
-  let handleSubmit = (e) => {
-    axios.post("https://jobsbackend.alitkan.com/api", {
-      headers: {"Content-Type": "application/json"}
-    }).then((response) => {
-      console.log("response =", response);
-    })
+//   let handleSubmit = (e) => {
+//     axios.post("https://jobsbackend.alitkan.com/api", {
+//       headers: {"Content-Type": "application/json"}
+//     }).then((response) => {
+//       console.log("response =", response);
+//     })
 
     // fetch("http://191.101.164.149:5000/api", {
     //   method: "POST",

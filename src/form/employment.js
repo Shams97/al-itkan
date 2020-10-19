@@ -406,7 +406,6 @@ export const Refrence = () => {
       console.log("response key ====", state.key);
       setState(state);
       console.log("filling state", state);
-      // window.location.replace('/submited')
     });
   };
 
@@ -559,12 +558,10 @@ export const Refrence = () => {
           <Button value="Previous" />
         </Link>
 
-        <Link onClick={handleSubmit}>
-          {/* <Button onClick={handleSubmit} value="Submit" /> */}
-           <R_link value="Submit" fields={rfields} route="/submited"/>
-        </Link> 
+        <p id="loading_text" className="hidden">please wait...</p>
 
-
+        <R_link value="Submit" fields={rfields} route="/submited"/>
+        
       </div>
     </div>
   );
@@ -585,15 +582,15 @@ export const Submited = () => {
   const [ref, setRef] = useState(0);
   const [state, setState] = useContext(Context);
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (state["key"]) {
-        setRef(state["key"]);
-      }
-    }, 3000);
-    // setRef(state["key"]);
+  // useEffect(() => {
+    // setTimeout(() => {
+      // if (state["key"]) {
+        // setRef(state["key"]);
+      // }
+    // }, 3000);
+    //  setRef(state["key"]);
 
-  }, []);
+  // }, []);
 
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-20 p-8">
@@ -601,8 +598,8 @@ export const Submited = () => {
         Thank you for your patience, Your application has been submitted
         successfully{" "}
       </p>
-      {ref ? (
-        <span className="text-red-400 mx-2">{ref}</span>
+      {state['key'] ? (
+        <span className="text-red-400 mx-2">{state['key']}</span>
       ) : (
         <span className="mx-2">Reference still loading .. </span>
       )}
