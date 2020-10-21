@@ -11,7 +11,8 @@ const axios = require("axios");
 export default function Employment() {
   const [state, setState] = useContext(Context);
   const [show, setShow] = useState([]);
-  const [hide, setHide] = useState(false);
+  const [hidePrev, setHidePrev] = useState(true);
+  const [hideNext, setHideNext] = useState(false);
 
   return (
     <div className=" lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
@@ -149,18 +150,21 @@ export default function Employment() {
           Want to provide more than one employer ?{" "}
         </span>
 
-        <Operations
-          onClick={() => {
-            setShow([...show, {}]);
-            setHide(true);
+        {hideNext ? null : (
+          <Operations
+            onClick={() => {
+              setShow([...show, {}]);
+              setHideNext(show.length == 1 ? true: false)
+              setHidePrev(false);
           }}
-          operation="+"
-        />
-        {hide ? (
+            operation="+"
+          /> )}
+        {hidePrev ? null : (
           <Operations
             onClick={() => {
               setShow(show.slice(0, show.length - 1));
-              setHide(show.length === 1 ? false : true);
+              setHidePrev(show.length == 1 ? true : false)
+              setHideNext(false)
               let last_index = show.length - 1;
               delete state["data"]["employer_name_" + last_index];
               delete state["data"]["job_title_" + last_index];
@@ -178,7 +182,7 @@ export default function Employment() {
             }}
             operation="-"
           />
-        ) : null}
+        )}
       </div>
 
       <div className="mb-4" />

@@ -21,15 +21,14 @@ export default function Support(submittedState) {
   let handle_Ticket_Submit = async()=>{
     
     try {
-    await axios.post("https://jobsbackend.alitkan.com/api/helpdesk",state).then((res) => {
-     let ticket_state = res.data.message
-     state['ticket'] = ticket_state
-     setState(state)
-     console.log("state ", state['ticket'] , ticket_state) 
-    });
-      
+      await axios.post("https://jobsbackend.alitkan.com/api/helpdesk",state).then((res) => {
+      let ticket_state = res.data.message
+      state['ticket'] = ticket_state
+      setState(state)
+      console.log("state ", state['ticket'] , ticket_state) 
+        })
       } catch(e) {
-        console.log(e)
+        console.log('cathed error => ', e)
       }
     // setState(state);
   };

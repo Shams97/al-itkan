@@ -151,7 +151,15 @@ export const R_link = ({ route, fields,value }) => {
         if (state['data']['filling_time']){
           let start = state['data']['filling_time']
           let end = new Date();
-          let final = end.getHours() - start.getHours() + ":" + (end.getMinutes() - start.getMinutes());
+
+          // to check for moinus time
+          let minutes = end.getMinutes() - start.getMinutes()
+          let hours = end.getHours() - start.getHours()
+          if (minutes > 0){
+            minutes += 60
+            hours -= 1
+          }
+          let final = hours + " hourse & " + minutes + " minutes"
           state["data"]["filling_time"] = final;
           setState(state);
           console.log("final timer =", final);

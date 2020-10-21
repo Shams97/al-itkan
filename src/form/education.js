@@ -10,7 +10,8 @@ import { Training } from "./skills";
 export default function Education() {
   const [state, setState] = useContext(Context)
   const [show, setShow] = useState([]);
-  const [hide, setHide] = useState(false);
+  const [hidePrev, setHidePrev] = useState(true);
+  const [hideNext, setHideNext] = useState(false);
 
   const required_fields = ['primary_name', 'primary_years', 'primary_avg', 'secondary_name', 'secondary_years', 'secondary_avg',
     'Intermediate_name', 'Intermediate_years', 'Intermediate_avg', 'college_name', 'college_years', 'college_avg',
@@ -65,19 +66,23 @@ export default function Education() {
         <div className="flex  justify-around flex-row mt-8 ">
         <p className="text-red-400">Add more education</p>
 
+          {hideNext ? null : (
           <Operations
             onClick={() => {
               setShow([...show, {}]);
-              setHide(true);
+              setHideNext(show.length == 1 ? true: false)
+              setHidePrev(false);
             }}
             operation="+"
-          />
-          {hide ? (
+          /> )}
+
+          {hidePrev ? null : (
             <Operations
               onClick={() => {
                 setShow(show.slice(0, show.length - 1));
                 // I put 2 bcause ths show value is before the intitaliting fo setShow()
-                setHide(show.length == 1 ? false : true)
+                setHidePrev(show.length == 1 ? true : false)
+                setHideNext(false)
                 let last_index = show.length - 1
                 delete state['data']["other_"+ last_index +"_name"]
                 delete state['data']["other_"+ last_index +"_years"]
@@ -86,7 +91,7 @@ export default function Education() {
               }}
               operation="-"
             />
-          ) : null}
+          )}
       
       </div>
 
