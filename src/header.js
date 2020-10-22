@@ -210,7 +210,7 @@ export default function Header() {
 export const Footer = () => {
   return (
     <div
-      className="flex flex-col h-64 flex-wrap w-full object-fill mt-12"
+      className="flex flex-col h-64 flex-wrap w-full object-fill"
       style={{
         backgroundImage: `url(${Footer_image})`,
         backgroundSize: "cover",

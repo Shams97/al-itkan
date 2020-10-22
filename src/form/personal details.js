@@ -34,42 +34,42 @@ export default function PersonalDetails() {
       <h3 className="my-8 text-2xl "> Personal Details </h3>
       <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col justify-between mx-auto ">
         <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full">
-          <FormInput placeholder="full name" name="name" type="text" />
-          <FormInput placeholder="sur name (اللقب)" name="surname" type="text" />
-          <FormInput placeholder="الاسم الرباعي باللغة عربية" name="arabic_name" type="text" />
-          <FormInput placeholder="email" name="email_from" type="text" />
-          <FormInput placeholder="skype ID " name="skype_id" type="text" />
+          <FormInput placeholder="Full name" name="name" type="text" />
+          <FormInput placeholder="Sur name (اللقب)" name="surname" type="text" />
+          <FormInput placeholder="الاسم الرباعي باللغة العربية" name="arabic_name" type="text" />
+          <FormInput placeholder="Email" name="email_from" type="text" />
+          <FormInput placeholder="Skype ID " name="skype_id" type="text" />
           <FormInput
-            placeholder="phone number"
+            placeholder="Phone number"
             name="partner_phone"
             type="text"
           />
-          <FormInput placeholder="address" name="address" type="text" />
-          <FormInput placeholder="hai/region" name="hai" type="text" />
-          <FormInput placeholder="section" name="sec" type="text" />
-          <FormInput placeholder="street" name="st" type="text" />
-          <FormInput placeholder="house" name="house" type="text" />
+          <FormInput placeholder="Address" name="address" type="text" />
+          <FormInput placeholder="Hai/region" name="hai" type="text" />
+          <FormInput placeholder="Section" name="sec" type="text" />
+          <FormInput placeholder="Street" name="st" type="text" />
+          <FormInput placeholder="House" name="house" type="text" />
           <FormInput
             textarea={true}
-            placeholder="nearest point of reference "
+            placeholder="Nearest point of reference "
             name="nearest"
             type="text"
             className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2"
           />
         </div>
         <div className="flex flex-col mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:max-w-xl">
-          <FormInput placeholder="birth date" type="text" name="birthdate" onFocus={_onFocus}/>
+          <FormInput placeholder="Birth date" type="text" name="birthdate" onFocus={_onFocus}/>
           <FormInput
-            placeholder="place of birth"
+            placeholder="Place of birth"
             name="place_of_birth"
             type="text"
           />
-          <label className="p-4"> gender </label>
+          <label className="p-4"> Gender </label>
           <Radio name="gender" ops={["male", "female"]} mx="mx-auto" />
-          <FormInput placeholder="height" name="height" type="number" />
-          <FormInput placeholder="weight" name="weight" type="number" />
-          <FormInput placeholder="citizenship" name="citizenship" type="text" />
-          <FormInput placeholder="religion" name="religion" type="text" />
+          <FormInput placeholder="Height" name="height" type="number" />
+          <FormInput placeholder="Weight" name="weight" type="number" />
+          <FormInput placeholder="Citizenship" name="citizenship" type="text" />
+          <FormInput placeholder="Religion" name="religion" type="text" />
 
           <label className="p-4">Social Status</label>
           <Selector

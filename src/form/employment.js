@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { FormInput, Button,R_link } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
@@ -6,7 +6,6 @@ import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
 
-const axios = require("axios");
 
 export default function Employment() {
   const [state, setState] = useContext(Context);
@@ -28,10 +27,10 @@ export default function Employment() {
       </div>
 
       <div className="flex flex-col flex-wrap m-2 lg:px-16 md:px-16 sm:px-4">
-        <FormInput placeholder="employer name" name="employer_name" />
-        <FormInput placeholder="job title" name="job_title" />
-        <FormInput placeholder="employer address" name="employer_address" />
-        <FormInput placeholder="employer province" name="employer_province" />
+        <FormInput placeholder="Employer name" name="employer_name" />
+        <FormInput placeholder="Job title" name="job_title" />
+        <FormInput placeholder="Employer address" name="employer_address" />
+        <FormInput placeholder="Employer province" name="employer_province" />
 
         {/* EMPLOYEMENT DATE */}
         <div
@@ -64,11 +63,11 @@ export default function Employment() {
           </div>
         </div>
 
-        <FormInput placeholder="supervisor" name="supervisor" />
-        <FormInput placeholder="supervisor phone No." name="super_phone" />
+        <FormInput placeholder="Supervisor" name="supervisor" />
+        <FormInput placeholder="Supervisor phone No." name="super_phone" />
 
         <FormInput
-          placeholder="Reason of Leaving"
+          placeholder="Reason of leaving"
           name="reason_for_leaving"
           type="text"
           textarea={true}
@@ -83,16 +82,16 @@ export default function Employment() {
             key={index}
           >
             <FormInput
-              placeholder="employer Name"
+              placeholder="Employer name"
               name={"employer_name_" + n}
             />
             <FormInput placeholder="Job Title" name={"job_title_" + n} />
             <FormInput
-              placeholder="employer Address"
+              placeholder="Employer address"
               name={"employer_address_" + n}
             />
             <FormInput
-              placeholder="employer Province"
+              placeholder="Employer province"
               name={"employer_province_" + n}
             />
 
@@ -129,14 +128,14 @@ export default function Employment() {
               </div>
             </div>
 
-            <FormInput placeholder="supervisor" name={"supervisor_" + n} />
+            <FormInput placeholder="Supervisor" name={"supervisor_" + n} />
             <FormInput
-              placeholder="supervisor phone No."
+              placeholder="Supervisor phone No."
               name={"super_phone_" + n}
             />
 
             <FormInput
-              placeholder="Reason of Leaving"
+              placeholder="Reason of leaving"
               name={"reason_for_leaving_" + n}
               type="text"
               textarea={true}
@@ -402,16 +401,16 @@ export const Refrence = () => {
             Please Provide two references who are not former employers who we
             may contact (Not Relative)
           </p>
-          <FormInput placeholder="name" name="ref_name" />
-          <FormInput placeholder="relation" name="ref_relation" />
-          <FormInput placeholder="phone No" name="ref_phone" />
+          <FormInput placeholder="Name" name="ref_name" />
+          <FormInput placeholder="Relation" name="ref_relation" />
+          <FormInput placeholder="Phone No" name="ref_phone" />
         </div>
 
         {hide ? (
           <div className="mt-10 flex flex-col">
-            <FormInput placeholder="name" name="ref_name_1" />
-            <FormInput placeholder="relation" name="ref_relation_1" />
-            <FormInput placeholder="phone No" name="ref_phone_1" />
+            <FormInput placeholder="Name" name="ref_name_1" />
+            <FormInput placeholder="Relation" name="ref_relation_1" />
+            <FormInput placeholder="Phone No" name="ref_phone_1" />
           </div>
         ) : null}
 
@@ -436,16 +435,16 @@ export const Refrence = () => {
 
         <div className="mt-10 flex flex-col ">
           <p> Relative </p>
-          <FormInput placeholder="name" name="ref_r_name" />
-          <FormInput placeholder="relation" name="ref_r_relation" />
-          <FormInput placeholder="phone No" name="ref_r_phone" />
+          <FormInput placeholder="Name" name="ref_r_name" />
+          <FormInput placeholder="Relation" name="ref_r_relation" />
+          <FormInput placeholder="Phone No" name="ref_r_phone" />
         </div>
 
         {hider ? (
           <div className="mt-10 flex flex-col ">
-            <FormInput placeholder="name" name="ref_r_name_1" />
-            <FormInput placeholder="relation" name="ref_r_relation_1" />
-            <FormInput placeholder="phone No" name="ref_r_phone_1" />
+            <FormInput placeholder="Name" name="ref_r_name_1" />
+            <FormInput placeholder="Relation" name="ref_r_relation_1" />
+            <FormInput placeholder="Phone No" name="ref_r_phone_1" />
           </div>
         ) : null}
 
@@ -473,7 +472,7 @@ export const Refrence = () => {
             {" "}
             Sign here to ensure that every information you provide is correct{" "}
           </p>
-          <FormInput placeholder="your signature" name="signature" />
+          <FormInput placeholder="Your signature" name="signature" />
           <span className="text-sm mx-4 mt-5">date</span>
           <FormInput name="sig_date" type="date" />
         </div>
@@ -481,7 +480,7 @@ export const Refrence = () => {
         <div className="flex flex-col my-10 lg:p-8 md:p-8 sm:p-2">
           <h3 className="my-8 text-2xl "> Needed documents </h3>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2 text-left"> photo </label>
+            <label className="mx-2 mt-2 w-1/2 text-left"> Photo </label>
             <FormInput
               name="photo"
               type="file"
@@ -491,11 +490,11 @@ export const Refrence = () => {
           </div>
 
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2 text-left "> national ID هوية الاحوال المدنية </label>
+            <label className="mx-2 mt-2 w-1/2 text-left "> National ID هوية الاحوال المدنية </label>
             <FormInput name="national_id" type="file" placeholder="national id"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2 text-left"> citizenship certificate شهادة الجنسية العراقية</label>
+            <label className="mx-2 mt-2 w-1/2 text-left"> Citizenship certificate شهادة الجنسية العراقية</label>
             <FormInput
               name="citizenship_cert"
               type="file"
@@ -504,11 +503,11 @@ export const Refrence = () => {
             />
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2 text-left">accomidation ID بطاقة السكن</label>
+            <label className="mx-2 mt-2 w-1/2 text-left">Accomidation ID بطاقة السكن</label>
             <FormInput name="accomodation_id" type="file" placeholder="accomidation ID"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2 text-left"> university degree وثقية أو تأييد تخرج</label>
+            <label className="mx-2 mt-2 w-1/2 text-left"> University degree وثقية أو تأييد تخرج</label>
             <FormInput name="uni_degree" type="file" placeholder="unversity degree "/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
@@ -516,24 +515,24 @@ export const Refrence = () => {
             <FormInput name="cv" type="file" placeholder="cv"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2 text-left"> medical test فحص طبي </label>
+            <label className="mx-2 mt-2 w-1/2 text-left"> Medical test فحص طبي </label>
             <FormInput name="medical" type="file" placeholder="medical test"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
-            <label className="mx-2 mt-2 w-1/2 text-left">certificate no criminal record وثقية عدم محكومية </label>
+            <label className="mx-2 mt-2 w-1/2 text-left">Certificate no criminal record وثقية عدم محكومية </label>
             <FormInput name="no_crim_req" type="file" placeholder="no criminal record"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2 text-left">
               {" "}
-              letter of recommendation 1 رسالة توصية من جهة التوظيف السابقة في حال كونك موظف سابق 
+              Letter of recommendation 1 رسالة توصية من جهة التوظيف السابقة في حال كونك موظف سابق 
             </label>
             <FormInput name="letter_rec_1" type="file"  placeholder="letter recommendation 1"/>
           </div>
           <div className="lg:flex md:flex sm:block flex-row my-4">
             <label className="mx-2 mt-2 w-1/2 text-left">
               {" "}
-              letter of recommendation 2 رسالة توصية اخرى
+              Letter of recommendation 2 رسالة توصية اخرى
             </label>
             <FormInput name="letter_rec_2" type="file" placeholder="letter recommendation 2"/>
           </div>
@@ -545,7 +544,7 @@ export const Refrence = () => {
           <Button value="Previous" />
         </Link>
 
-        <p id="loading_text" className="hidden">please wait...</p>
+        <p id="loading_text" className="hidden "> please wait...</p>
 
         <R_link value="Submit" fields={rfields} route="/submited"/>
         
@@ -566,7 +565,6 @@ const Options = ({ htmlFor, label_value }) => {
 };
 
 export const Submited = () => {
-  const [ref, setRef] = useState(0);
   const [state, setState] = useContext(Context);
 
   // useEffect(() => {

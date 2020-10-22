@@ -4,14 +4,22 @@ import Img from "../asstes/img.jpg";
 import NotFound from "../asstes/undraw_Taken.svg";
 import { Context } from "../store";
 import Expired from "../asstes/expired.svg";
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 const axios = require("axios");
 
 export let job_id;
 export let job_state;
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: #ed8936;
+`;
 export default function Jobs({ vacancy, handleClick }) {
   const [jobState, setjobs] = useState([]);
   const [state, setState] = useContext(Context);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
       const response = await axios({
@@ -19,16 +27,17 @@ export default function Jobs({ vacancy, handleClick }) {
         method: "GET",
       });
       let result = response.data;
-      // console.log(result)
-
+      console.log(typeof result);
       result.map((item) => {
         jobState.push(item);
-        job_state = item.state;
       });
-
       setjobs((res) => [...res]);
-      console.log(jobState);
+
+      if (response) setLoading(false);
+      // jobState.map(item => state['job_state'].push(item.state) )
+      //console.log("jobs state ==", state['job_state'], jobState );
     }
+    setState(state);
 
     fetchData();
   }, []);
@@ -53,7 +62,19 @@ export default function Jobs({ vacancy, handleClick }) {
       </div>
 
       <div className="max-w-full flex flex-row flex-wrap  justify-center ">
-        {jobState.length === 0 ? (
+        {loading ? (
+          <div className="my-56">
+            <ClipLoader
+              css={override}
+              size={100}
+              color={"#123abc"}
+              loading={loading}
+            />
+            <p className="flex justify-center  mx-auto">
+              Jobs still loading ...{" "}
+            </p>
+          </div>
+        ) : jobState.length === 0 ? (
           <div className="lg:p-8 md:p-8 sm:px-0  my-4">
             <div className="p-8 mt-10 text-wrap rounded lg:w-1/2 md:w-1/2 sm:w-full mx-auto">
               <p className="text-center lg:text-2xl md:text-lg sm:text-base ">
@@ -82,7 +103,6 @@ export default function Jobs({ vacancy, handleClick }) {
                   }
                   className="object-cover  h-48 w-full "
                 />
-
                 <div className="pt-10 px-4">
                   <h3 className="text-left text-2xl font-sans font-medium">
                     {" "}
@@ -95,8 +115,6 @@ export default function Jobs({ vacancy, handleClick }) {
                       {item.opening_date}
                     </span>
                   </p>
-
-
                   {item.description ? (
                     <div className="h-32 w-full">
                       <p className="text-sm text-left font-sans  overflow-auto h-32 mb-8 ">
@@ -107,14 +125,14 @@ export default function Jobs({ vacancy, handleClick }) {
                   ) : null}
 
                   <div className="flex flex-row justify-left my-8">
-                    <Link to={`/personal?job_id=${item.id}`}>
+                    <Link to={`/jobs/description?job_id=${item.id}`}>
                       <button
                         className="px-4 py-1 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500  "
                         value={item.id}
                         name={item.name}
                         onClick={handleClick}
                       >
-                        Apply 
+                        Apply
                       </button>
                     </Link>
                   </div>
@@ -123,23 +141,34 @@ export default function Jobs({ vacancy, handleClick }) {
               </div>
             ) : (
               <div
-                className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 opacity-75 "
+                className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2"
                 key={index}
-                style={{ zIndex: "-1" }}
               >
                 <img
                   src={Expired}
                   className="object-contain  h-48 w-full bg-gray-100 "
                 />
-
                 <div className="pt-10 px-4">
-                  <h3 className="text-2xl font-medium my-2"> {item.name} </h3>
+                  <h3 className="text-2xl font-medium my-2 flex-no-wrap">
+                    {" "}
+                    {item.name}{" "}
+                  </h3>
                   <p className="text-xl text-red-500 ">
                     Unfortunately, this job isn't available right now
                   </p>
                   <p className="text-xs mb-8">
                     please keep following us for more updates{" "}
                   </p>
+                  <Link to={`/jobs/description?job_id=${item.id}`}>
+                    <button
+                      className="px-4 py-1 mt-8  mb-8 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500  "
+                      value={item.id}
+                      name={item.name}
+                      onClick={handleClick}
+                    >
+                      Read more
+                    </button>
+                  </Link>
                 </div>
               </div>
             );
@@ -149,9 +178,3 @@ export default function Jobs({ vacancy, handleClick }) {
     </>
   );
 }
-
-export const Page_details = () => {
-  return (
-    <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-20 px-4"></div>
-  );
-};
