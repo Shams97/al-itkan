@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store";
 import Down from "../asstes/arrow-down.svg";
 import {Link} from 'react-router-dom';
-import Jobs, {job_state} from './jobs';
 const axios = require("axios");
 
 export default function Description() {
@@ -15,29 +14,9 @@ export default function Description() {
        await axios.get(`https://jobsbackend.alitkan.com/api/description?job_id=${job_id}`)
        .then(res =>  {
           let data = {...res.data};
-        //  let result = response.data;
-        //  result.map(item=> desc.push(item))
-          // setDesc(res=>[...res])
-          // setDesc(prev => {
-          //   prev = data 
-          //   console.log("prev", prev)
-          //   return prev })
-          //   setDesc({...data})
           Object.assign(desc, data.job)
-          // let job_obj = data.job
-          // console.log(job_obj)
           setDesc({...desc})
           console.log("state =",desc)
-
-          // Object.keys(data).forEach(key => {
-          //   console.log(key, data[key]);
-          //   setDesc({...data[key]})
-          //   console.log("state of desc",desc) 
-          // });
-
-          // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
-         //  console.log("desc = " , desc.data.job)
-
      })
        }
   fetchData()
@@ -49,6 +28,7 @@ export default function Description() {
   return (
     <div>
       { desc.name && desc.state!='open' ? 
+
                <div className="py-10">
                 <h2 className=" text-left text-2xl ml-12 mt-24">{desc.name} </h2>
                 <Basic_info department={desc.department_id ? desc.department_id[1] : "on intreview"}
@@ -129,19 +109,19 @@ export default function Description() {
                   content={desc.education_language_requirements}
                   />
                 : null}
-
-                <Link to="/personal">
+                <h3 className="text-center text-xl mt-10"> This job is not available right now </h3>
+                <Link to="/">
                       <button
-                        className="px-4 py-2 mt-8  mb-8 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500"
+                        className="px-4 py-2 mt-8  mb-8 border border-blue-400 bg-transparent text-blue-400 hover:bg-blue-500 active:bg-blue-500  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500"
                       >
-                        Apply 
+                        Back 
                       </button>
                     </Link>
                 </div>
     
                 </div>
 
-      :<p className="mt-32 mx-auto  rounded bg-white shadow-lg"> There is no such job   </p>}
+      :<p className="mt-32 mx-auto  rounded bg-white shadow-lg"> There is no such job</p>}
     </div>
   );
 }

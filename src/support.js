@@ -42,14 +42,14 @@ export default function Support(submittedState) {
       <h3 className="mb-8 mt-4 text-2xl "> Support </h3>
       <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col  justify-between mx-auto ">
         <div className="flex flex-col  mx-8 mb-4 w-full">
-          <FormInput name="partner_name" type="text" placeholder="your name" />
+          <FormInput name="partner_name" type="text" placeholder="Your name" />
           <FormInput
             name="partner_email"
             type="text"
-            placeholder="your email"
+            placeholder="Your email"
           />
-          <FormInput name="name" type="text" placeholder="subject" />
-          <FormInput name="description" type="text" placeholder="description" />
+          <FormInput name="name" type="text" placeholder="Subject" />
+          <FormInput name="description" type="text" placeholder="Description" />
           <FormInput name="Attachment" type="file" />
           <div className="px-4 my-4">
             <Link to="/ticket_submitted">

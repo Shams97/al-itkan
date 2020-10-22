@@ -48,7 +48,7 @@ export const Technical_skills = () => {
         <p className="my-4"> write down what you good at and how much </p>
 
         <div className="flex flex-row ml-4 my-4 flex-wrap">
-          <FormInput placeholder="your technical skills" name="skill_0_Desc"/>
+          <FormInput placeholder="Your technical skills" name="skill_0_Desc"/>
           <div className="flex flex-row jusitfy-between mx-auto mt-4">
             <Radio name="skill_0_level" ops={['Not Familiar', 'Beginner', 'Intermediate',
             'Advanced', 'Expert']}/>
@@ -56,7 +56,7 @@ export const Technical_skills = () => {
         </div>
 
         <div className="flex flex-row ml-4 my-4 flex-wrap">
-          <FormInput placeholder="your technical skills" name="skill_1_Desc"/>
+          <FormInput placeholder="Your technical skills" name="skill_1_Desc"/>
           <div className="flex flex-row jusitfy-between mx-auto mt-4">
             <Radio name="skill_1_level" ops={['Not Familiar', 'Beginner', 'Intermediate',
             'Advanced', 'Expert']}/>
@@ -67,7 +67,7 @@ export const Technical_skills = () => {
          let n = index + 2;
           return (
             <div className="flex flex-row ml-4 my-4 flex-wrap" key={index}>
-              <FormInput placeholder="your technical skills" name={"skill_"+ n +"_Desc"}/>
+              <FormInput placeholder="Your technical skills" name={"skill_"+ n +"_Desc"}/>
               <div className="flex flex-row jusitfy-between mx-auto mt-4">
                 <Radio name={"skill_"+ n +"_level"} ops={['Not Familiar', 'Beginner', 'Intermediate',
                 'Advanced', 'Expert']}/>
@@ -245,10 +245,10 @@ export const Training = () => {
         <h3 className="my-8 text-2xl"> Training and Certification </h3>
        
         <div className="flex flex-col my-4">
-          <FormInput placeholder="training name" name="t0"/>
-          <FormInput placeholder="year" name="t0_year" type="number"/>
-          <FormInput placeholder="awarded by" name="t0_awarded_by"/>
-          <FormInput placeholder="country/city" name="t0_country_city"/>
+          <FormInput placeholder="Training name" name="t0"/>
+          <FormInput placeholder="Year" name="t0_year" type="number"/>
+          <FormInput placeholder="Awarded by" name="t0_awarded_by"/>
+          <FormInput placeholder="Country/city" name="t0_country_city"/>
         
         </div>
        
@@ -258,10 +258,10 @@ export const Training = () => {
           let n = show.length;
           return (
             <div className="flex flex-col my-8" key={index} >
-              <FormInput placeholder="training name " name={"t"+n}/>
-              <FormInput placeholder="year" name={"t"+n +"_year"} type="number"/>
-              <FormInput placeholder="awarded by" name={"t"+n +"_awarded_by"}/>
-              <FormInput placeholder="country/city" name={"t"+ n +"_country_city"}/>
+              <FormInput placeholder="Training name " name={"t"+n}/>
+              <FormInput placeholder="Year" name={"t"+n +"_year"} type="number"/>
+              <FormInput placeholder="Awarded by" name={"t"+n +"_awarded_by"}/>
+              <FormInput placeholder="Country/city" name={"t"+ n +"_country_city"}/>
             </div>
           );
         })}
