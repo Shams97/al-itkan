@@ -112,10 +112,7 @@ export const Technical_skills = () => {
         <Link to="/education">
           <Button value="Previous" />
         </Link>
-        {/* <Link to="/emploment">
-          <Button value="Next" />
-        </Link> */}
-        <R_link route="/emploment" fields={rfields} value="Next"/>
+        <R_link route="/employment" fields={rfields} value="Next"/>
       </div>
       <div className="mb-4" />
     </div>

@@ -8,7 +8,8 @@ const initalState = {
   key:0,
   ref:{},
   timer :{},
-  ticket:""
+  ticket:"",
+  job_state:[]
 };
 
 

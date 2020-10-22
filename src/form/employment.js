@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { FormInput, Button,R_link } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
@@ -6,7 +6,6 @@ import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
 
-const axios = require("axios");
 
 export default function Employment() {
   const [state, setState] = useContext(Context);
@@ -562,7 +561,6 @@ const Options = ({ htmlFor, label_value }) => {
 };
 
 export const Submited = () => {
-  const [ref, setRef] = useState(0);
   const [state, setState] = useContext(Context);
 
   // useEffect(() => {

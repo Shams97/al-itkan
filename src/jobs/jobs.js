@@ -11,7 +11,7 @@ export let job_state;
 export default function Jobs({ vacancy, handleClick }) {
   const [jobState, setjobs] = useState([]);
   const [state, setState] = useContext(Context);
-
+  const [loading,setLoading ]= useState(false)
   useEffect(() => {
     async function fetchData() {
       const response = await axios({
@@ -19,16 +19,18 @@ export default function Jobs({ vacancy, handleClick }) {
         method: "GET",
       });
       let result = response.data;
-      // console.log(result)
-
+      console.log(typeof(result))
       result.map((item) => {
         jobState.push(item);
-        job_state = item.state;
       });
-
-      setjobs((res) => [...res]);
-      console.log(jobState);
+      setjobs((res) => [...res] );
+    
+      if(!response)
+      setLoading(true)
+      // jobState.map(item => state['job_state'].push(item.state) )
+      //console.log("jobs state ==", state['job_state'], jobState );
     }
+    setState(state)
 
     fetchData();
   }, []);
@@ -69,7 +71,8 @@ export default function Jobs({ vacancy, handleClick }) {
           </div>
         ) : (
           jobState.map((item, index) => {
-            return item.state != "open" ? (
+            return loading ? <p>This page is still loading </p>
+              :  item.state != "open"  ? (
               <div
                 className="rounded overflow-hidden bg-white shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 "
                 key={index}
@@ -107,7 +110,7 @@ export default function Jobs({ vacancy, handleClick }) {
                   ) : null}
 
                   <div className="flex flex-row justify-left my-8">
-                    <Link to={`/personal?job_id=${item.id}`}>
+                    <Link to={`/jobs/description?job_id=${item.id}`}>
                       <button
                         className="px-4 py-1 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500  "
                         value={item.id}
@@ -122,24 +125,34 @@ export default function Jobs({ vacancy, handleClick }) {
                 <div className="mb-4" />
               </div>
             ) : (
+
               <div
-                className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 opacity-75 "
+                className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2"
                 key={index}
-                style={{ zIndex: "-1" }}
-              >
+                
+              > 
                 <img
                   src={Expired}
                   className="object-contain  h-48 w-full bg-gray-100 "
                 />
-
                 <div className="pt-10 px-4">
-                  <h3 className="text-2xl font-medium my-2"> {item.name} </h3>
+                  <h3 className="text-2xl font-medium my-2 flex-no-wrap"> {item.name} </h3>
                   <p className="text-xl text-red-500 ">
                     Unfortunately, this job isn't available right now
                   </p>
                   <p className="text-xs mb-8">
                     please keep following us for more updates{" "}
                   </p>
+                  <Link to={`/jobs/description?job_id=${item.id}`} >
+                      <button
+                        className="px-4 py-1 mt-8  mb-8 border border-orange-600 bg-transparent text-orange-600 hover:bg-orange-700 active:bg-orange-700  rounded hover:text-white active:text-white mb-2  transition ease-linear duration-500  "
+                        value={item.id}
+                        name={item.name}
+                        onClick={handleClick}
+                      >
+                        Read more  
+                      </button>
+                    </Link>
                 </div>
               </div>
             );

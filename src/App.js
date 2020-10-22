@@ -12,7 +12,7 @@ import Check from "./check";
 import Jobs,{Page_details} from "./jobs/jobs";
 import Header from "./header";
 import { Footer } from "./header";
-import Description from './jobs/description'
+import Description,{Closed_desc} from './jobs/description'
 const axios = require("axios");
 
 
@@ -21,7 +21,6 @@ function App() {
   return (
     <>
       <Header />
-
       <div className="App">
         {/* Itkan main nav bar goes here  */}
         <Store>
@@ -29,6 +28,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Jobs}/> 
               <Route  path="/jobs/description" component={Description}/> 
+              <Route  path="/closedjobs/description" component={Closed_desc}/> 
               <Route path="/personal" component={PersonalDetails} />
               <Route path="/education" component={Education} />
               <Route path="/check" component={Check} />
@@ -36,14 +36,13 @@ function App() {
               <Route path="/admin_skills" component={Admin_Skills} />
               <Route path="/sales_skills" component={Sales_Skills} />
               <Route path="/training" component={Training} />
-              <Route path="/emploment" component={Employment_history} />
+              <Route path="/employment" component={Employment_history} />
               <Route path="/additional" component={Additional_info} />
               <Route path="/refrence" component={Refrence} />
               <Route path="/submited" component={Submited} />
               <Route path="/helpdesk" component={Support}/>
               <Route path="/ticket_submitted" component={Ticket_submitted}/>
               <Route path="/page_details" component={Page_details}/>
-
             </Switch>
           </Router>
         </Store>
@@ -71,7 +70,7 @@ export const FormInput = ({ placeholder, name, type, textarea, onFocus }) => {
       let file = e.target.files[0];
       if (file) {
         if (file.size > 10e6) {
-          alert("file is too big, please upload file less than 10MB ");
+          alert("file is too big, please upload file less than 10MB");
           e.target.value=null
         } else {
           let reader = new FileReader();
