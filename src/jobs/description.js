@@ -14,6 +14,7 @@ export default function Description() {
        await axios.get(`https://jobsbackend.alitkan.com/api/description?job_id=${job_id}`)
        .then(res =>  {
           let data = {...res.data};
+          data['type_of_position'] = data.type_of_position
           Object.assign(desc, data.job)
           setDesc({...desc})
           console.log("state =",desc)
@@ -32,7 +33,13 @@ export default function Description() {
                <div className="py-10">
                 <h2 className=" text-left text-2xl ml-12 mt-24">{desc.name} </h2>
                 <Basic_info department={desc.department_id ? desc.department_id[1] : "on intreview"}
-                  emp_type={desc.type_of_position ? desc.type_of_position : "on intreview"}
+                  emp_type={desc.type_of_position ? 
+                    desc.type_of_position == "full_time" ? 
+                      "Full Time"
+                      :
+                      "Part Time" 
+                    :
+                    "On Intreview"}
                   location={desc.city} />
 
                 <div className="rounded overflow-hidden bg-white shadow-lg mx-10">
