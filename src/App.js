@@ -154,7 +154,7 @@ export const R_link = ({ route, fields,value, url, stateKey }) => {
           // to check for moinus time
           let minutes = end.getMinutes() - start.getMinutes()
           let hours = end.getHours() - start.getHours()
-          if (minutes > 0){
+          if (minutes < 0){
             minutes += 60
             hours -= 1
           }
