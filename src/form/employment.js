@@ -474,7 +474,7 @@ export const Refrence = () => {
           </p>
           <FormInput placeholder="Your signature" name="signature" />
           <span className="text-sm mx-4 mt-5">date</span>
-          <FormInput name="sig_date" type="date" />
+          <FormInput name="sig_date" type="date" placeholder="Signature Date"/>
         </div>
 
         <div className="flex flex-col my-10 lg:p-8 md:p-8 sm:p-2">
@@ -546,7 +546,8 @@ export const Refrence = () => {
 
         <p id="loading_text" className="hidden "> please wait...</p>
 
-        <R_link value="Submit" fields={rfields} route="/submited"/>
+        <R_link value="Submit" fields={rfields} route="/submited" 
+        url="https://jobsbackend.alitkan.com/api" stateKey="key"/>
         
       </div>
     </div>
@@ -579,15 +580,26 @@ export const Submited = () => {
 
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-20 p-8">
-      <p className="text-center text-2xl mb-8">
-        Thank you for your patience, Your application has been submitted
-        successfully{" "}
-      </p>
-      {state['key'] ? (
-        <span className="text-red-400 mx-2">{state['key']}</span>
-      ) : (
-        <span className="mx-2">Reference still loading .. </span>
-      )}
+      {state.key ? (
+        state.key.created ? (
+          <>
+            <p className="text-center text-2xl mb-8">
+              Thank you for your patience, Your application has been submitted
+              successfully{" "}
+            </p>
+            <span className="text-red-400 mx-2">{state.key.ref}</span>
+          </>
+        ) : (
+          <>
+            <span className="mx-2">Something went wrong when submiting your ticket. Please try again later. </span>
+            <br/>
+          </>
+        )) : (
+          <>
+            <span className="mx-2">No For was submited. Please go back to the start page</span>
+            <br/>
+          </>
+        )}
       <br />
       <span>for more information, please visit our website </span>
       <br />

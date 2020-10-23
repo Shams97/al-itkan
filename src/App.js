@@ -121,7 +121,7 @@ export const FormInput = ({ placeholder, name, type, textarea, onFocus }) => {
 };
 
 
-export const R_link = ({ route, fields,value }) => {
+export const R_link = ({ route, fields,value, url, stateKey }) => {
   const [state, setState] = useContext(Context);
 
   let handle_click = async(e) => {
@@ -168,12 +168,13 @@ export const R_link = ({ route, fields,value }) => {
         let lodaing_text= document.getElementById("loading_text")
         lodaing_text.classList.remove("hidden")
 
-        await axios.post("https://jobsbackend.alitkan.com/api", state).then((res) => {
+        e.target.disabled = true
+        await axios.post(url, state).then((res) => {
           let reference = res.data;
-          state["key"] = reference;
-          console.log("response key ==", state.key);
+          state[stateKey] = reference;
+          console.log("api response ==", state[stateKey]);
           setState(state);
-          console.log("filling state", state);
+          // console.log("filling state", state);
         });
         link.click()
         console.log("route =", route)
