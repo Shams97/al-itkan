@@ -140,7 +140,9 @@ const Drop_down = ({ title, content }) => {
       </h4>
       {show ? (
         <div className="bg-gray-200 w-full p-8">
-          <p className="text-left"> {content}</p>
+          {content.split('\n').map((line) => {
+            return (<p className="text-left"> {line}</p>)
+          })}
         </div>
       ) : null}      
     </div>
