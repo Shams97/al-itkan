@@ -14,7 +14,7 @@ export default function Language() {
   return (
     <div>
       <div className="mx-auto my-10 lg:p-8 md:p-8 sm:p-4 ">
-          <h2 className="my-8 text-2xl"> Language and level of proficiency </h2>
+          <h2 className="my-8 text-2xl"> Language and Level of Proficiency </h2>
            <p className="mt-4 mb-2">Measture your proficiency by selecting level in every language </p>
 
            <div className="lg:flex md:flex  flex-row justify-center sm:block ">
