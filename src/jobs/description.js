@@ -44,28 +44,28 @@ export default function Description() {
                 <div className="rounded overflow-hidden bg-white shadow-lg mx-10">
                 { desc.description ?
                   <Drop_down
-                  title="Summery"
+                  title="Summary"
                   content={desc.description}
                   />
                 : null}
                 
                 { desc.behavioral_competencies ?
                   <Drop_down
-                  title="Behavioral competencies"
+                  title="Behavioral Competencies"
                   content={desc.behavioral_competencies}
                   />
                 : null}
 
                 { desc.technical_knowledge ?
                   <Drop_down
-                  title="Technical knowledge"
+                  title="Technical Knowledge"
                   content={desc.technical_knowledge}
                   />
                 : null}
 
                 { desc.education_language_requirements ?
                   <Drop_down
-                  title="Education and language requirements"
+                  title="Education and Language Requirements"
                   content={desc.education_language_requirements}
                   />
                 : null}
@@ -90,7 +90,7 @@ export default function Description() {
                 <div className="rounded overflow-hidden bg-white shadow-lg mx-10">
                 { desc.description ?
                   <Drop_down
-                  title="Summery"
+                  title="Summary"
                   content={desc.description}
                   />
                 : null}
@@ -104,14 +104,14 @@ export default function Description() {
 
                 { desc.technical_knowledge ?
                   <Drop_down
-                  title="Technical knowledge"
+                  title="Technical Knowledge"
                   content={desc.technical_knowledge}
                   />
                 : null}
 
                 { desc.education_language_requirements ?
                   <Drop_down
-                  title="Education and language requirements"
+                  title="Education and Language Requirements"
                   content={desc.education_language_requirements}
                   />
                 : null}
@@ -146,7 +146,7 @@ const Drop_down = ({ title, content }) => {
       {show ? (
         <div className="bg-gray-200 w-full p-8">
           {content.split('\n').map((line) => {
-            return (<p className="text-left"> {line}</p>)
+            return (<p className="text-left">{line}</p>)
           })}
         </div>
       ) : null}      
@@ -164,13 +164,13 @@ const Basic_info = ({ department, emp_type, location }) => {
       <div className="flex flex-col justify-between ">
         <p className="text-orange-600 text-sm mx-4" >
           {" "}
-          Employment type{" "}
+          Employment Type{" "}
         </p>
         <p className="text-black text-lg"> {emp_type}</p>
       </div>
       <div className="flex flex-col justify-between ">
         <p className="text-orange-600  text-sm mx-4" > Location </p>
-        <p className="text-black text-lg"> {location}</p>
+        <p className="text-black text-lg">{location}</p>
       </div>
     </div>
   );
@@ -183,7 +183,7 @@ export const Closed_desc= () => {
 
       <div className=" rounded overflow-hidden bg-white shadow-lg mx-10">
         <Drop_down
-          title="Summery"
+          title="Summary"
           content="(overall purpose and objective of this position, why does this position exist?)
          In this role, you will be responsible for allocating task between the team ensure end month, quarter and year closes up
          journals follow up day to day operation assist with future plans and processes help ensure uploading contract documents on
