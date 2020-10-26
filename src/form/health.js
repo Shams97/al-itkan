@@ -9,13 +9,13 @@ export default function Health() {
 
   return (
       <div className="mx-auto my-12 lg:p-8 md:p-8 sm:p-4">
-      <h3 className="my-8 text-2xl " > Health and limitation </h3>
+      <h3 className="my-8 text-2xl " > Health and Limitation </h3>
         <div className="flex  flex-col mx-4 mb-4 ">
         <div className="my-4  lg:flex  md:flex sm:block jusitfy-center  ">
           <label className="p-4 " htmlFor="helath_status"> Your health status ? </label>
         <div className="mt-4">
           <Radio name="health_status" ops={['Excellent', 'Good', 'Average',
-          'Below average', 'Poor', 'Very Poor']} />
+          'Below average', 'Poor', 'Very poor']} />
           </div>
         </div>
 
