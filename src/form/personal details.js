@@ -31,7 +31,7 @@ export default function PersonalDetails() {
 
   return (
     <div className="  lg:w-3/4 md:w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
-      <h3 className="my-8 text-2xl "> Personal details </h3>
+      <h3 className="my-8 text-2xl "> Personal Details </h3>
       <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col justify-between mx-auto ">
         <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full">
           <FormInput placeholder="Full name" name="name" type="text" />
