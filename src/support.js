@@ -7,34 +7,6 @@ const axios = require("axios");
 
 export default function Support(submittedState) {
   const [state, setState] = useContext(Context);
-  // const [ticket, setTicket] = useState("")
-  // const [redirect, setRedicet] = useState(null)
-
-  // useEffect(() => {
-  //   let isMounted = true; // note this flag denote mount status
-  //   handle_Ticket_Submit().then(data => {
-  //     if (isMounted) setState(data);
-  //   })
-  //   return () => { isMounted = false }; // use effect cleanup to set flag false, if unmounted
-  // });
-
-  // let handle_Ticket_Submit = async()=>{
-    
-  //   try {
-  //     await axios.post("https://jobsbackend.alitkan.com/api/helpdesk",state).then((res) => {
-  //     let ticket_state = res.data.message
-  //     state['ticket'] = ticket_state
-  //     setState(state)
-  //     console.log("state ", state['ticket'] , ticket_state) 
-  //       })
-  //     } catch(e) {
-  //       console.log('cathed error => ', e)
-  //     }
-  //   // setState(state);
-  // };
-
-
-
 
   return (
     <div className="lg:w-3/4 md:w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8 sm:w-full">
@@ -49,7 +21,7 @@ export default function Support(submittedState) {
           />
           <FormInput name="name" type="text" placeholder="Subject" />
           <FormInput name="description" type="text" placeholder="Description" />
-          <FormInput name="Attachment" type="file" />
+          <FormInput name="attachment" type="file" />
           <div className="px-4 my-4">
             {/* <Link to="/ticket_submitted">
               <Button value="Submit a ticket" onClick={handle_Ticket_Submit} />
