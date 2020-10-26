@@ -15,7 +15,7 @@ export default function Employment() {
 
   return (
     <div className=" lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
-      <h3 className="my-8 text-2xl "> Employment history </h3>
+      <h3 className="my-8 text-2xl "> Employment History </h3>
 
       <div className="flex flex-row justify-center flex-wrap">
         <p className="mt-2 text-center " name="contact_disclaimer">
@@ -195,7 +195,7 @@ export default function Employment() {
 export const Additional_info = () => {
   return (
     <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4">
-      <h3 className="my-8 text-2xl"> Additional information </h3>
+      <h3 className="my-8 text-2xl"> Additional Information </h3>
 
       <div className="flex flex-col my-8">
         <div className="flex flex-row justify-between flex-wrap my-4">
@@ -597,7 +597,7 @@ export const Submited = () => {
           </>
         )) : (
           <>
-            <span className="mx-2">No For was submited. Please go back to the start page</span>
+            <span className="mx-2">No form was submited. Please go back to the start page</span>
             <br/>
           </>
         )}
