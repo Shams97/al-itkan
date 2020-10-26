@@ -8,7 +8,8 @@ export default function Language() {
 
   const [state, setState] = useContext(Context)
   const [show , setShow] =useState([])
-  const [hide, setHide] = useState(false);
+  const [hidePrev, setHidePrev] = useState(true);
+  const [hideNext, setHideNext] = useState(false);
 
   return (
     <div>
@@ -58,21 +59,27 @@ export default function Language() {
 
 
            </div> 
-           ) } )}
+           )})}
         </div>
      
           <div className="lg:flex md:flex justify-around flex-row mt-4  sm:block">
            <p className="text-red-400">Add more language ( just two allowed ) </p> 
-           <button
+           
+           {hideNext ? null : <button
+              className="px-4 hover:bg-gray-500 focus:bg-gray-600 rounded text-red-400 hover:text-white focus:text-white"
               onClick={() => {
-                setShow([...show, {}]); setHide(true) }}
-             className="px-4 hover:bg-gray-500 focus:bg-gray-600 rounded text-red-400 hover:text-white focus:text-white"
+                setShow([...show, {}])
+                setHideNext(show.length == 1 ? true: false)
+                setHidePrev(false);
+                }}
            >
               +
-            </button>
-            { hide ? <button onClick={(index) => {
+            </button> }
+
+            { hidePrev ? null : <button onClick={(index) => {
                 setShow(show.slice(0, show.length - 1))
-                setHide(show.length == 2 ? true : false)
+                setHidePrev(show.length == 1 ? true : false)
+                setHideNext(false)
                 let last_index = show.length - 1
                 delete state['data']['other_name_' + last_index]
                 delete state['data']['other_r_' + last_index]
@@ -83,7 +90,7 @@ export default function Language() {
                 setState(state)
             }} className="px-4 hover:bg-gray-500 focus:bg-gray-600 rounded  text-red-400 hover:text-white focus:text-white">
               -
-            </button>:null }  
+            </button>}  
           </div>
       
         </div>

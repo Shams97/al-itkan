@@ -7,7 +7,8 @@ import {Context} from '../store'
 export default function FamilyInfo() {
   
   const [show, setShow] = useState([]);
-  const [hide, setHide] = useState(false);
+  const [hidePrev, setHidePrev] = useState(true);
+  const [hideNext, setHideNext] = useState(false);
   const [state, setState] = useContext(Context)
   return (
       <div className="mx-auto my-12 lg:p-8 md:p-8 sm:p-4">
@@ -42,17 +43,24 @@ export default function FamilyInfo() {
 
             <div className="flex justify-around flex-row mt-4">
               <span className="  text-red-400">Add more brothers and sisters </span>
-          <Operations  onClick={() => {setShow([...show, {}]); setHide(true) }} operation="+" />
-
-            { hide ?
+          {hideNext ? null : (
+            <Operations  onClick={() => {
+              setShow([...show, {}])
+              setHideNext(show.length == 3 ? true: false)
+              setHidePrev(false);
+            }} operation="+" />
+          )}
+          {hidePrev ? null : (
               <Operations  onClick={() => {
                 setShow(show.slice(0, show.length - 1))
+                setHidePrev(show.length == 1 ? true : false)
+                setHideNext(false)
                 let last_index = show.length - 1
                 delete state['data']['first_name_' + last_index]
                 delete state['data']['profession_' + last_index]
                 setState(state)
               }} operation="-" />
-              :null}
+          )}
             </div>
           </div>
       </div>

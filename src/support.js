@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { FormInput, Button } from "./App";
+import { FormInput, Button, R_link } from "./App";
 import { Context } from "./store";
 import { Link, Redirect } from "react-router-dom";
 
@@ -18,21 +18,20 @@ export default function Support(submittedState) {
   //   return () => { isMounted = false }; // use effect cleanup to set flag false, if unmounted
   // });
 
-  let handle_Ticket_Submit = async()=>{
+  // let handle_Ticket_Submit = async()=>{
     
-    try {
-    await axios.post("https://jobsbackend.alitkan.com/api/helpdesk",state).then((res) => {
-     let ticket_state = res.data.message
-     state['ticket'] = ticket_state
-     setState(state)
-     console.log("state ", state['ticket'] , ticket_state) 
-    });
-      
-      } catch(e) {
-        console.log(e)
-      }
-    // setState(state);
-  };
+  //   try {
+  //     await axios.post("https://jobsbackend.alitkan.com/api/helpdesk",state).then((res) => {
+  //     let ticket_state = res.data.message
+  //     state['ticket'] = ticket_state
+  //     setState(state)
+  //     console.log("state ", state['ticket'] , ticket_state) 
+  //       })
+  //     } catch(e) {
+  //       console.log('cathed error => ', e)
+  //     }
+  //   // setState(state);
+  // };
 
 
 
@@ -52,9 +51,15 @@ export default function Support(submittedState) {
           <FormInput name="description" type="text" placeholder="Description" />
           <FormInput name="Attachment" type="file" />
           <div className="px-4 my-4">
-            <Link to="/ticket_submitted">
+            {/* <Link to="/ticket_submitted">
               <Button value="Submit a ticket" onClick={handle_Ticket_Submit} />
-            </Link>
+            </Link> */}
+
+            <p id="loading_text" className="hidden mb-4"> please wait...</p>
+
+            <R_link value="Submit" fields={[]} route="/ticket_submitted"
+            url="https://jobsbackend.alitkan.com/api/helpdesk" stateKey="help_desk_ticket"/>
+
           </div>
         </div>
       </div>
@@ -64,26 +69,25 @@ export default function Support(submittedState) {
 
 export const Ticket_submitted = () => {
   const [state, setState] = useContext(Context);
- const [ticket, setTicket] = useState("")
-  useEffect(() => {
-    setTimeout(()=>{
-     if(state['ticket'])
-      setTicket(state['ticket'])
-      console.log("do anything",state['ticket'])
-    },3000)
-  }, []);
-
 
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8">
       
-    {   ticket==="created successfully"?
+      { state.help_desk_ticket ?
+          state.help_desk_ticket.created ? 
           <p className="text-center text-2xl mb-8">
-          Your ticket has been submitted successfully, Our support staff will
-          contact you shorty
+            Your ticket has been submitted successfully, Our support staff will
+            contact you shorty
+          </p> 
+          : 
+          <p> Something went wrong when submiting you ticket. Please try again later </p>
+
+        :
+
+        <p className="text-center text-lg mb-8">
+          No Ticket is submited. Please go back to the ticket page 
         </p> 
-          : ticket==="not created successfully" ? <p> your ticket has not been submitted, Something went wrong, please contact us </p>
-          : <p> Please wait ..</p> 
+
       }
     
     </div>

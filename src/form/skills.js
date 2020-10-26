@@ -9,7 +9,8 @@ import Radio from './radio'
 
 export const Technical_skills = () => {
   const [show, setShow] = useState([]);
-  const [hide, setHide] = useState(false);
+  const [hidePrev, setHidePrev] = useState(true);
+  const [hideNext, setHideNext] = useState(false);
   const [state, setState] = useContext(Context)
   const rfields = ["skill_0_level","skill_1_level", "business_correspondence_skill_level", "effective_communication_skill_level",
   "customer_service_skill_level",
@@ -79,26 +80,29 @@ export const Technical_skills = () => {
         <div className="flex justify-around flex-row mt-8 ">
         <p className="text-red-400"> Add more technical skills </p>
 
-          <Operations
-            onClick={() => {
-              setShow([...show, {}]);
-              setHide(true);
-            }}
-            operation="+"
-          />
-          {hide ? (
+          {hideNext ? null :(
+            <Operations
+              onClick={() => {
+                setShow([...show, {}]);
+                setHidePrev(false)
+                setHideNext(show.length == 3 ? true: false);
+              }}
+              operation="+" />
+          )}
+          {hidePrev ? null : (
             <Operations
               onClick={() => {
                 setShow(show.slice(0, show.length - 1));
-                setHide(show.length == 1 ? false : true)
+                setHidePrev(show.length == 1 ? true : false)
+                setHideNext(false)
                 let last_skill = show.length + 1 
                 delete state['data']['skill_'+ last_skill +'_Desc']
-                delete state['data']['tech_skills_level_' + last_skill]
+                delete state['data']['skill_' + last_skill + '_level']
                 setState(state)
               }}
               operation="-"
             />
-          ) : null}
+          )}
         </div>
       </div>
 
@@ -237,7 +241,8 @@ export const Sales_Skills = () => {
 
 export const Training = () => {
   const [show, setShow] = useState([]);
-  const [hide, setHide] = useState(false);
+  const [hidePrev, setHidePrev] = useState(true);
+  const [hideNext, setHideNext] = useState(false);
   const [state, setState] = useContext(Context)
 
   return (
@@ -268,19 +273,20 @@ export const Training = () => {
 
         <div className="flex  justify-around flex-row mt-4 ">
            <p className="text-red-400">Add more training and certification</p> 
-          <Operations
+          {hideNext ? null : (<Operations
             onClick={() => {
               setShow([...show, {}]);
-              setHide(true);
-
+              setHideNext(show.length == 4 ? true : false)
+              setHidePrev(false);
             }}
             operation="+"
-          />
-          {hide ? (
+          />)}
+          {hidePrev ? null : (
             <Operations
               onClick={() => {
                 setShow(show.slice(0, show.length - 1));
-                setHide(show.length == 1 ? false : true)
+                setHidePrev(show.length == 1 ? true : false)
+                setHideNext(false)
                 let last_index = show.length
                 delete state['data']["t"+last_index]
                 delete state['data']["t"+last_index +"_year"]
@@ -291,7 +297,7 @@ export const Training = () => {
               }}
               operation="-"
             />
-          ) : null}
+          )}
        </div>
     
         <div className="mb-4" />

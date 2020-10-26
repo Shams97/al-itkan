@@ -36,7 +36,7 @@ export default function PersonalDetails() {
         <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full">
           <FormInput placeholder="Full name" name="name" type="text" />
           <FormInput placeholder="Sur name (اللقب)" name="surname" type="text" />
-          <FormInput placeholder="الاسم الرباعي" name="arabic_name" type="text" />
+          <FormInput placeholder="الاسم الرباعي باللغة العربية" name="arabic_name" type="text" />
           <FormInput placeholder="Email" name="email_from" type="text" />
           <FormInput placeholder="Skype ID " name="skype_id" type="text" />
           <FormInput

@@ -10,7 +10,8 @@ import { Context } from "../store";
 export default function Employment() {
   const [state, setState] = useContext(Context);
   const [show, setShow] = useState([]);
-  const [hide, setHide] = useState(false);
+  const [hidePrev, setHidePrev] = useState(true);
+  const [hideNext, setHideNext] = useState(false);
 
   return (
     <div className=" lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
@@ -148,18 +149,21 @@ export default function Employment() {
           Want to provide more than one employer ?{" "}
         </span>
 
-        <Operations
-          onClick={() => {
-            setShow([...show, {}]);
-            setHide(true);
+        {hideNext ? null : (
+          <Operations
+            onClick={() => {
+              setShow([...show, {}]);
+              setHideNext(show.length == 1 ? true: false)
+              setHidePrev(false);
           }}
-          operation="+"
-        />
-        {hide ? (
+            operation="+"
+          /> )}
+        {hidePrev ? null : (
           <Operations
             onClick={() => {
               setShow(show.slice(0, show.length - 1));
-              setHide(show.length === 1 ? false : true);
+              setHidePrev(show.length == 1 ? true : false)
+              setHideNext(false)
               let last_index = show.length - 1;
               delete state["data"]["employer_name_" + last_index];
               delete state["data"]["job_title_" + last_index];
@@ -177,7 +181,7 @@ export default function Employment() {
             }}
             operation="-"
           />
-        ) : null}
+        )}
       </div>
 
       <div className="mb-4" />
@@ -470,7 +474,7 @@ export const Refrence = () => {
           </p>
           <FormInput placeholder="Your signature" name="signature" />
           <span className="text-sm mx-4 mt-5">date</span>
-          <FormInput name="sig_date" type="date" />
+          <FormInput name="sig_date" type="date" placeholder="Signature Date"/>
         </div>
 
         <div className="flex flex-col my-10 lg:p-8 md:p-8 sm:p-2">
@@ -542,7 +546,8 @@ export const Refrence = () => {
 
         <p id="loading_text" className="hidden "> please wait...</p>
 
-        <R_link value="Submit" fields={rfields} route="/submited"/>
+        <R_link value="Submit" fields={rfields} route="/submited" 
+        url="https://jobsbackend.alitkan.com/api" stateKey="key"/>
         
       </div>
     </div>
@@ -575,15 +580,26 @@ export const Submited = () => {
 
   return (
     <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-20 p-8">
-      <p className="text-center text-2xl mb-8">
-        Thank you for your patience, Your application has been submitted
-        successfully{" "}
-      </p>
-      {state['key'] ? (
-        <span className="text-red-400 mx-2">{state['key']}</span>
-      ) : (
-        <span className="mx-2">Reference still loading .. </span>
-      )}
+      {state.key ? (
+        state.key.created ? (
+          <>
+            <p className="text-center text-2xl mb-8">
+              Thank you for your patience, Your application has been submitted
+              successfully{" "}
+            </p>
+            <span className="text-red-400 mx-2">{state.key.ref}</span>
+          </>
+        ) : (
+          <>
+            <span className="mx-2">Something went wrong when submiting your ticket. Please try again later. </span>
+            <br/>
+          </>
+        )) : (
+          <>
+            <span className="mx-2">No For was submited. Please go back to the start page</span>
+            <br/>
+          </>
+        )}
       <br />
       <span>for more information, please visit our website </span>
       <br />
