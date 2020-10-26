@@ -44,9 +44,9 @@ export const Technical_skills = () => {
 ]
   return (
     <div className="lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
-      <h3 className="my-8 text-2xl"> Technical skills</h3>
+      <h3 className="my-8 text-2xl"> Technical Skills</h3>
       <div className="flex  flex-col">
-        <p className="my-4"> write down what you good at and how much </p>
+        <p className="my-4"> Write down what you good at and how much </p>
 
         <div className="flex flex-row ml-4 my-4 flex-wrap">
           <FormInput placeholder="Your technical skills" name="skill_0_Desc"/>
@@ -127,7 +127,7 @@ export default function Admin_Skills() {
 
   return (
     <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4">
-      <h3 className="my-8 text-2xl">Adminstration skills</h3>
+      <h3 className="my-8 text-2xl">Adminstration Skills</h3>
       <div className="flex  flex-col m-2">
 
         <OptionField name="Business correspondence"
@@ -185,7 +185,7 @@ export const Sales_Skills = () => {
   
   return (
       <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4" >
-        <h3 className="my-8 text-2xl">Sales skills</h3>
+        <h3 className="my-8 text-2xl">Sales Skills</h3>
         <div className="flex  flex-col m-2">
 
           <OptionField name="Relationship building"
@@ -247,7 +247,7 @@ export const Training = () => {
 
   return (
       <div className="mx-auto my-10 lg:p-8 md:p-8 sm:p-4">
-        <h3 className="my-8 text-2xl"> Training and certification </h3>
+        <h3 className="my-8 text-2xl"> Training and Certification </h3>
        
         <div className="flex flex-col my-4">
           <FormInput placeholder="Training name" name="t0"/>
@@ -266,7 +266,7 @@ export const Training = () => {
               <FormInput placeholder="Training name " name={"t"+n}/>
               <FormInput placeholder="Year" name={"t"+n +"_year"} type="number"/>
               <FormInput placeholder="Awarded by" name={"t"+n +"_awarded_by"}/>
-              <FormInput placeholder="Country/city" name={"t"+ n +"_country_city"}/>
+              <FormInput placeholder="Country/City" name={"t"+ n +"_country_city"}/>
             </div>
           );
         })}
