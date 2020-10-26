@@ -28,7 +28,7 @@ export default function FamilyInfo() {
               return (
                 <div className="flex flex-col mt-8" key={index}>
                   <FormInput
-                    placeholder="Borther/sister first name"
+                    placeholder="Borther/Sister first name"
                     name={"first_name_"+n}
                     value={input}
                   />
