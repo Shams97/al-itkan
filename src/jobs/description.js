@@ -28,7 +28,6 @@ export default function Description() {
   return (
     <div>
       { desc.name && desc.state!='open' ? 
-
                <div className="py-10">
                 <h2 className=" text-left text-2xl ml-12 mt-24">{desc.name} </h2>
                 <Basic_info department={desc.department_id ? desc.department_id[1] : "on intreview"}
@@ -38,14 +37,14 @@ export default function Description() {
                 <div className="rounded overflow-hidden bg-white shadow-lg mx-10">
                 { desc.description ?
                   <Drop_down
-                  title="Summray"
+                  title="Summery"
                   content={desc.description}
                   />
                 : null}
                 
                 { desc.behavioral_competencies ?
                   <Drop_down
-                  title="Behavioral Competencies"
+                  title="Behavioral competencies"
                   content={desc.behavioral_competencies}
                   />
                 : null}
@@ -84,7 +83,7 @@ export default function Description() {
                 <div className="rounded overflow-hidden bg-white shadow-lg mx-10">
                 { desc.description ?
                   <Drop_down
-                  title="Summray"
+                  title="Summery"
                   content={desc.description}
                   />
                 : null}
@@ -136,7 +135,6 @@ const Drop_down = ({ title, content }) => {
       >
         {" "}
         {title}
-        {/* <img src={Down} style={{backgroundColor:'black'}} className="mr-4"/> */}
       </h4>
       {show ? (
         <div className="bg-gray-200 w-full p-8">
