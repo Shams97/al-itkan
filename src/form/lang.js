@@ -34,28 +34,28 @@ export default function Language() {
 
               <label htmlFor="arabic" className="mt-4">Reading</label>
               <Selector name={"other_r_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+              ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+              "poor", 'Very poor']} values={[7,6,5,4,3,2,1]}/>
 
               <label htmlFor="arabic" className="mt-4"> Writing</label>
               <Selector name={"other_w_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+              ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+              "poor", 'Very poor']} values={[7,6,5,4,3,2,1]}/>
 
               <label htmlFor="arabic" className="mt-4"> Speaking</label>
               <Selector name={"other_s_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+              ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+              "poor", 'Very poor']} values={[7,6,5,4,3,2,1]}/>
 
               <label htmlFor="arabic" className="mt-4"> Understanding</label>
               <Selector name={"other_u_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+              ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+              "poor", 'Very poor']} values={[7,6,5,4,3,2,1]}/>
 
               <label htmlFor="arabic" className="mt-4" > Overall </label>
               <Selector name={"other_o_" + index} classes="text-sm text-gray-600"
-              ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-              "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+              ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+              "poor", 'Very poor']} values={[7,6,5,4,3,2,1]}/>
 
 
            </div> 
@@ -108,29 +108,29 @@ const LangaugeSection = ({name, logic_name}) => {
 
       <label htmlFor="arabic" className="mt-4">Reading</label>
       <Selector name={logic_name + "_r"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+      ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+      "poor", 'Very poor']} values={[7,6,5,4,3,2,1]}/>
 
       <label htmlFor="arabic" className="mt-4"> Writing</label>
       <Selector name={logic_name + "_w"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]} />
+      ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+      "poor", 'Very poor']} values={[7,6,5,4,3,2,1]} />
 
       <label htmlFor="arabic" className="mt-4"> Speaking</label>
       {/* <option value ="" selected>speak</option> */}
       <Selector name={logic_name + "_s"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]} />
+      ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+      "poor", 'Very poor']} values={[7,6,5,4,3,2,1]} />
 
       <label htmlFor="arabic" className="mt-4"> Understanding</label>
       <Selector name={logic_name + "_u"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+      ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+      "poor", 'Very poor']} values={[7,6,5,4,3,2,1]}/>
 
       <label htmlFor="arabic" className="mt-4" > Overall </label>
       <Selector name={logic_name + "_o"} classes="text-sm text-gray-600"
-      ops={['Excellent', 'Very Good', 'Good', 'Average', "Below Average",
-      "poor", 'Very Poor']} values={[7,6,5,4,3,2,1]}/>
+      ops={['Excellent', 'Very good', 'Good', 'Average', "Below average",
+      "poor", 'Very poor']} values={[7,6,5,4,3,2,1]}/>
 
     </div>
 
