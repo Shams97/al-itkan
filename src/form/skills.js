@@ -43,7 +43,7 @@ export const Technical_skills = () => {
 ]
   return (
     <div className="lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
-      <h3 className="my-8 text-2xl"> Technical Skills</h3>
+      <h3 className="my-8 text-2xl"> Technical skills</h3>
       <div className="flex  flex-col">
         <p className="my-4"> write down what you good at and how much </p>
 
@@ -126,46 +126,46 @@ export default function Admin_Skills() {
       <h3 className="my-8 text-2xl">Adminstration skills</h3>
       <div className="flex  flex-col m-2">
 
-        <OptionField name="Business Correspondence"
+        <OptionField name="Business correspondence"
         logic_name="business_correspondence_skill_level"/>
 
-        <OptionField name="Effective Communication"
+        <OptionField name="Effective communication"
         logic_name="effective_communication_skill_level"/>
 
-        <OptionField name="Customer Service"
+        <OptionField name="Customer service"
         logic_name="customer_service_skill_level"/>
 
-        <OptionField name="Team Work"
+        <OptionField name="Team work"
         logic_name="team_work_skill_level"/>
 
-        <OptionField name="Internet and Research"
+        <OptionField name="Internet and research"
         logic_name="Internet_and_research_skill_level"/>
 
-        <OptionField name="Microsoft Office and Outlook"
+        <OptionField name="Microsoft office and outlook"
         logic_name="ms_office_and_outlook_skill_level"/>
 
-        <OptionField name="Office Machines and Equipment"
+        <OptionField name="Office machines and equipment"
         logic_name="office_machine_skill_level"/>
 
         <OptionField name="Typing"
         logic_name="typing_skill_level"/>
 
-        <OptionField name="Time Management And Prioritizing"
+        <OptionField name="Time management and prioritizing"
         logic_name="time_management_skill_level"/>
 
-        <OptionField name="Attention to Details"
+        <OptionField name="Attention to details"
         logic_name="attention_to_detail_level"/>
 
-        <OptionField name="Goal Oriented"
+        <OptionField name="Goal oriented"
         logic_name="goal_oriented_skill_level"/>
 
-        <OptionField name="Multi Tasking"
+        <OptionField name="Multi tasking"
         logic_name="multi_tasking_skill_level"/>
 
-        <OptionField name="Follow Up"
+        <OptionField name="Follow up"
         logic_name="follow_up_skill_level"/>
 
-        <OptionField name="Employee Relation"
+        <OptionField name="Employee relation"
         logic_name="employee_relation_skill_level"/>
 
         <OptionField name="Supervision"
@@ -181,13 +181,13 @@ export const Sales_Skills = () => {
   
   return (
       <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4" >
-        <h3 className="my-8 text-2xl">Sales Skills</h3>
+        <h3 className="my-8 text-2xl">Sales skills</h3>
         <div className="flex  flex-col m-2">
 
-          <OptionField name="Relationship Building"
+          <OptionField name="Relationship building"
           logic_name="relationship_building_skill_level"/>
 
-          <OptionField name="Time Management"
+          <OptionField name="Time management"
           logic_name="time_management_skill_level"/>
 
           <OptionField name="Research / Information gathering"
@@ -222,7 +222,7 @@ export const Sales_Skills = () => {
           <OptionField name="Responsibility"
           logic_name="responsibility_skill_level"/>
 
-          <OptionField name="Goal Oriented"
+          <OptionField name="Goal oriented"
           logic_name="goal_oriented_skill_level"/>
 
           <OptionField name="Passionate about selling"
@@ -242,7 +242,7 @@ export const Training = () => {
 
   return (
       <div className="mx-auto my-10 lg:p-8 md:p-8 sm:p-4">
-        <h3 className="my-8 text-2xl"> Training and Certification </h3>
+        <h3 className="my-8 text-2xl"> Training and certification </h3>
        
         <div className="flex flex-col my-4">
           <FormInput placeholder="Training name" name="t0"/>

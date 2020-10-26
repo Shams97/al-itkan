@@ -200,7 +200,7 @@ export const Additional_info = () => {
             label_value="Are you a member of the Iraqi engineers union?"
           />
           <div className="flex flex-row flex-wrap ">
-            <span className="text-sm mx-4 mt-5"> If yes since when ? </span>
+            <span className="text-sm mx-4 mt-5"> if yes since when ? </span>
 
             <FormInput name="union_member_date" type="date" />
           </div>
@@ -268,7 +268,7 @@ export const Additional_info = () => {
           <div className="flex flex-row justify-center ">
             <div className="lg:flex md:flex sm:block flex-row flex-wrap my-4">
               <span className="mx-4 mt-5 w-1/2 text-left">
-                Team Work Skills
+                Team work skills
               </span>
               <Selector
                 name="team_work"
@@ -287,7 +287,7 @@ export const Additional_info = () => {
 
             <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
               <span className="mx-4 mt-5 lg:w-1/2 md:w-1/2 sm:w-full text-left ">
-                Work Under Pressure Skills
+                Work under pressure skills
               </span>
               <Selector
                 name="pressure"
@@ -306,7 +306,7 @@ export const Additional_info = () => {
 
             <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
               <span className=" mx-4 mt-5 w-1/2 text-left">
-                Are you Willing To Travel Outshore ?
+                Are you willing to travel outshore ?
               </span>
               <Selector
                 name="travel"
@@ -338,7 +338,7 @@ export const Additional_info = () => {
 
           <div className="lg:flex md:flex flex-row sm:block mt-20 ">
             <div className="flex flex-col lg:w-1/2 md:w-1/2 sm:w-full">
-              <p> choose your Prefered field of work </p>
+              <p> Choose your prefered field of work </p>
               <div className="flex flex-row  justify-center mt-2 mb-4">
                 <Radio
                   name="preffered_fow"
@@ -348,7 +348,7 @@ export const Additional_info = () => {
             </div>
 
             <div className="flex flex-col   lg:w-1/2 md:w-1/2 sm:w-full">
-              <p> Prefered Contract Preiod </p>
+              <p> Prefered contract preiod </p>
               <div className="flex flex-row  justify-center mt-2 mb-4">
                 <Radio
                   name="preferred_cp"
@@ -394,7 +394,7 @@ export const Refrence = () => {
 
         <div className="mt-10 flex flex-col">
           <p className="text-center ">
-            Please Provide two references who are not former employers who we
+            Please provide two references who are not former employers who we
             may contact (Not Relative)
           </p>
           <FormInput placeholder="Name" name="ref_name" />
