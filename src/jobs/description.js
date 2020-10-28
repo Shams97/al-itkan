@@ -2,10 +2,20 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store";
 import Down from "../asstes/arrow-down.svg";
 import {Link} from 'react-router-dom';
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+
 const axios = require("axios");
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: #ed8936;
+`; 
 
 export default function Description() {
   const [desc,setDesc] = useState({})
+  const [loading, setLoading] = useState(true);
 
     useEffect(()=>{
       async function fetchData() {
@@ -18,6 +28,8 @@ export default function Description() {
           Object.assign(desc, data.job)
           setDesc({...desc})
           console.log("state =",desc)
+          if (res) setLoading(false);
+
      })
        }
   fetchData()
@@ -28,7 +40,21 @@ export default function Description() {
 
   return (
     <div>
-      { desc.name && desc.state!='open' ? 
+       {loading ? (
+        <div className="max-w-full flex flex-row flex-wrap  justify-center">
+        <div className="my-56">
+          <ClipLoader
+            css={override}
+            size={100}
+            color={"#123abc"}
+            loading={loading}
+          />
+          <p className="flex justify-center  mx-auto">
+            Jobs still loading ...{" "}
+          </p>
+        </div>
+        </div>)
+        :desc.state!='open' ? 
                <div className="py-10">
                 <h2 className=" text-left text-2xl ml-12 mt-24">{desc.name}</h2>
                 <Basic_info department={desc.department_id ? desc.department_id[1] : "on interview"}
@@ -40,7 +66,6 @@ export default function Description() {
                     :
                     "On Intreview"}
                   location={desc.city} />
-
                 <div className="rounded overflow-hidden bg-white shadow-lg mx-10">
                 { desc.description ?
                   <Drop_down
@@ -79,9 +104,7 @@ export default function Description() {
                     </Link>
                 </div>
             </div> 
-  
-        
-      :desc.state=="open" ?  <div className="bg-gray-300 w-full h-full py-10 "> 
+       :desc.state=="open" ?  <div className="bg-gray-300 w-full h-full py-10 "> 
  <h2 className=" text-left text-2xl ml-12 mt-24">{desc.name} </h2>
                 <Basic_info department={desc.department_id ? desc.department_id[1] : "on intreview"}
                   emp_type={desc.type_of_position ? desc.type_of_position : "on intreview"}
@@ -127,7 +150,7 @@ export default function Description() {
     
                 </div>
 
-      :<p className="mt-32 mx-auto  rounded bg-white shadow-lg"> There is no such job</p>}
+                :null}
     </div>
   );
 }
