@@ -49,7 +49,7 @@
 
 } */ 
 
-
+/* 
 .wave {
 position: relative;
 }
@@ -67,6 +67,11 @@ position: relative;
   background-size: cover;
     background-repeat: no-repeat;
     
+} */
+
+
+@media only screen and (max-width: 600px) {
+  .resp_div{ transform: translate(0px, -133px);}
+  .resp_img{ height:350pt; width:100%; object-fit: fill;}
+
 }
-
-

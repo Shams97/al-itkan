@@ -54,16 +54,16 @@ export default function Jobs({ vacancy, handleClick }) {
     <>
       <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-16 px-4 ">
       <div className="container ">
-       <img src={Landing} className="lg:h-1/5  w-full object-cover mt-2 opacity-75" style={{backgroundColor:'rgba(0,0,0,0.5)', zIndex:'-1'}}/>
-       <div className="transform lg:-translate-y-64 sm:-translate-y-48 lg:absolute">
-       <p className="lg:text-3xl sm:text-lg md:text-lg text-white ml-8">
+       <img src={Landing} width="100%" height="100%" className="mt-2 opacity-75" style={{backgroundColor:'rgba(0,0,0,0.5)', zIndex:'-1'}}/>
+       <div className="transform  lg:-translate-y-64 sm:-translate-y-64 md:-translate-y-48 lg:absolute my-8">
+       <p className="lg:text-3xl sm:text-lg md:text-lg xl:text-white lg:text-white sm:text-black md:text-white text-left ml-8">
           Apply now and join our great team    
         </p>
-        <p className="text-base text-white">
+        <p className="text-base xl:text-white lg:text-white text-left ml-8 sm:text-black md:text-white ">
           {" "}
           or you already have an application ?
         
-        <button className=" mx-4 hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded transition ease-linear duration-500 ">
+        <button className=" lg:mx-4  md:mx-4 sm:mx-0 hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded transition ease-linear duration-500 ">
           <Link to="/check"> check</Link>
         </button>
         </p>
@@ -86,7 +86,7 @@ export default function Jobs({ vacancy, handleClick }) {
           </div>
         ) : jobState.length === 0 ? (
           <div className="lg:p-8 md:p-8 sm:px-0  my-4">
-            <div className="p-8 lg:mt-10 md:mt-8 sm:mt-2 text-wrap rounded lg:w-1/2 md:w-1/2 sm:w-full mx-auto">
+            <div className="p-8 mt-10 text-wrap rounded lg:w-1/2 md:w-1/2 sm:w-full mx-auto">
               <p className="text-center lg:text-2xl md:text-lg sm:text-base ">
                 {" "}
                 Unfortunately there is no job vacancy available
