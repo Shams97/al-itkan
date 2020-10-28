@@ -23,10 +23,6 @@ export default function Support(submittedState) {
           <FormInput name="description" type="text" placeholder="Description" />
           <FormInput name="attachment" type="file" />
           <div className="px-4 my-4">
-            {/* <Link to="/ticket_submitted">
-              <Button value="Submit a ticket" onClick={handle_Ticket_Submit} />
-            </Link> */}
-
             <p id="loading_text" className="hidden mb-4"> please wait...</p>
 
             <R_link value="Submit" fields={[]} route="/ticket_submitted"

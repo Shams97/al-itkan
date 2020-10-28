@@ -7,6 +7,7 @@ import React, { useEffect, useContext } from "react";
 import Radio from "./radio";
 import Selector from "./selection";
 import { Context } from "../store";
+import LOGO from '../asstes/PIONEERS.png'
 
 export default function PersonalDetails() {
   const [state, setState] = useContext(Context);
@@ -31,9 +32,12 @@ export default function PersonalDetails() {
 
   return (
     <div className="  lg:w-3/4 md:w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
-      <h3 className="my-8 text-2xl "> Personal Details </h3>
+   <div className="mt-16">
+      <img src={LOGO} className="w-48 h-12 object-content mx-auto mb-4"/>
+      <h3 className="mt-0 mb-10 text-2xl "> Personal Details </h3>
+      </div>
       <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col justify-between mx-auto ">
-        <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full">
+        <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full border border-gray-300 rounded p-6">
           <FormInput placeholder="Full name" name="name" type="text" />
           <FormInput placeholder="Sur name (اللقب)" name="surname" type="text" />
           <FormInput placeholder="الاسم الرباعي باللغة العربية" name="arabic_name" type="text" />
@@ -57,7 +61,7 @@ export default function PersonalDetails() {
             className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2"
           />
         </div>
-        <div className="flex flex-col mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:max-w-xl">
+        <div className="flex flex-col mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:max-w-xl border border-gray-300 rounded p-6">
           <FormInput placeholder="Birth date" type="text" name="birthdate" onFocus={_onFocus}/>
           <FormInput
             placeholder="Place of birth"

@@ -16,12 +16,13 @@ export default function Education() {
   const required_fields = ['primary_name', 'primary_years', 'primary_avg', 'secondary_name', 'secondary_years', 'secondary_avg',
     'Intermediate_name', 'Intermediate_years', 'Intermediate_avg', 'college_name', 'college_years', 'college_avg',
     'highest_acad', 'highest_grad_year', 'highest_uni', 'highest_country',
-    't0', 't0_year', 't0_awarded_by', 't0_country_city']
+    't0', 't0_year', 't0_awarded_by', 't0_country_city','college_major']
 
   return (
     <div className=" lg:w-3/4 md:w-3/4  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
       <h3 className="my-8 text-2xl "> Education </h3>
-      <div className="lg:flex md:flex  sm:block  flex-row justify-between mx-auto ">
+      <div className="border border-gray-300 rounded p-6">
+      <div className="lg:flex md:flex  sm:block  flex-row justify-between mx-auto  ">
 
         <div className="flex flex-col lg:mx-8 md:mx-8 sm:mx-2 mb-4 lg:w-1/2 md:w-1/2 sm:w-full">
           <p className="text-start my-4">Primary</p>
@@ -64,7 +65,7 @@ export default function Education() {
 
 
         <div className="flex  justify-around flex-row mt-8 ">
-        <p className="text-red-400">Add more education</p>
+        {/* <p className="text-red-400">Add more education</p> */}
 
           {hideNext ? null : (
           <Operations
@@ -73,7 +74,7 @@ export default function Education() {
               setHideNext(show.length == 1 ? true: false)
               setHidePrev(false);
             }}
-            operation="+"
+            operation="Add more education"
           /> )}
 
           {hidePrev ? null : (
@@ -89,7 +90,7 @@ export default function Education() {
                 delete state['data']["other_"+ last_index +"_avg"]
                 setState(state)
               }}
-              operation="-"
+              operation="Remove"
             />
           )}
       
@@ -106,7 +107,7 @@ export default function Education() {
           <FormInput placeholder="University" name="highest_uni" />
           <FormInput placeholder="Country" name="highest_country" />
         </div>
-
+</div>
         <Training/>
 
       <div className="flex justify-around flex-row mt-8">

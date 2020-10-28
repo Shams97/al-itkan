@@ -248,8 +248,8 @@ export const Training = () => {
   return (
       <div className="mx-auto my-10 lg:p-8 md:p-8 sm:p-4">
         <h3 className="my-8 text-2xl"> Training and Certification </h3>
-       
-        <div className="flex flex-col my-4">
+       <div className="border border-gray-300 rounded p-6">
+        <div className="flex flex-col my-4 ">
           <FormInput placeholder="Training name" name="t0"/>
           <FormInput placeholder="Year" name="t0_year" type="number"/>
           <FormInput placeholder="Awarded by" name="t0_awarded_by"/>
@@ -272,14 +272,14 @@ export const Training = () => {
         })}
 
         <div className="flex  justify-around flex-row mt-4 ">
-           <p className="text-red-400">Add more training and certification</p> 
+           {/* <p className="text-red-400">Add more training and certification</p>  */}
           {hideNext ? null : (<Operations
             onClick={() => {
               setShow([...show, {}]);
               setHideNext(show.length == 4 ? true : false)
               setHidePrev(false);
             }}
-            operation="+"
+            operation="Add more training "
           />)}
           {hidePrev ? null : (
             <Operations
@@ -295,11 +295,11 @@ export const Training = () => {
                 setState(state)
 
               }}
-              operation="-"
+              operation="Remove"
             />
           )}
        </div>
-    
+    </div>
         <div className="mb-4" />
       </div>
   );
@@ -309,7 +309,7 @@ const OptionField = ({name, logic_name}) => {
   logic_name = logic_name == undefined ? name.toLowerCase().split(' ').join('_') : logic_name
   return (
     <div className="flex lg:flex-row md:flex-row sm:flex-col  flex-wrap justify-between">
-      <p className="text-center text-lg   lg:mt-4 md:mt-4 lg:w-2/5 md:w-2/5  sm:w-full  sm:my-10 ">{name}</p>
+      <p className="text-left text-lg   lg:mt-4 md:mt-4 lg:w-2/5 md:w-2/5  sm:w-full  sm:my-10 ">{name}</p>
       <div className="flex flex-row jusitfy-between mx-auto my-4 lg:w-3/5 md:w-3/5 sm:w-full ">
         <Radio name={logic_name}
         ops={['Not Familiar', 'Beginner', 'Intermediate',

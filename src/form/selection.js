@@ -5,8 +5,6 @@ export default function Radio ({name, ops, classes, values, placeholder}) {
   const [state,setState] = useContext(Context)
   const [val, setVal] = useState("");
 
-  // let value = state.data[name]
-
   useEffect(() => {
     if (state['data'][name] === undefined){
       state['data'][name] = !!values ? values[0] : ops[0].toLowerCase()
@@ -14,10 +12,7 @@ export default function Radio ({name, ops, classes, values, placeholder}) {
       console.log(state)
       setState(state)    
     } 
-      // if(state['data'][name])
-      setVal(state['data'][name])
-      // value = state.data[name]
-    
+      setVal(state['data'][name])    
   }, [])
 
   let handleChange = (e) => {

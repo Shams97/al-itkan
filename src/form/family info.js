@@ -13,7 +13,7 @@ export default function FamilyInfo() {
   return (
       <div className="mx-auto my-12 lg:p-8 md:p-8 sm:p-4">
           <h3 className="my-8 text-2xl " > Family Information </h3>
-          <div className="flex  flex-col m-2">
+          <div className="flex  flex-col m-2 border border-gray-300 rounded p-6">
             <FormInput placeholder="Father's profession " name="father_profession" />
             <FormInput placeholder="Mother's professtion" name="mother_profession" />
             <p className="text-center my-2 ">Do you have any sisters or brothers ?</p>
@@ -42,13 +42,13 @@ export default function FamilyInfo() {
             })}
 
             <div className="flex justify-around flex-row mt-4">
-              <span className="  text-red-400">Add more brothers and sisters </span>
+              {/* <span className="  text-red-400">Add more brothers and sisters </span> */}
           {hideNext ? null : (
             <Operations  onClick={() => {
               setShow([...show, {}])
               setHideNext(show.length == 3 ? true: false)
               setHidePrev(false);
-            }} operation="+" />
+            }} operation="Add more" />
           )}
           {hidePrev ? null : (
               <Operations  onClick={() => {
@@ -59,7 +59,7 @@ export default function FamilyInfo() {
                 delete state['data']['first_name_' + last_index]
                 delete state['data']['profession_' + last_index]
                 setState(state)
-              }} operation="-" />
+              }} operation="Remove" />
           )}
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function FamilyInfo() {
 }
 
 export const Operations = ({onClick , operation}) =>{
-  return <button  className="px-4 hover:bg-gray-500 focus:bg-gray-600  hover:text-white focus:text-white rounded text-red-400 text-lg" onClick={onClick} >
+  return <button  className="px-4 bg-gray-500 focus:bg-gray-600 hover:bg-gray-600  hover:text-white focus:text-white rounded text-white text-lg" onClick={onClick} >
   {operation}
   </button>
 }

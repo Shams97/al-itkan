@@ -4,6 +4,7 @@ import Img from "../asstes/img.jpg";
 import NotFound from "../asstes/undraw_Taken.svg";
 import { Context } from "../store";
 import Expired from "../asstes/expired.svg";
+import Landing from '../asstes/jobs.jpg'
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 const axios = require("axios");
@@ -51,16 +52,25 @@ export default function Jobs({ vacancy, handleClick }) {
 
   return (
     <>
-      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-20 px-4 ">
-        <p className="text-base px-4 mt-2 mt-2">
-          {" "}
-          Already have an application ?
+      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-16 px-4 ">
+      <div className="container ">
+       <img src={Landing} className="lg:h-1/5  w-full object-cover mt-2 opacity-75" style={{backgroundColor:'rgba(0,0,0,0.5)', zIndex:'-1'}}/>
+       <div className="transform lg:-translate-y-64 sm:-translate-y-48 lg:absolute">
+       <p className="lg:text-3xl sm:text-lg md:text-lg text-white ml-8">
+          Apply now and join our great team    
         </p>
-        <button className="hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded mb-4  transition ease-linear duration-500 ">
+        <p className="text-base text-white">
+          {" "}
+          or you already have an application ?
+        
+        <button className=" mx-4 hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded transition ease-linear duration-500 ">
           <Link to="/check"> check</Link>
         </button>
+        </p>
+     </div>
       </div>
-
+     </div>
+    
       <div className="max-w-full flex flex-row flex-wrap  justify-center ">
         {loading ? (
           <div className="my-56">
@@ -76,7 +86,7 @@ export default function Jobs({ vacancy, handleClick }) {
           </div>
         ) : jobState.length === 0 ? (
           <div className="lg:p-8 md:p-8 sm:px-0  my-4">
-            <div className="p-8 mt-10 text-wrap rounded lg:w-1/2 md:w-1/2 sm:w-full mx-auto">
+            <div className="p-8 lg:mt-10 md:mt-8 sm:mt-2 text-wrap rounded lg:w-1/2 md:w-1/2 sm:w-full mx-auto">
               <p className="text-center lg:text-2xl md:text-lg sm:text-base ">
                 {" "}
                 Unfortunately there is no job vacancy available
@@ -92,7 +102,7 @@ export default function Jobs({ vacancy, handleClick }) {
           jobState.map((item, index) => {
             return item.state != "open" ? (
               <div
-                className="rounded overflow-hidden bg-white shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2 "
+                className="rounded overflow-hidden bg-white shadow-lg  mx-4 lg:mt-10 md:mt-8 sm:mt-4 md:w-1/4 lg:w-1/4 sm:1/2 "
                 key={index}
               >
                 <img
@@ -141,7 +151,7 @@ export default function Jobs({ vacancy, handleClick }) {
               </div>
             ) : (
               <div
-                className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 mt-20 md:w-1/4 lg:w-1/4 sm:1/2"
+                className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 lg:mt-10 md:mt-8 sm:mt-4  md:w-1/4 lg:w-1/4 sm:1/2"
                 key={index}
               >
                 <img

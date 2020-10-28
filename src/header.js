@@ -25,7 +25,7 @@ export default function Header() {
     <>
       <div
         className="flex flex-row  justify-between px-8 pt-6  pb-3  fixed"
-        style={{ backgroundColor: "#333333", top: 0, width: "100%" }}
+        style={{ backgroundColor: "#333333", top: 0, width: "100%",zIndex:'1'      }}
       >
         <div className="flex  flex-row ">
           {/* <img src={LOGO} width="100" height="100" className="object-contain" />{" "} */}
@@ -181,10 +181,10 @@ export default function Header() {
         dropDown && isOpen ? null : (
           <>
             {" "}
-            <div className="mt-20 bg-gray-100 " />
+            <div className="mt-16 bg-gray-100 " />
             <div
-              className="pl-2 py-4 rounded max-w-xs mx-auto transition ease-linear duration-700"
-              style={{ backgroundColor: "#8c8c8c" }}
+              className="pl-2 py-6 rounded max-w-xs transition ease-linear duration-700"
+              style={{ backgroundColor: "#8c8c8c", marginLeft:'45.75rem' , marginRight:'0px' }}
             >
               <ul className="w-full">
                 <li className="text-white hover:bg-white hover:text-gray-600 py-1 transition duration-500 ">
@@ -217,8 +217,6 @@ export const Footer = () => {
         backgroundRepeat: "no-repeat",
         clear: "both",
         position: "relative",
-        // height: "200px",
-        // marginTop: "300px",
       }}
     >
       <ul className="inline-flex  flex-row items-center flex-wrap  justify-center my-20">

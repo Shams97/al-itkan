@@ -14,10 +14,10 @@ export default function Language() {
   return (
     <div>
       <div className="mx-auto my-10 lg:p-8 md:p-8 sm:p-4 ">
-          <h2 className="my-8 text-2xl"> Language and Level of Proficiency </h2>
-           <p className="mt-4 mb-2">Measture your proficiency by selecting level in every language </p>
-
-           <div className="lg:flex md:flex  flex-row justify-center sm:block ">
+          <h2 className="mt-8 text-2xl"> Language and Level of Proficiency </h2>
+           <p className="mt-4 mb-6 text-base">Measture your proficiency by selecting level in every language </p>
+<div className="border border-gray-300 rounded p-6">
+           <div className="mt-4 lg:flex md:flex  flex-row justify-center sm:block">
 
             <LangaugeSection name="Arabic" logic_name="ar"/> 
 
@@ -62,18 +62,17 @@ export default function Language() {
            )})}
         </div>
      
-          <div className="lg:flex md:flex justify-around flex-row mt-4  sm:block">
-           <p className="text-red-400">Add more language ( just two allowed ) </p> 
-           
+          <div className="lg:flex md:flex justify-around flex-row mt-8  sm:block">
+           {/* <p className="text-red-400">Add more language ( just two allowed ) </p>  */}
            {hideNext ? null : <button
-              className="px-4 hover:bg-gray-500 focus:bg-gray-600 rounded text-red-400 hover:text-white focus:text-white"
+              className="px-6 bg-gray-500 hover:bg-gray-600 focus:bg-gray-600 rounded text-white  focus:text-white"
               onClick={() => {
                 setShow([...show, {}])
                 setHideNext(show.length == 1 ? true: false)
                 setHidePrev(false);
                 }}
            >
-              +
+              Add more
             </button> }
 
             { hidePrev ? null : <button onClick={(index) => {
@@ -88,16 +87,13 @@ export default function Language() {
                 delete state['data']['other_u_' + last_index]
                 delete state['data']['other_o_' + last_index]
                 setState(state)
-            }} className="px-4 hover:bg-gray-500 focus:bg-gray-600 rounded  text-red-400 hover:text-white focus:text-white">
-              -
+            }} className="px-6 bg-gray-500 hover:bg-gray-600 focus:bg-gray-600 rounded text-white  focus:text-white">
+              Remove
             </button>}  
           </div>
-      
+      </div>
         </div>
-     
-    
         <div className="mb-4"/>
-
     </div>
   );
 }

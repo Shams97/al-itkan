@@ -189,8 +189,6 @@ export const R_link = ({ route, fields,value, url, stateKey }) => {
       );
       return;
     }
-
-  
   };
   return (
     <div>
@@ -206,7 +204,7 @@ export const Button = ({ onClick, value }) => {
   return (
     <button
       onClick={onClick}
-      className="text-red-500 hover:bg-orange-500 hover:text-white focus:bg-orange-500 py-2 px-4 rounded req "
+      className="bg-orange-500 text-white focus:text-white focus:outline-none focus:bg-orange-700 hover:bg-orange-700 py-2 px-4 rounded req "
     >
       {value}
     </button>

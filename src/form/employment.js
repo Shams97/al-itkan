@@ -17,7 +17,8 @@ export default function Employment() {
     <div className=" lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
       <h3 className="my-8 text-2xl "> Employment History </h3>
 
-      <div className="flex flex-row justify-center flex-wrap">
+      <div className="border border-gray-300 rounded p-6">
+      <div className="flex flex-row justify-center flex-wrap ">
         <p className="mt-2 text-center " name="contact_disclaimer">
           Can we contact your previous employer(s) ? provide them here{" "}
         </p>
@@ -144,7 +145,7 @@ export default function Employment() {
         );
       })}
 
-      <div className="flex  justify-around flex-row mt-4">
+      <div className="flex  justify-around flex-row mt-8">
         <span className="text-red-400 ">
           Want to provide more than one employer ?{" "}
         </span>
@@ -184,6 +185,9 @@ export default function Employment() {
         )}
       </div>
 
+    
+    </div>
+    
       <div className="mb-4" />
       <Additional_info />
       <div className="mb-4" />
@@ -197,7 +201,7 @@ export const Additional_info = () => {
     <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4">
       <h3 className="my-8 text-2xl"> Additional Information </h3>
 
-      <div className="flex flex-col my-8">
+      <div className="flex flex-col my-8 border border-gray-300 rounded p-6">
         <div className="flex flex-row justify-between flex-wrap my-4">
           <Options
             htmlFor="union_member"
@@ -205,7 +209,7 @@ export const Additional_info = () => {
              member of the Iraqi engineers union?"
           />
           <div className="flex flex-row flex-wrap ">
-            <span className="text-sm mx-4 mt-5"> if yes since when ? </span>
+            <span className="text-xs mx-4 mt-5"> if yes since when ? </span>
 
             <FormInput name="union_member_date" type="date" />
           </div>
@@ -217,7 +221,7 @@ export const Additional_info = () => {
             label_value="Do you have a valid drivers license?"
           />
           <div className="flex flex-row  flex-wrap">
-            <span className="text-sm mx-4 lg:mt-8 md:mt-8 sm:mt-2 ">
+            <span className="text-xs mx-4 lg:mt-8 md:mt-8 sm:mt-2 ">
               if yes since when ?
             </span>
             <FormInput name="driver_license_date" type="date" />
@@ -270,8 +274,9 @@ export const Additional_info = () => {
             Add more additional skills
           </p>
 
-          <div className="flex flex-row justify-center ">
-            <div className="lg:flex md:flex sm:block flex-row flex-wrap my-4">
+          <div className="flex flex-col justify-center ">
+            
+            <div className="lg:flex md:flex sm:block flex-row flex-wrap my-4 justify-around">
               <span className="mx-4 mt-5 w-1/2 text-left">
                 Team work skills
               </span>
@@ -290,7 +295,7 @@ export const Additional_info = () => {
               />
             </div>
 
-            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
+            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap justify-around">
               <span className="mx-4 mt-5 lg:w-1/2 md:w-1/2 sm:w-full text-left ">
                 Work under pressure skills
               </span>
@@ -309,7 +314,7 @@ export const Additional_info = () => {
               />
             </div>
 
-            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap ">
+            <div className="lg:flex md:flex sm:block  flex-row my-4 flex-wrap justify-around">
               <span className=" mx-4 mt-5 w-1/2 text-left">
                 Are you willing to travel outshore ?
               </span>
@@ -330,7 +335,7 @@ export const Additional_info = () => {
           </div>
 
           <div className="flex flex-row my-10 justify-around flex-wrap">
-            <p className="mt-4"> How did you refrral to us ? </p>
+            <p className="mt-4 ml-12"> How did you refrral to us ? </p>
 
             <Selector
               name="referral_source"
@@ -396,6 +401,7 @@ export const Refrence = () => {
     <div className=" mx-auto">
       <div className="flex flex-col mt-10">
         <h3 className="my-8 text-2xl"> Reference </h3>
+        <div className="border border-gray-300 rounded p-6">
 
         <div className="mt-10 flex flex-col">
           <p className="text-center ">
@@ -468,16 +474,19 @@ export const Refrence = () => {
           ) : null}
         </div>
 
-        <div className="flex flex-row my-2 mx-2 flex-wrap">
-          <p className="mt-8 mx-4">
+        <div>
+          <p className="mt-16 mb-4">
             {" "}
-            Sign here to ensure that every information you provide is correct{" "}
+            Sign here to ensure that every information you <br/> provide is correct{" "}
           </p>
+         <div className="flex justify-around ">
           <FormInput placeholder="Your signature" name="signature" />
-          <span className="text-sm mx-4 mt-5">date</span>
+<div>
+          <span className="text-sm  mt-8 mx-4">date</span>
           <FormInput name="sig_date" type="date" placeholder="Signature Date"/>
+       </div>
         </div>
-
+      </div>
         <div className="flex flex-col my-10 lg:p-8 md:p-8 sm:p-2">
           <h3 className="my-8 text-2xl "> Needed documents </h3>
           <div className="lg:flex md:flex sm:block flex-row my-4">
@@ -539,7 +548,7 @@ export const Refrence = () => {
           </div>
         </div>
       </div>
-
+</div>
       <div className="flex justify-around flex-row mt-8">
         <Link to="/technical">
           <Button value="Previous" />

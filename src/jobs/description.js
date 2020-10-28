@@ -30,8 +30,8 @@ export default function Description() {
     <div>
       { desc.name && desc.state!='open' ? 
                <div className="py-10">
-                <h2 className=" text-left text-2xl ml-12 mt-24">{desc.name} </h2>
-                <Basic_info department={desc.department_id ? desc.department_id[1] : "on intreview"}
+                <h2 className=" text-left text-2xl ml-12 mt-24">{desc.name}</h2>
+                <Basic_info department={desc.department_id ? desc.department_id[1] : "on interview"}
                   emp_type={desc.type_of_position ? 
                     desc.type_of_position == "full_time" ? 
                       "Full Time"
