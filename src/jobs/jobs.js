@@ -63,7 +63,7 @@ export default function Jobs({ vacancy, handleClick }) {
           {" "}
           or you already have an application ?
         
-        <button className=" lg:mx-4  md:mx-4 sm:mx-0 hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded transition ease-linear duration-500 ">
+        <button className=" lg:mx-4  md:mx-4 sm:mx-auto hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded transition ease-linear duration-500 ">
           <Link to="/check"> check</Link>
         </button>
         </p>
