@@ -56,13 +56,12 @@ export default function Jobs({ vacancy, handleClick }) {
       <div className="container ">
        <img src={Landing} width="100%" height="100%" className="mt-2 opacity-75" style={{backgroundColor:'rgba(0,0,0,0.5)', zIndex:'-1'}}/>
        <div className="transform  lg:-translate-y-64 sm:-translate-y-64 md:-translate-y-48 lg:absolute my-8">
-       <p className="lg:text-3xl sm:text-lg md:text-lg xl:text-white lg:text-white sm:text-black md:text-white text-left ml-8">
+       <p className="lg:text-3xl sm:text-lg md:text-lg xl:text-white lg:text-white sm:text-black md:text-white sm:text-center lg:text-left md:text-left ml-8">
           Apply now and join our great team    
         </p>
-        <p className="text-base xl:text-white lg:text-white text-left ml-8 sm:text-black md:text-white ">
+        <p className="text-base xl:text-white lg:text-white sm:text-center lg:text-left md:text-left ml-8 sm:text-black md:text-white lg:my-4 md:my-4 sm:mt-12 " style={{marginTop:'15px'}}>
           {" "}
           or you already have an application ?
-        
         <button className=" lg:mx-4  md:mx-4 sm:mx-auto hover:bg-transparent focus:bg-transparent  bg-orange-600 hover:text-orange-700 active:text-orange-700 focus:text-orange-700 text-white py-2 px-4 border hover:border-orange-700  border-transparent rounded transition ease-linear duration-500 ">
           <Link to="/check"> check</Link>
         </button>
