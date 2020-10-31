@@ -4,8 +4,10 @@ import Img from "../asstes/img.jpg";
 import NotFound from "../asstes/undraw_Taken.svg";
 import { Context } from "../store";
 import Expired from "../asstes/expired.svg";
-import Landing from '../asstes/jobs.jpg'
+import Landing from '../asstes/jobs.jpg';
+import PreLoader from '../asstes/preloader.svg';
 import { css } from "@emotion/core";
+import './job.css'
 import ClipLoader from "react-spinners/ClipLoader";
 const axios = require("axios");
 
@@ -51,10 +53,10 @@ export default function Jobs({ vacancy, handleClick }) {
   }
 
   return (
-    <>
-      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-auto mt-16 px-4 ">
-      <div className="container ">
-       <img src={Landing} width="100%" height="100%" className="mt-2 opacity-75" style={{backgroundColor:'rgba(0,0,0,0.5)', zIndex:'-1'}}/>
+    <div className="footer-align">
+      <div className="flex flex-row md:flex-wrap sm:flex-wrap justify-center mx-0 mt-16 px-4  ">
+      <div className="container footer-align">
+       <img src={Landing} max-width="100%" height="auto" className="mt-2 opacity-50" style={{backgroundColor:'rgba(0,0,0,0.5)', zIndex:'-1'}}/>
        <div className="transform  lg:-translate-y-64 sm:-translate-y-64 md:-translate-y-48 lg:absolute my-8">
        <p className="lg:text-3xl sm:text-lg md:text-lg xl:text-white lg:text-white sm:text-black md:text-white sm:text-center lg:text-left md:text-left ml-8">
           Apply now and join our great team    
@@ -72,15 +74,10 @@ export default function Jobs({ vacancy, handleClick }) {
     
       <div className="max-w-full flex flex-row flex-wrap  justify-center ">
         {loading ? (
-          <div className="my-56">
-            <ClipLoader
-              css={override}
-              size={100}
-              color={"#123abc"}
-              loading={loading}
-            />
-            <p className="flex justify-center  mx-auto">
-              Jobs still loading ...{" "}
+          <div className="my-56 mx-auto">
+            <img style={override} src={PreLoader} width="100" height="100"  className="mx-auto"/>
+            <p className="text-center">
+          Jobs still loading ...{" "}
             </p>
           </div>
         ) : jobState.length === 0 ? (
@@ -150,16 +147,16 @@ export default function Jobs({ vacancy, handleClick }) {
               </div>
             ) : (
               <div
-                className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 lg:mt-10 md:mt-8 sm:mt-4  md:w-1/4 lg:w-1/4 sm:1/2"
+                className="rounded overflow-hidden bg-gray-300 shadow-lg  mx-4 lg:mt-10 md:mt-8 sm:mt-4  md:w-1/4 lg:w-1/4 sm:1/2 "
                 key={index}
               >
                 <img
                   src={Expired}
-                  className="object-contain  h-48 w-full bg-gray-100 "
+                  className="object-contain  h-48 w-full bg-gray-100 opacity-50"
+                  style={{zIndex:"-1"}}
                 />
-                <div className="pt-10 px-4">
+                <div className="pt-10 px-4 opacity-50"  style={{zIndex:"-1"}}>
                   <h3 className="text-2xl font-medium my-2 flex-no-wrap">
-                    {" "}
                     {item.name}{" "}
                   </h3>
                   <p className="text-xl text-red-500 ">
@@ -184,6 +181,6 @@ export default function Jobs({ vacancy, handleClick }) {
           })
         )}
       </div>
-    </>
+    </div>
   );
 }

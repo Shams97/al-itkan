@@ -12,7 +12,7 @@ import Check from "./check";
 import Jobs from "./jobs/jobs";
 import Header from "./header";
 import { Footer } from "./header";
-import Description,{Closed_desc} from './jobs/description'
+import Description from './jobs/description'
 const axios = require("axios");
 
 
@@ -28,7 +28,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Jobs}/> 
               <Route  path="/jobs/description" component={Description}/> 
-              <Route  path="/closedjobs/description" component={Closed_desc}/> 
+              {/* <Route  path="/closedjobs/description" component={Closed_desc}/>  */}
               <Route path="/personal" component={PersonalDetails} />
               <Route path="/education" component={Education} />
               <Route path="/check" component={Check} />

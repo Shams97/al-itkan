@@ -68,10 +68,16 @@ position: relative;
     background-repeat: no-repeat;
     
 } */
-
+/* 
 
 @media only screen and (max-width: 600px) {
   .resp_div{ transform: translate(0px, -133px);}
   .resp_img{ height:350pt; width:100%; object-fit: fill;}
 
+} */
+
+@media only screen and  (min-width:600px) and (max-width:1024px) {
+  .footer-align{
+    min-height:'100vh'
+  }
 }

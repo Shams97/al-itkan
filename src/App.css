@@ -18,6 +18,10 @@ p, span , h2 ,h3,label,:placeholder-shown , option , select , li , a {
 .missing:focus {
   border-bottom: solid 1px #4299e1;
 }
+
+
+
+
 /* 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
