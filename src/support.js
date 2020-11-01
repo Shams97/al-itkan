@@ -14,21 +14,20 @@ export default function Support() {
       <h3 className="mb-8 mt-4 text-2xl "> Support </h3>
       <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col  justify-between mx-auto ">
         <div className="flex flex-col  mx-8 mb-4 lg:w-full md:w-full sm:w-3/4 ">
-          <FormInput name="partner_name" type="text" placeholder="Your name" />
+          <FormInput name="partner_name" type="text" placeholder="Your Name*" />
           <FormInput
             name="partner_email"
             type="text"
-            placeholder="Your email"
+            placeholder="Your Email*"
           />
-          <FormInput name="phone_number" type="text" placeholder="Your phone number" />
-          <FormInput name="name" type="text" placeholder="Subject" />
-          <FormInput name="user_description" type="text" placeholder="Description" />
-          <FormInput name="hospital_name" type="text" placeholder="Description" />
-          <Selector  placeholder="Provinces" 
+          <FormInput name="phone_number" type="text" placeholder="Your Phone Number*" />
+          <FormInput name="name" type="text" placeholder="Subject*" />
+          <FormInput name="hospital_name" type="text" placeholder="Hopital Name" />
+          <Selector  placeholder="Provinces*" 
                 name="province"
                 ops={[
-                 "Baghdad",
-                 "Diyala",
+                "Baghdad",
+                "Diyala",
                 "Basra",
                 "Karbla",
                 "Najaf",
@@ -48,14 +47,16 @@ export default function Support() {
                 ]}
                 classes="my-4" />
           <FormInput name="unit_type" type="text" placeholder="Unit type" />
-          <FormInput name="unit_serial_number" type="text" placeholder="Unit serial number" />
-          <FormInput name="uploaded_file" type="file" placeholder="upload file"/>
-          <FormInput name="brand_name" placeholder="Brand name "/>
+          <FormInput name="unit_serial_number" type="text" placeholder="Unit Serial Number" />
+          <FormInput name="uploaded_file" type="file" placeholder="Upload File"/>
+          <FormInput name="brand_name" placeholder="Brand Name"/>
+          <FormInput name="user_description" type="text" placeholder="Description*" />
           <div className="px-4 my-4">
             <p id="loading_text" className="hidden mb-4"> please wait...</p>
 
-            <R_link value="Submit" fields={["partner_name","partner_email","phone_number","user_description","province"]} route="/ticket_submitted"
-            url="https://jobsbackend.alitkan.com/api/helpdesk" stateKey="help_desk_ticket"/>
+            <R_link value="Submit" fields={["name", "partner_name","partner_email","phone_number","user_description","province"]} route="/ticket_submitted"
+            url="http://erp.alitkan.com:5000/api/helpdesk" stateKey="help_desk_ticket"/>
+            {/* url="https://jobsbackend.alitkan.com/api/helpdesk" stateKey="help_desk_ticket"/> */}
 
           </div>
         </div>

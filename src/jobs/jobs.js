@@ -26,6 +26,7 @@ export default function Jobs({ vacancy, handleClick }) {
   useEffect(() => {
     async function fetchData() {
       const response = await axios({
+        // url: "http://erp.alitkan.com:5000/api/get",
         url: "https://jobsbackend.alitkan.com/api/get",
         method: "GET",
       });
