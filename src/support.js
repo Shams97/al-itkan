@@ -55,8 +55,8 @@ export default function Support() {
             <p id="loading_text" className="hidden mb-4"> please wait...</p>
 
             <R_link value="Submit" fields={["name", "partner_name","partner_email","phone_number","user_description","province"]} route="/ticket_submitted"
-            url="http://erp.alitkan.com:5000/api/helpdesk" stateKey="help_desk_ticket"/>
-            {/* url="https://jobsbackend.alitkan.com/api/helpdesk" stateKey="help_desk_ticket"/> */}
+            // url="http://erp.alitkan.com:5000/api/helpdesk" stateKey="help_desk_ticket"/>
+            url="https://jobsbackend.alitkan.com/api/helpdesk" stateKey="help_desk_ticket"/>
 
           </div>
         </div>
