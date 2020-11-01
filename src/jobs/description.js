@@ -44,9 +44,9 @@ export default function Description() {
       desc.state=="open" ? {backgroundColor:'#e2e8f0',minHeight:'100vh'  }: {backgroundColor:'white',minHeight:'100vh'  }
     )
   return (
-    <div  style={style}>
+    <div>
        {loading ? (
-        <div className="mt-64 mx-auto" style={style}>
+        <div className="mt-64 mx-auto">
          <img src={PreLoader} width="100" height="100" className="mx-auto" />
           <p className="text-center">
             Jobs still loading ...{" "}

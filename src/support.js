@@ -12,7 +12,7 @@ export default function Support() {
   return (
     <div className="lg:w-3/4 md:w-3/4  rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8 sm:w-full" style={{minHeight:'100vh'}} >
       <h3 className="mb-8 mt-4 text-2xl "> Support </h3>
-      <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col  justify-between mx-auto ">
+      <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col justify-between mx-auto ">
         <div className="flex flex-col  mx-8 mb-4 lg:w-full md:w-full sm:w-3/4 ">
           <FormInput name="partner_name" type="text" placeholder="Your Name*" />
           <FormInput
@@ -69,7 +69,7 @@ export const Ticket_submitted = () => {
   const [state, setState] = useContext(Context);
 
   return (
-    <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8">
+    <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8" >
       
       { state.help_desk_ticket ?
           state.help_desk_ticket.created ? 

@@ -589,7 +589,7 @@ export const Submited = () => {
   // }, []);
 
   return (
-    <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-20 p-8">
+    <div className="max-w-xl rounded overflow-hidden bg-white shadow-lg mx-auto mt-24 p-8">
       {state.key ? (
         state.key.created ? (
           <>

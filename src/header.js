@@ -219,7 +219,7 @@ export const Footer = () => {
         position: "relative",
       }}
     >
-      <ul className="inline-flex  flex-row items-center flex-wrap  justify-center my-20">
+      <ul className="inline-flex  flex-row items-center flex-wrap  justify-center mt-20 mb-10">
         <li>
           <a
             className="font-bold text-white mx-4 lg:text-2xl md:text-2xl sm:text-sm hover:text-orange-700 transition ease-linear duration-300 "
@@ -251,7 +251,7 @@ export const Footer = () => {
             <img
               src={Facebook}
               alt="facebook"
-              className="h-12 lg:w-12 md:w-6 sm:w-6  ml-8 lg:mt-0 md:mt-0 sm:mt-4 "
+              className="h-12 w-12 ml-8 lg:mt-0 md:mt-0 sm:mt-4 "
               style={{ marginTop: "-11px" }}
             />
           </a>
@@ -260,7 +260,7 @@ export const Footer = () => {
 
       {/* <hr className="h-2 color-black"/> */}
 
-      <div className="flex flex-row justify-start ml-4 lg:text-xl md:text-xl sm:text-sm">
+      <div className="flex flex-row justify-start ml-4 mt-0 lg:text-xl md:text-xl sm:text-sm">
         <h5 className="font-bold text-white ">
           {" "}
           Copyright{" "}

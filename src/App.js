@@ -175,7 +175,10 @@ export const R_link = ({ route, fields,value, url, stateKey }) => {
           console.log("api response ==", state[stateKey]);
           setState(state);
           // console.log("filling state", state);
-        });
+        }).catch(err => {
+          // what now?
+          console.log(err);
+      })
         link.click()
         console.log("route =", route)
         return  null
