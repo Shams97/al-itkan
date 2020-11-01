@@ -14,9 +14,10 @@ export default function Check() {
       console.log("responseee ", res, res.data.msg );
       let msg = res.data.msg
      setCheck(msg)
-
-      
-    })
+    }).catch(err => {
+      // what now?
+      console.log(err);
+  })
   };
 
   let handleChange = (e) => {
