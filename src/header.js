@@ -251,7 +251,7 @@ export const Footer = () => {
             <img
               src={Facebook}
               alt="facebook"
-              className="h-12 w-12 ml-8 lg:mt-0 md:mt-0 sm:mt-4 "
+              className="h-12 lg:w-12 md:w-6 sm:w-6  ml-8 lg:mt-0 md:mt-0 sm:mt-4 "
               style={{ marginTop: "-11px" }}
             />
           </a>

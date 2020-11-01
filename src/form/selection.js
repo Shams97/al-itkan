@@ -23,7 +23,9 @@ export default function Radio ({name, ops, classes, values, placeholder}) {
     console.log(state)
     setState(state)
   }
-
+const _onFocus=(e)=>{
+  e.target.type = "date";
+}
   return (
     <select onChange={handleChange} value={val}
     className={"border-b-2 border-black-400 focus:border-blue-500 outline-none  bg-none " + (!!classes ? classes: "")} placeholder={placeholder}>

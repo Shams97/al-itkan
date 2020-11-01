@@ -20,29 +20,41 @@ export default function Support() {
             type="text"
             placeholder="Your email"
           />
-          <FormInput name="partner_phone" type="text" placeholder="Your phone number" />
+          <FormInput name="phone_number" type="text" placeholder="Your phone number" />
           <FormInput name="name" type="text" placeholder="Subject" />
-          <FormInput name="description" type="text" placeholder="Description" />
+          <FormInput name="user_description" type="text" placeholder="Description" />
+          <FormInput name="hospital_name" type="text" placeholder="Description" />
           <Selector  placeholder="Provinces" 
-                name="provinces"
+                name="province"
                 ops={[
-                  "Excellent",
-                  "Very Good",
-                  "Good",
-                  "Average",
-                  "Below Average",
-                  "Poor",
-                  "Very Poor",
+                 "Baghdad",
+                 "Diyala",
+                "Basra",
+                "Karbla",
+                "Najaf",
+                "Al-Qadisiyyah",
+                "Al Anbar",
+                "Babil",
+                "Dhi Qar",
+                "Sulaymaniyah",
+                "Kirkuk",
+                "Erbil",
+                "Saladin",
+                "Halabja",
+                "Maysan",
+                "Muthanna",
+                "Nineveh",
+                "Wasit"
                 ]}
                 classes="my-4" />
-          <FormInput name="unit_price" type="text" placeholder="Unite type" />
-          <FormInput name="unit_serial" type="text" placeholder="Unite serial number" />
-          <FormInput name="attachment" type="file" />
+          <FormInput name="unit_type" type="text" placeholder="Unit type" />
+          <FormInput name="unit_serial_number" type="text" placeholder="Unit serial number" />
+          <FormInput name="uploaded_file" type="file" placeholder="upload file"/>
           <FormInput name="brand_name" placeholder="Brand name "/>
           <div className="px-4 my-4">
             <p id="loading_text" className="hidden mb-4"> please wait...</p>
 
-            <R_link value="Submit" fields={[]} route="/ticket_submitted"
+            <R_link value="Submit" fields={["partner_name","partner_email","phone_number","user_description","province"]} route="/ticket_submitted"
             url="https://jobsbackend.alitkan.com/api/helpdesk" stateKey="help_desk_ticket"/>
 
           </div>
@@ -61,8 +73,10 @@ export const Ticket_submitted = () => {
       { state.help_desk_ticket ?
           state.help_desk_ticket.created ? 
           <p className="text-center text-2xl mb-8">
-            Your ticket has been submitted successfully, Our support staff will
-            contact you shorty
+            Your ticket has been submitted successfully,
+            <br/>
+            <span className="">Our support staff will
+            contact you shorty</span>
           </p> 
           : 
           <p> Something went wrong when submiting you ticket. Please try again later </p>
