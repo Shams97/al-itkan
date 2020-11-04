@@ -5,17 +5,25 @@ import { Link } from "react-router-dom";
 import Store, { Context } from "./store";
 import PersonalDetails from "./form/personal details";
 import Education from "./form/education";
-import Admin_Skills,{ Sales_Skills,Training,Technical_skills } from "./form/skills";
-import Employment_history,{ Refrence,Submited,Additional_info } from "./form/employment";
-import Support,{Ticket_submitted} from './support';
+import Admin_Skills, {
+  Sales_Skills,
+  Training,
+  Technical_skills,
+} from "./form/skills";
+import Employment_history, {
+  Refrence,
+  Submited,
+  Additional_info,
+} from "./form/employment";
+import Support, { Ticket_submitted } from "./support";
 import Check from "./check";
 import Jobs from "./jobs/jobs";
 import Header from "./header";
 import { Footer } from "./header";
-import Description from './jobs/description'
+import Description from "./jobs/description";
 const axios = require("axios");
 
-
+export let check;
 
 function App() {
   return (
@@ -26,8 +34,8 @@ function App() {
         <Store>
           <Router>
             <Switch>
-              <Route exact path="/" component={Jobs}/> 
-              <Route  path="/jobs/description" component={Description}/> 
+              <Route exact path="/" component={Jobs} />
+              <Route path="/jobs/description" component={Description} />
               {/* <Route  path="/closedjobs/description" component={Closed_desc}/>  */}
               <Route path="/personal" component={PersonalDetails} />
               <Route path="/education" component={Education} />
@@ -40,8 +48,8 @@ function App() {
               <Route path="/additional" component={Additional_info} />
               <Route path="/refrence" component={Refrence} />
               <Route path="/submited" component={Submited} />
-              <Route path="/helpdesk" component={Support}/>
-              <Route path="/ticket_submitted" component={Ticket_submitted}/>
+              <Route path="/helpdesk" component={Support} />
+              <Route path="/ticket_submitted" component={Ticket_submitted} />
               {/* <Route path="/page_details" component={Page_details}/> */}
             </Switch>
           </Router>
@@ -53,25 +61,35 @@ function App() {
 }
 
 export default App;
-
-export const FormInput = ({ placeholder, name, type, textarea, onFocus }) => {
+export const msg =()=>{
+  return <p>please </p>
+}
+export const FormInput = ({
+  placeholder,
+  name,
+  type,
+  textarea,
+  onFocus,
+  maxLength,
+  pattern,
+  title
+}) => {
   const [state, setState] = useContext(Context);
   const [val, setVal] = useState("");
-
+  const [checkLen, setcheck] = useState(false);
   useEffect(() => {
     if (state["data"][name]) setVal(state["data"][name]);
   }, []);
 
-  
-
   const handleChange = (e) => {
+    check = false;
     let type = e.target.type;
     if (type === "file") {
       let file = e.target.files[0];
       if (file) {
         if (file.size > 10e6) {
           alert("file is too big, please upload file less than 10MB");
-          e.target.value=null
+          e.target.value = null;
         } else {
           let reader = new FileReader();
           reader.onloadend = function () {
@@ -86,12 +104,23 @@ export const FormInput = ({ placeholder, name, type, textarea, onFocus }) => {
     } else {
       let value = e.target.value;
       state["data"][name] = type == "number" ? Number(value) : value;
-       e.target.classList.remove("missing")
+      e.target.classList.remove("missing");
       setVal(value);
+
+      
+      // }
     }
+    // if (e.target.value.length < "11") {
+      // state["check_length"] = true;
+      // setState(state)
+      // alert("please full your name adel")
+      // setState(() => (state["check_length"] = true));
+      // setVal(e.target.value)
+    // }
+
+
     setState(state);
   };
-
 
   if (!!textarea) {
     return (
@@ -102,7 +131,8 @@ export const FormInput = ({ placeholder, name, type, textarea, onFocus }) => {
         onChange={handleChange}
         className="pb-4 border-b-2 border-black-400 focus:border-blue-500  outline-none p-2"
         value={val}
-        
+        pattern={pattern}
+        title={title}
       />
     );
   } else {
@@ -115,92 +145,106 @@ export const FormInput = ({ placeholder, name, type, textarea, onFocus }) => {
         onFocus={onFocus}
         className="border-b-2 border-black-400 focus:border-blue-500 outline-none p-2"
         value={type == "file" ? undefined : val}
+        maxLength={maxLength}
+        pattern={pattern}
+        title={title}
       />
     );
   }
 };
 
-
-export const R_link = ({ route, fields,value, url, stateKey }) => {
+export const R_link = ({ route, fields, value, url, stateKey, onClick }) => {
   const [state, setState] = useContext(Context);
-
-  let handle_click = async(e) => {
+  let handle_click = async (e) => {
     let missingField = [];
     for (let x in fields) {
       let item = fields[x];
-      if (!state["data"][item] && !state["files"][item]) 
-       { 
-        var element = document.getElementsByName(item)[0]
-        if (element.placeholder)
-        missingField.push(element.placeholder);
-        else
-        missingField.push(item);
-
-        element.classList.add("missing")
-   
+      if (!state["data"][item] && !state["files"][item]) {
+        var element = document.getElementsByName(item)[0];
+        if (element.placeholder) missingField.push(element.placeholder);
+        else missingField.push(item);
+        element.classList.add("missing");
       }
     }
     let link = document.getElementsByName("rLink")[0];
-    console.log("before the last if ", missingField, link);
-    if (missingField.length == 0){
-      if (value == "Submit"){
-        console.log("submit button ")
 
+    let val = document.getElementsByName("name")[0].value;
+    if(val.length < '11'){
+      state["check_length"] = true
+      setState(state => ({...state}));
+    }
+    else { 
+      state["check_length"] = false
+      setState(state => ({...state}));
+
+     }
+    
+    if (missingField.length == 0) {
+      if (value == "Submit") {
         // add the filling time
-        if (state['data']['filling_time']){
-          let start = state['data']['filling_time']
+        if (state["data"]["filling_time"]) {
+          let start = state["data"]["filling_time"];
           let end = new Date();
 
           // to check for moinus time
-          let minutes = end.getMinutes() - start.getMinutes()
-          let hours = end.getHours() - start.getHours()
-          if (minutes < 0){
-            minutes += 60
-            hours -= 1
+          let minutes = end.getMinutes() - start.getMinutes();
+          let hours = end.getHours() - start.getHours();
+          if (minutes < 0) {
+              minutes += 60;
+              hours -= 1;
           }
-          let final = hours + " hourse & " + minutes + " minutes"
+          let final = hours + " hourse & " + minutes + " minutes";
           state["data"]["filling_time"] = final;
           setState(state);
           console.log("final timer =", final);
         }
 
         //show loading text
-        let lodaing_text= document.getElementById("loading_text")
-        lodaing_text.classList.remove("hidden")
+        let lodaing_text = document.getElementById("loading_text");
+        lodaing_text.classList.remove("hidden");
 
-        e.target.disabled = true
-        await axios.post(url, state).then((res) => {
-          let reference = res.data;
-          state[stateKey] = reference;
-          console.log("api response ==", state[stateKey]);
-          setState(state);
-          // console.log("filling state", state);
-        }).catch(err => {
-          // what now?
-          console.log(err);
-      })
-        link.click()
-        console.log("route =", route)
-        return  null
-      }
-      else link.click()
+        e.target.disabled = true;
+        await axios
+          .post(url, state)
+          .then((res) => {
+            let reference = res.data;
+            state[stateKey] = reference;
+            console.log("api response ==", state[stateKey]);
+            setState(state);
 
-    }      
-    else {
-      alert(
-        "Please Fill up the following fields: \n " + missingField.toString()+ "   "
-      );
-      return;
-    }
+            console.log("finale state = ", state);
+          })
+          .catch((err) => {
+            // what now?
+            console.log(err);
+          });
+        link.click();
+        console.log("route =", route);
+        return null;
+      } else link.click();
+    } 
+    // else {
+    //   alert(
+    //     "Please Fill up the following fields: \n " +
+    //       missingField.toString() +
+    //       "   "
+    //   );
+    //   return;
+    // }
   };
+
   return (
     <div>
       <Button value={value} onClick={handle_click} />
-      <Link to={route} style={{ display: "none" }} name="rLink"></Link>
+      <Link
+        to={route}
+        style={{ display: "none" }}
+        name="rLink"
+        onClick={onClick}
+      ></Link>
     </div>
   );
 };
-
 
 // Here when button next and previous goes
 export const Button = ({ onClick, value }) => {

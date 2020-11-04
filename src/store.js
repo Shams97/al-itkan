@@ -9,7 +9,8 @@ const initalState = {
   ref:{},
   timer :{},
   ticket:"",
-  job_state:[]
+  job_state:[],
+  check_length:false
 };
 
 

@@ -26,7 +26,6 @@ export default function Jobs({ vacancy, handleClick }) {
   useEffect(() => {
     async function fetchData() {
       const response = await axios({
-        // url: "http://erp.alitkan.com:5000/api/get",
         url: "https://jobsbackend.alitkan.com/api/get",
         method: "GET",
       });
@@ -76,7 +75,7 @@ export default function Jobs({ vacancy, handleClick }) {
       <div className="max-w-full flex flex-row flex-wrap  justify-center ">
         {loading ? (
           <div className="my-56 mx-auto">
-            <img style={override} src={PreLoader} width="100" height="100"  className="mx-auto"/>
+            <img src={PreLoader} width="100" height="100"  className="mx-auto"/>
             <p className="text-center">
           Jobs still loading ...{" "}
             </p>
