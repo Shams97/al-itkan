@@ -15,7 +15,7 @@ export default function Employment() {
 
   return (
     <div className=" lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
-      <h3 className="my-8 text-2xl "> Employment History </h3>
+      <h3 id="page_title" className="my-8 text-2xl "> Employment History </h3>
 
       <div className="border border-gray-300 rounded p-6">
       <div className="flex flex-row justify-center flex-wrap ">

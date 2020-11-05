@@ -72,7 +72,8 @@ export const FormInput = ({
   onFocus,
   maxLength,
   pattern,
-  title
+  title,
+  id
 }) => {
   const [state, setState] = useContext(Context);
   const [val, setVal] = useState("");
@@ -133,6 +134,7 @@ export const FormInput = ({
         value={val}
         pattern={pattern}
         title={title}
+        id={id}
       />
     );
   } else {
@@ -148,6 +150,7 @@ export const FormInput = ({
         maxLength={maxLength}
         pattern={pattern}
         title={title}
+        id={id}
       />
     );
   }
@@ -168,18 +171,22 @@ export const R_link = ({ route, fields, value, url, stateKey, onClick }) => {
     }
     let link = document.getElementsByName("rLink")[0];
 
-    let val = document.getElementsByName("name")[0].value;
-    if(val.length < '11'){
-      state["check_length"] = true
-      setState(state => ({...state}));
+    let name_field = document.getElementsByName("name")[0];
+    if (name_field){
+        if(name_field.value.length < 11){
+          state["check_length"] = true
+          setState(state => ({...state}));
+        }
+        else { 
+          state["check_length"] = false
+          setState(state => ({...state}));
+          
+        }
     }
-    else { 
-      state["check_length"] = false
-      setState(state => ({...state}));
-
-     }
     
-    if (missingField.length == 0) {
+
+    
+    if (missingField.length == 0 && !(name_field && state.check_length)){
       if (value == "Submit") {
         // add the filling time
         if (state["data"]["filling_time"]) {
@@ -187,13 +194,14 @@ export const R_link = ({ route, fields, value, url, stateKey, onClick }) => {
           let end = new Date();
 
           // to check for moinus time
+          let days = end.getDay() - start.getDay()
+          let hours = (end.getHours() - start.getHours()) +  (24 * days);
           let minutes = end.getMinutes() - start.getMinutes();
-          let hours = end.getHours() - start.getHours();
           if (minutes < 0) {
               minutes += 60;
               hours -= 1;
           }
-          let final = hours + " hourse & " + minutes + " minutes";
+          let final = hours + " hours & " + minutes + " minutes";
           state["data"]["filling_time"] = final;
           setState(state);
           console.log("final timer =", final);
@@ -223,14 +231,16 @@ export const R_link = ({ route, fields, value, url, stateKey, onClick }) => {
         return null;
       } else link.click();
     } 
-    // else {
-    //   alert(
-    //     "Please Fill up the following fields: \n " +
-    //       missingField.toString() +
-    //       "   "
-    //   );
-    //   return;
-    // }
+    else{
+      if (missingField != 0)
+      alert(
+        "Please Fill up the following fields: \n " +
+          missingField.toString() +
+          "   "
+          );        
+      window.location.hash = "#page_title"
+      return;
+    }
   };
 
   return (

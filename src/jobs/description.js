@@ -58,7 +58,7 @@ export default function Description() {
                <div className="py-10 ">
                 <h2 className="text-left text-2xl lg:ml-16 md:ml-12 sm:ml-0 mt-24">{desc.name}</h2>
 
-                <Basic_info department={desc.department_id ? desc.department_id[1] : "on interview"}
+                <Basic_info department={desc.department_id ? desc.department_id[1] : "On Intreview"}
                   emp_type={desc.type_of_position ? 
                     desc.type_of_position == "full_time" ? 
                       "Full Time"
@@ -66,7 +66,8 @@ export default function Description() {
                       "Part Time" 
                     :
                     "On Intreview"}
-                  location={desc.city} />
+                  location={desc.city ? desc.city : "On Intreview"} />
+
                 <div className="rounded overflow-hidden bg-white shadow-lg mx-10">
                 { desc.description ?
                   <Drop_down

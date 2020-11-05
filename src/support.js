@@ -29,6 +29,7 @@ export default function Support() {
                 "Baghdad",
                 "Diyala",
                 "Basra",
+                "Dohuk",
                 "Karbla",
                 "Najaf",
                 "Al-Qadisiyyah",

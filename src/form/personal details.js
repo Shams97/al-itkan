@@ -28,28 +28,17 @@ export default function PersonalDetails() {
     e.target.type = "date";
   };
 
-  const check=()=>{
-    let val = document.getElementsByName("name")[0].value;
-
-    if(val.length < '11'){
-      state["check_length"] = true
-      setState(state);
-      console.log("state check =", state["check_length"]);
-    }
-  }
-
   return (
     <div className="lg:w-3/4 md:w-3/4 rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
    <div className="mt-16">
       <img src={LOGO} className="w-48 h-12 object-content mx-auto mb-4"/>
-      <h3 className="mt-0 mb-10 text-2xl "> Personal Details </h3>
+      <h3 id="page_title" className="mt-0 mb-10 text-2xl "> Personal Details </h3>
       </div>
       <div className="lg:flex md:flex sm:block lg:flex-row md:flex-row sm:flex-col justify-between mx-auto ">
         <div className="flex flex-col  mx-8 mb-4 lg:w-1/2 md:w-1/2 sm:w-full border border-gray-300 rounded p-6">
-          <FormInput placeholder="Full name (الاسم الثلاثي باللغة الانكليزي)" name="name" type="text" pattern="\d*" title="Numbers only, please."
-/>
+          <FormInput placeholder="Full name (الاسم الثلاثي باللغة الانكليزي)" name="name" type="text" pattern="\d*" title="Numbers only, please."/>
 
-          {state['check_length'] ? <p className="text-xs text-red-500">please, write your full name (include your first, mid and last name)</p> : null   }
+          {state['check_length'] ? <p className="text-xs text-red-500">please, write your full name (include your first, mid and last name)</p> : null }
 
 
           <FormInput placeholder="Sur name (اللقب)" name="surname" type="text" />

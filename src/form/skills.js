@@ -44,7 +44,7 @@ export const Technical_skills = () => {
 ]
   return (
     <div className="lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
-      <h3 className="my-8 text-2xl"> Technical Skills</h3>
+      <h3 id="page_title" className="my-8 text-2xl"> Technical Skills</h3>
       <div className="flex  flex-col">
         <p className="my-4"> Write down what you good at and how much </p>
 
@@ -251,7 +251,7 @@ export const Training = () => {
        <div className="border border-gray-300 rounded p-6">
         <div className="flex flex-col my-4 ">
           <FormInput placeholder="Training name" name="t0"/>
-          <FormInput placeholder="Year" name="t0_year" type="number"/>
+          <FormInput placeholder="Year" name="t0_year"/>
           <FormInput placeholder="Awarded by" name="t0_awarded_by"/>
           <FormInput placeholder="Country/city" name="t0_country_city"/>
         
@@ -264,7 +264,7 @@ export const Training = () => {
           return (
             <div className="flex flex-col my-8" key={index} >
               <FormInput placeholder="Training name " name={"t"+n}/>
-              <FormInput placeholder="Year" name={"t"+n +"_year"} type="number"/>
+              <FormInput placeholder="Year" name={"t"+n +"_year"}/>
               <FormInput placeholder="Awarded by" name={"t"+n +"_awarded_by"}/>
               <FormInput placeholder="Country/City" name={"t"+ n +"_country_city"}/>
             </div>
