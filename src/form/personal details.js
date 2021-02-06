@@ -1,4 +1,4 @@
-import { FormInput,R_link,check} from "../App";
+import { FormInput, R_link, check_job_id} from "../App";
 import { Link } from "react-router-dom";
 import Family from "./family info";
 import Health from "./health";
@@ -13,12 +13,7 @@ export default function PersonalDetails() {
   const [state, setState] = useContext(Context);
  
   useEffect(() => {
-    if (!state["data"]["job_id"]) {
-      let url = new URL(document.URL);
-      let job_id = Number( url.searchParams.get("job_id") )
-      state["data"]["job_id"] = job_id;
-    }
-
+    check_job_id(state, setState,true, true)
     state["data"]["filling_time"] = new Date();
     setState(state);
     console.log("start ", state["data"]);

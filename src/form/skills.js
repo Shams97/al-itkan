@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FormInput, Button,R_link } from "../App";
+import { FormInput, Button,R_link, check_job_id } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import { Context } from "../store"
@@ -42,6 +42,9 @@ export const Technical_skills = () => {
   "passionate_about_selling_skill_level",
 
 ]
+
+  check_job_id(state, setState)
+
   return (
     <div className="lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">
       <h3 id="page_title" className="my-8 text-2xl"> Technical Skills</h3>
@@ -124,6 +127,8 @@ export const Technical_skills = () => {
 };
 
 export default function Admin_Skills() {
+  const [state, setState] = useContext(Context)
+  check_job_id(state, setState)
 
   return (
     <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4">
@@ -182,6 +187,8 @@ export default function Admin_Skills() {
 }
 
 export const Sales_Skills = () => {
+  const [state, setState] = useContext(Context)
+  check_job_id(state, setState)
   
   return (
       <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4" >
@@ -244,6 +251,7 @@ export const Training = () => {
   const [hidePrev, setHidePrev] = useState(true);
   const [hideNext, setHideNext] = useState(false);
   const [state, setState] = useContext(Context)
+  check_job_id(state, setState)
 
   return (
       <div className="mx-auto my-10 lg:p-8 md:p-8 sm:p-4">

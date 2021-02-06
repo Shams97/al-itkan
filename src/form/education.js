@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { FormInput, Button, R_link } from "../App";
+import React, { useState, useContext, useEffect } from "react";
+import { FormInput, Button, R_link, check_job_id } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import Radio from './radio'
@@ -17,6 +17,10 @@ export default function Education() {
     'Intermediate_name', 'Intermediate_years', 'Intermediate_avg', 'college_name', 'college_years', 'college_avg',
     'highest_acad', 'highest_grad_year', 'highest_uni', 'highest_country',
     't0', 't0_year', 't0_awarded_by', 't0_country_city','college_major']
+
+  useEffect(() => {
+    check_job_id(state, setState)
+  }, [])
 
   return (
     <div className=" lg:w-3/4 md:w-3/4  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8  sm:w-full">

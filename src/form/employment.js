@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FormInput, Button,R_link } from "../App";
+import { FormInput, Button, R_link, check_job_id } from "../App";
 import { Link } from "react-router-dom";
 import { Operations } from "./family info";
 import Radio from "./radio";
@@ -12,6 +12,7 @@ export default function Employment() {
   const [show, setShow] = useState([]);
   const [hidePrev, setHidePrev] = useState(true);
   const [hideNext, setHideNext] = useState(false);
+  check_job_id(state, setState)
 
   return (
     <div className=" lg:w-5/6 md:w-5/6  rounded overflow-hidden bg-white shadow-lg mx-auto mt-10 p-8 sm:w-full">
@@ -197,6 +198,9 @@ export default function Employment() {
 }
 
 export const Additional_info = () => {
+  const [state, setState] = useContext(Context)
+  check_job_id(state, setState)
+
   return (
     <div className="mx-auto mt-10 lg:p-8 md:p-8 sm:p-4">
       <h3 className="my-8 text-2xl"> Additional Information </h3>
@@ -377,6 +381,7 @@ export const Refrence = () => {
   const [state, setState] = useContext(Context);
   const [hide, setHide] = useState(false);
   const [hider, setHider] = useState(false);
+  check_job_id(state, setState)
 
   const rfields = ["contact_disclaimer",
     "ref_name",

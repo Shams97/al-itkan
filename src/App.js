@@ -158,6 +158,8 @@ export const FormInput = ({
 
 export const R_link = ({ route, fields, value, url, stateKey, onClick }) => {
   const [state, setState] = useContext(Context);
+  let full_path = `${route}?job_id=${state.data.job_id}`
+  console.log(full_path)
   let handle_click = async (e) => {
     let missingField = [];
     for (let x in fields) {
@@ -247,7 +249,7 @@ export const R_link = ({ route, fields, value, url, stateKey, onClick }) => {
     <div>
       <Button value={value} onClick={handle_click} />
       <Link
-        to={route}
+        to={full_path}
         style={{ display: "none" }}
         name="rLink"
         onClick={onClick}
@@ -267,3 +269,31 @@ export const Button = ({ onClick, value }) => {
     </button>
   );
 };
+
+export const check_job_id = (state, setState, ignore_name=false, add_job=false) => {
+  // the variable ignore_name is used to not make the first page keep doing an endless refresh loop
+  // the add_job is used to know when to change the page becauase of a missing job_id and when to not
+
+  let url = new URL(document.URL)
+  let job_id = Number( url.searchParams.get("job_id") )
+  if (!state.data.job_id){
+    if (add_job && job_id){
+      state.data.job_id = job_id
+      setState(state)
+    } else{
+      if (job_id){
+        document.location.href = `${url.origin}/personal?job_id=${job_id}`
+      } else {
+        document.location.href = url.origin
+      }
+      return
+    }
+  }
+  if (!state.data.name && !ignore_name){
+    if (job_id){
+      document.location.href = `${url.origin}/personal?job_id=${job_id}`
+    } else {
+      document.location.href = url.origin
+    }
+  }
+}
